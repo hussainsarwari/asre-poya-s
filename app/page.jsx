@@ -4,7 +4,7 @@ export default function Home() {
   return (
 <>
 <h1>
-  coming soon
+  successfully done
 </h1>
 </>
   );
