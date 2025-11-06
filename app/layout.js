@@ -4,7 +4,7 @@ import Header from "./components/header/Header.jsx";
 import { LanguageProvider } from "./provider/languageProvider";
 import localFont from "next/font/local";
 import Footer from "./components/footer/Footer.jsx";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 // ایمپورت فونت محلی Yekan Bakh
 const yekanBakh = localFont({
   src: "../public/fonts/myfont.ttf",
@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${yekanBakh.variable} font-yekan antialiased min-h-screen flex flex-col`}
       >
         <LanguageProvider>
-          <Header />
+          {/* <Header /> */}
           <main className="grow">{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </LanguageProvider>
       </body>
     </html>
