@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${yekanBakh.variable} font-yekan antialiased min-h-screen flex flex-col`}
       >
         <LanguageProvider>
-          {/* <Header /> */}
+          <Header />
           <main className="grow">{children}</main>
-          {/* <Footer /> */}
+          <Footer />
         </LanguageProvider>
       </body>
     </html>
