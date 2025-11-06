@@ -1,0 +1,63 @@
+export const translations = {
+    en: {
+        LoginBtn: "Login or sign up",
+        home: "Home",
+        aboutus: "About us",
+        contactus: "Contact us",
+        business: "Business",
+        Product: "Products",
+        english: "English",
+        persian: "Persian",
+        pashto: "Pashto",
+        all_right_of_this_website: "All rights to this site belong to Asrpoya Company.",
+        footer: {
+            paragraph: "Asrpoya Company was established with the aim of providing the best services in the field of information and communication technology. We are committed to delivering innovative and high-quality solutions to our customers."
+        },
+        contact_info: "contact information",
+        job: "Jobs",
+        email: "Email address",
+        call: "phone number",
+        location: "Location",
+        contactustext: "You can use these for communication with us",
+        contactuswithasrepoya: "Communication with Asre Poya",
+        aboutUsParagraph: "add your paraghraph here"
+
+    },
+    fa: {
+        vision:"چشم انداز",
+        aboutuscalendartick:"هدف ما این است که به‌عنوان یک رهبر جهانی در توسعه نرم‌افزار شناخته شویم؛ شناخته برای راه‌حل‌های نوآورانه، تعهد به برتری و وقف در ایجاد فناوری‌های فراگیر و پایدار که جوامع را توانمند ساخته و تغییرات مثبت را به حرکت درمی‌آورند.ما دنیایی را مجسم می‌کنیم که در آن فناوری‌ها فاصله‌ها را از میان برداشته، زندگی‌ها را بهبود بخشیده و آینده‌ای عادلانه‌تر و برخوردار از رفاه بیشتر را برای همه رقم می‌زند.",
+        aboutusfirstParagraph:"شرکت عصر پویا یک شرکت پیشتاز فناوری در افغانستان است که در زمینه‌ی توسعه نرم‌افزار، طراحی و توسعه وب، و ارائه خدمات جامع میزبانی وب و ایمیل تخصص دارد.",
+        aboutushistory: "این شرکت در سال ۲۰۲۰ در ولایت بلخ تاسیس شد و از ان زمان با گسترش مستمر دانش و نیروی انسانی خود به یکی از بازیگران اصلی بخش ICT بدل گردید.",
+        aboutuspeople: "تیم متعهد ما متشکل از پیش از ۲۰ متخصص ماهر با پیشینه های ملی و بین المللی است که در جهت ارایه  راه حل های نوآورانه و با کیفیت به شمتریان فعالیت می کنند.",
+        aboutuslocation: "دفتر مرکزی عصر پویا به طور استراتژیک در بلغ قرار دارد تا بتوانیم به خوبی ب طیف گسترده ای  از مشتریان  در سراسر افغانستان  و حتی بازار های بین المللی  خدمات ارسانی کنیم.",
+        aboutusarchivetick: "این شرکت به طور کامل در مالکیت افغان  است  و رسما با محوز شماره ۶۶۶۰۷ از دولت  جمهوری اسلامی افغانستان ثبت و مجاز به فعالیت می باشد. ما به مشتری مداری افتخار میکنم و تمرکز اصلی خود را بر رضایت مشتری و ایجاد روابط بلند مدت قرار داده ایم. همکاری های ما با برند ها و شرکت های معتبر جهانی در حوزه ICT تضمین میکند  که جدیدترین و پیشرفته ترین فهناوری ها را به افغانستان بیاوریم.",
+        mission:"ماموریت",
+        aboutUsParagraph: "پاراگراف خود را اینجا وارد کنید",
+        aboutusmission:"در شرکت عصر پویا، مأموریت ما بهره‌گیری از قدرت فناوری برای خلق راه‌حل‌های نرم‌افزاری نوآورانه و فراگیر است که جوامع را توانمند ساخته و توسعه پایدار را پیش می‌برند.",
+        all_right_of_this_website: ".تمامی حقوق این وبسایت متعلق به شرکت عصر پویا می‌باشد",
+        LoginBtn: "ورود یا عضویت",
+        home: "صفحه اصلی",
+        aboutus: "درباره ما",
+        contactus: "تماس با ما",
+        business: "کسب و کار",
+        Product: "محصولات",
+        english: "انگلیسی",
+        persian: "فارسی",
+        pashto: "پشتو",
+        footer: {
+            paragraph: "شرکت عصر پویا با هدف ارائه بهترین خدمات در زمینه فناوری اطلاعات و ارتباطات تأسیس شده است. ما متعهد به ارائه راهکارهای نوآورانه و با کیفیت برای مشتریان خود هستیم."
+
+        },
+        contact_info: "اطلاعات تماس",
+        call: "شماره تماس",
+        job: "فرصت های شغلی",
+        email: "ایمیل",
+        location: "آدرس",
+        joblist: "همکاری با ما",
+        addressmazar: "کاتب زاده ٫ منزل چهارم ٫ دروازه بلخ ٫ مزارشریف ",
+        addresskabul: "کابل افغانستان",
+        contactustext: "برای ارتباط با ما لطفا از این رویش استفاده کن",
+        contactuswithasrepoya: "ارتباط با شرکت عصر پویا"
+    }
+}
+
