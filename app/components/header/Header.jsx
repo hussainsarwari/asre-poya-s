@@ -43,7 +43,7 @@ export default function Header() {
   return (
     <>
       {/* موبایل و تبلت */}
-      <header className="relative flex items-center justify-between px-6 top-10 md:top-14 md:px-16 lg:hidden">
+      <header className="relative flex items-center justify-between  top-10 md:top-14 px-[20px] md:px-0 w-[372px] md:w-[616px] mx-auto lg:hidden">
         <Image src={user2} alt="user icon" className=" w-6 md:w-[37px] h-6 md:h-[37px]" />
         <Link href="/">
           <Image src={asrepoya} alt="Asre Poya Logo" width={130} height={37} />
