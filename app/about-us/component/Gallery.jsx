@@ -49,6 +49,12 @@ export default function Gallery() {
     setImages(rotated);
   };
 
+  const Loader = () => (
+    <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+      <div className="w-6 h-6 border-4 border-gray-300 rounded-full border-t-gray-600 animate-spin"></div>
+    </div>
+  );
+
   return (
     <div
       className="
@@ -58,85 +64,111 @@ export default function Gallery() {
         md:grid-cols-[1.5fr_1fr]
         gap-3
         w-full
+        
       "
     >
+      {/* 🔙 دکمه چپ */}
       <button
-          onClick={handleLeft}
-          className="absolute -left-6 sm:left-[-10] top-1/2 -translate-y-1/2 cursor-pointer z-40"
-        >
-          <Image src={ArrowKey} alt="left"  className="w-15 sm:w-0"/>
-        </button>
-      {/* 📱 ساختار مخصوص موبایل */}
-      <div className="flex md:hidden items-stretch justify-center gap-3 w-full">
-        {/* ستون چپ: ۴ عکس مربع کوچک */}
-        <div className="flex flex-col justify-between gap-2 w-[25%]">
+        onClick={handleLeft}
+        className="absolute -left-6 sm:left-[-10] top-1/2 -translate-y-1/2 cursor-pointer z-40"
+      >
+        <Image src={ArrowKey} alt="left" className="w-15 sm:w-0" />
+      </button>
+
+      {/* 📱 موبایل */}
+      <div className="flex items-stretch justify-center w-full gap-3 md:hidden">
+        {/* ستون چپ */}
+        <div className="flex flex-col justify-between gap-2 w-[62px] relative">
           {[0, 1, 2, 3].map((i) => (
             <div
               key={i}
-              className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100 shrink-0"
+              className="relative w-full overflow-hidden bg-gray-100 rounded-[8px] aspect-square shrink-0"
             >
+              {!loadedImages[`img${i + 1}`] && <Loader />}
               <Image
                 src={images[i]}
                 alt={`img${i + 1}`}
                 fill
-                className="object-cover"
+                className={`object-cover transition-opacity duration-300 ${
+                  loadedImages[`img${i + 1}`] ? "opacity-100" : "opacity-0"
+                }`}
                 onLoadingComplete={() => handleImageLoad(i)}
               />
             </div>
           ))}
-            <button
-          onClick={handleRight}
-          className="absolute right-[-23px] top-1/2 -translate-y-1/2 cursor-pointer rotate-180 z-40 w-15 sm:w-0"
-        >
-          <Image src={ArrowKey} alt="right" />
-        </button>
+
+         
         </div>
 
-        {/* ستون راست: عکس بزرگ تراز با چپ */}
-        <div className="relative flex-1 rounded-xl overflow-hidden bg-gray-100">
+        {/* ستون راست */}
+        <div className="relative flex-1 overflow-hidden bg-gray-100 rounded-xl w-[434px] aspect-4/4">
+          {!loadedImages[`img${bigImageIndex + 1}`] && <Loader />}
           <Image
             src={images[bigImageIndex]}
             alt="big-image"
             fill
-            className="object-cover"
+            className={`object-cover transition-opacity duration-300 ${
+              loadedImages[`img${bigImageIndex + 1}`]
+                ? "opacity-100"
+                : "opacity-0"
+            }`}
+            onLoadingComplete={() => handleImageLoad(bigImageIndex)}
           />
+           {/* 🔜 دکمه راست */}
+          <button
+            onClick={handleRight}
+            className="absolute right-[-23px] top-1/2 -translate-y-1/2 cursor-pointer rotate-180 z-40 w-15 sm:w-0"
+          >
+            <Image src={ArrowKey} alt="right" />
+          </button>
         </div>
       </div>
 
-      {/* 💻 ساختار دسکتاپ و تبلت */}
-      <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2">
-           <button
+      {/* 💻 دسکتاپ */}
+      <div className="relative hidden grid-cols-2 grid-rows-2 gap-4 md:grid">
+        <button
           onClick={handleLeft}
-          className="absolute -left-10 top-1/2 -translate-y-1/2 cursor-pointer z-40"
+          className="absolute z-40 -translate-y-1/2 cursor-pointer -left-10 top-1/2"
         >
-          <Image src={ArrowKey} alt="left"  className="w-15 sm:w-17"/>
+          <Image src={ArrowKey} alt="left" className="w-15 sm:w-17" />
         </button>
+       
+          
         {[0, 1, 2, 3].map((i) => (
           <div
-            key={i}
-            className="relative aspect-4/3 rounded-xl overflow-hidden bg-gray-100"
+          key={i}
+          className="relative overflow-hidden bg-gray-100 aspect-square lg:aspect-4/3 md:w-[149px] lg:w-[295px] md:h-[136px] lg:h-[189px] rounded-2xl"
           >
+            {!loadedImages[`img${i + 1}`] && <Loader />}
             <Image
               src={images[i]}
               alt={`img${i + 1}`}
               fill
-              className="object-cover"
+              className={`object-cover transition-opacity duration-300 ${
+                loadedImages[`img${i + 1}`] ? "opacity-100" : "opacity-0"
+              }`}
               onLoadingComplete={() => handleImageLoad(i)}
-            />
+              />
           </div>
         ))}
+        
       </div>
 
-      <div className="hidden md:flex relative rounded-xl overflow-hidden items-center justify-center bg-gray-100">
+      {/* عکس بزرگ در دسکتاپ */}
+      <div className="relative items-center justify-center hidden overflow-hidden bg-gray-100 aspect-square md:flex md:w-[305px] md:h-[287px] md:rounded-lg lg:rounded-2xl lg:w-[434px] lg:h-[394px]">
+        {!loadedImages[`img${bigImageIndex + 1}`] && <Loader />}
         <Image
           src={images[bigImageIndex]}
           alt="gallery-big"
           fill
-          className="object-cover"
+          className={`object-cover transition-opacity duration-300 ${
+            loadedImages[`img${bigImageIndex + 1}`]
+              ? "opacity-100"
+              : "opacity-0"
+          }`}
+          onLoadingComplete={() => handleImageLoad(bigImageIndex)}
         />
 
-        {/* فلش‌ها */}
-        
         <button
           onClick={handleRight}
           className="absolute right-[-33px] top-1/2 -translate-y-1/2 cursor-pointer rotate-180 z-40"
