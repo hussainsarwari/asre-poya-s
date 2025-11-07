@@ -16,16 +16,16 @@ export default function AboutUs() {
   const { t, dir } = useLanguage();
 
   return (
-    <div className="w-[90%] sm:w-[75%] mx-auto my-20 ">
+    <div className="w-[376px] md:w-[616px] lg:w-[1056px] mx-auto my-[142px] ">
       <div>
         <h1
-          className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} font-bold  md:text-4xl text-xl`}
+          className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} font-bold  lg:text-[32px] text-[20px] md:text-[24px]`}
         >
           {t("aboutus")}
         </h1>
 
         <p
-          className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} text-[#1E1E2B99] text-sm sm:text-md my-5`}
+          className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} text-[#1E1E2B99] text-[12px] lg:text-[14px] my-5`}
         >
           {t("aboutUsParagraph")}
         </p>
@@ -35,54 +35,96 @@ export default function AboutUs() {
 
       {/* text section */}
       <div className={`flex flex-row-reverse w-full relative`}>
-        <h1 className="border-b border-[#1E1E2B1A] pb-2 my-20 w-full flex-row-reverse relative flex before:bg-[#06B1FD] before:absolute before:top-5 sm:before:top-10 before:h-1 before:w-[30px] sm:before:w-[60px] before:rounded-full before:content-['']">
-          <Image src={asrepoya} alt="Asre Poya Logo"   />
+        <h1 className="border-b border-[#1E1E2B1A] pb-2 mt-20 w-[1056px] flex-row-reverse relative flex before:bg-[#06B1FD] before:absolute before:top-4.5 sm:before:top-10 before:h-1 before:w-[30px] sm:before:w-[60px] before:rounded-full before:content-['']">
+          <Image src={asrepoya} alt="Asre Poya Logo" />
         </h1>
       </div>
 
-      <div className="flex flex-col my-0 sm:my-10 gap-10 sm:gap-20" dir="rtl">
-        <div className="flex items-center gap-3">
-          <Image src={globalSearch} alt="globalSearch" className="w-5 sm:w-6"  />
-          <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
-            {t("aboutusfirstParagraph")}
-          </span>
+      <div className="flex flex-col gap-10 my-12 sm:my-10 " dir="rtl">
+        <div className="flex flex-col">
+
+          <div className="flex items-center gap-4 my-6">
+            <Image src={globalSearch} alt="globalSearch" className="w-5 sm:w-6" />
+            <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
+              {t("aboutusfirstParagraph")}
+            </span>
+          </div>
+          <span className="border border-[#1E1E2B0D] w-[300px] md:w-[550px] lg:w-[832px] m-auto"></span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Image src={calenderEdit} alt="calenderEdit" className="w-5 sm:w-6"  />
+
+
+
+   <div className="flex flex-col">
+    
+        <div className="flex items-center gap-4 my-6">
+          <Image src={calenderEdit} alt="calenderEdit" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutushistory")}
           </span>
         </div>
+    <span className="border border-[#1E1E2B0D] w-[300px] md:w-[550px] lg:w-[832px] m-auto"></span>
+      
+   </div>
 
-        <div className="flex items-center gap-3">
-          <Image src={people} alt="people" className="w-5 sm:w-6"  />
+
+
+
+
+
+
+   <div className="flex flex-col">
+
+        <div className="flex items-center gap-4 my-6">
+          <Image src={people} alt="people" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutuspeople")}
           </span>
         </div>
+            <span className="border border-[#1E1E2B0D] w-[300px] md:w-[550px] lg:w-[832px] m-auto"></span>
+      
+   </div>
 
-        <div className="flex items-center gap-3">
-          <Image src={locationtick} alt="locationtick" className="w-5 sm:w-6"  />
+
+
+
+
+
+   <div className="flex flex-col">
+    
+        <div className="flex items-center gap-4 my-6">
+          <Image src={locationtick} alt="locationtick" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutuslocation")}
           </span>
         </div>
+            <span className="border border-[#1E1E2B0D] w-[300px] md:w-[550px] lg:w-[832px] m-auto"></span>
+      
+   </div>
 
-        <div className="flex items-center gap-3">
-          <Image src={archivetick} alt="archivetick" className="w-5 sm:w-6"  />
+
+
+
+   <div className="flex flex-col">
+
+        <div className="flex items-center gap-4 my-6">
+          <Image src={archivetick} alt="archivetick" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutusarchivetick")}
           </span>
         </div>
       </div>
+      
+   </div>
+      
+
 
       <h1 className="border-b text-2xl md:text-4xl sm:text-2xl font-bold border-[#1E1E2B1A] pb-4 my-20 w-full flex-row-reverse relative flex before:bg-[#06B1FD] before:absolute before:top-13 before:h-1 before:w-[60px] before:rounded-full before:content-['']">
         {t("mission")}
       </h1>
 
-      <div className="flex items-center gap-3 flex-row-reverse">
-        <Image src={calenderSearch} alt="calenderSearch" className="w-5 sm:w-6"  />
+      <div className="flex flex-row-reverse items-center gap-4">
+        <Image src={calenderSearch} alt="calenderSearch" className="w-5 sm:w-6" />
         <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
           {t("aboutusfirstParagraph")}
         </span>
@@ -92,8 +134,8 @@ export default function AboutUs() {
         {t("vision")}
       </h1>
 
-      <div className="flex items-center gap-3 flex-row-reverse">
-        <Image src={calendartick} alt="calenderSearch" className="w-5 sm:w-8"  />
+      <div className="flex flex-row-reverse items-center gap-4">
+        <Image src={calendartick} alt="calenderSearch" className="w-5 sm:w-8" />
         <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
           {t("aboutuscalendartick")}
         </span>
