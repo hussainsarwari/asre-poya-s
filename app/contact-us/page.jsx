@@ -10,7 +10,7 @@ export default function ContactUs() {
   const { t } = useLanguage();
 
   return (
-    <div className="flex flex-col gap-0 lg:gap-8    mx-auto    my-[89px]  lg:my-[142px] w-[376px] md:w-[616px]  lg:w-[1056px]" dir="rtl">
+    <div className="flex flex-col gap-0 lg:gap-8    mx-auto    my-[89px]  lg:my-[142px] w-[300px] md:w-[616px]  lg:w-[1056px]" dir="rtl">
       {/* عنوان */}
  
       <h2 className="text-[20px] lg:text-[32px] font-bold text-[#1E1E2B]">{t("contactus")}</h2>
