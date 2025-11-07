@@ -16,7 +16,7 @@ export default function AboutUs() {
   const { t, dir } = useLanguage();
 
   return (
-    <div className="w-[376px] md:w-[616px] lg:w-[1056px] mx-auto my-[142px] ">
+    <div className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto my-[142px] ">
       <div>
         <h1
           className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} font-bold  lg:text-[32px] text-[20px] md:text-[24px]`}
