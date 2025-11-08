@@ -16,7 +16,7 @@ export default function AboutUs() {
   const { t, dir } = useLanguage();
 
   return (
-    <div className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto my-[142px] ">
+    <div className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto mt-[56px] mb-[7px]">
       <div>
         <h1
           className={`${dir === "rtl" ? "flex flex-row-reverse" : "flex flex-row"} font-bold  lg:text-[32px] text-[20px] md:text-[24px]`}
@@ -40,10 +40,10 @@ export default function AboutUs() {
         </h1>
       </div>
 
-      <div className="flex flex-col gap-10 my-12 sm:my-10 " dir="rtl">
+      <div className="flex flex-col gap-10 my-12 sm:my-[18px] " dir="rtl">
         <div className="flex flex-col">
 
-          <div className="flex items-center gap-4 my-6">
+          <div className="flex items-center gap-4 mb-6">
             <Image src={globalSearch} alt="globalSearch" className="w-5 sm:w-6" />
             <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
               {t("aboutusfirstParagraph")}
@@ -57,7 +57,7 @@ export default function AboutUs() {
 
    <div className="flex flex-col">
     
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 mb-6">
           <Image src={calenderEdit} alt="calenderEdit" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutushistory")}
@@ -75,7 +75,7 @@ export default function AboutUs() {
 
    <div className="flex flex-col">
 
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 mb-6">
           <Image src={people} alt="people" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutuspeople")}
@@ -92,7 +92,7 @@ export default function AboutUs() {
 
    <div className="flex flex-col">
     
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 mb-6">
           <Image src={locationtick} alt="locationtick" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutuslocation")}
@@ -107,7 +107,7 @@ export default function AboutUs() {
 
    <div className="flex flex-col">
 
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 mb-6">
           <Image src={archivetick} alt="archivetick" className="w-5 sm:w-6" />
           <span className="text-right text-[#1E1E2BCC] text-[12px]  sm:text-[16px]">
             {t("aboutusarchivetick")}
@@ -119,7 +119,7 @@ export default function AboutUs() {
       
 
 
-      <h1 className="border-b text-2xl md:text-4xl sm:text-2xl font-bold border-[#1E1E2B1A] pb-4 my-20 w-full flex-row-reverse relative flex before:bg-[#06B1FD] md:before:top-13 before:absolute before:top-12 before:h-0.5 md:before:h-1 before:w-[60px] before:rounded-full before:content-['']">
+      <h1 className="border-b text-2xl md:text-4xl sm:text-2xl font-bold border-[#1E1E2B1A] pb-4 my-[56px] w-full flex-row-reverse relative flex before:bg-[#06B1FD] md:before:top-13 before:absolute before:top-12 before:h-0.5 md:before:h-1 before:w-[60px] before:rounded-full before:content-['']">
         {t("mission")}
       </h1>
 
@@ -130,7 +130,7 @@ export default function AboutUs() {
         </span>
       </div>
 
-      <h1 className="border-b text-xl md:text-4xl sm:text-2xl font-bold border-[#1E1E2B1A] pb-4 my-20 w-full flex-row-reverse relative flex before:bg-[#06B1FD] md:before:top-13 before:absolute before:top-12 before:h-0.5 md:before:h-1 before:w-[60px] before:rounded-full before:content-['']">
+      <h1 className="border-b text-xl md:text-4xl sm:text-2xl font-bold border-[#1E1E2B1A] pb-4 my-[56px] w-full flex-row-reverse relative flex before:bg-[#06B1FD] md:before:top-13 before:absolute before:top-12 before:h-0.5 md:before:h-1 before:w-[60px] before:rounded-full before:content-['']">
         {t("vision")}
       </h1>
 
