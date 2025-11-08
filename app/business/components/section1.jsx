@@ -9,7 +9,7 @@ export default function Section1() {
 
     return (
         <>
-            <div className='flex lg:justify-between'>
+            <div className='flex lg:justify-between z-90'>
 
                 {/* video box */}
                 <div className="lg:w-[375px] lg:h-[359px] lg:rounded-[80px] bg-[#1E1E2B0D]">
@@ -32,11 +32,11 @@ export default function Section1() {
 
                     </h1>
                     <h2 className='flex font-bold text-[28px] gap-3  items-center mt-4'>
-                        <Image src={Clipboardblack} alt='clipboard' className='w-6'/>
+                        <Image src={Clipboardblack} alt='clipboard' className='w-6' />
                         <span className='flex items-center'>
-                            
+
                             {t("businessPageTitle2")}
-                            </span>
+                        </span>
                     </h2>
                     <p className='font-semibold text-[20px] text-[#1E1E2B] mt-4'>
                         {t("businessPageParaghraph")}
@@ -45,13 +45,13 @@ export default function Section1() {
                         {t("businesspageparagraph2")}
                     </p>
                     {/* buttons */}
-                    <div className='mt-10'>
-                        <button className='bg-[#06B1FD] py-3 px-6 rounded-xl lg:w-[137px] lg:h-[46px] text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border hover:text-[#06B1FD]'>
+                    <div className='mt-10 '>
+                        <button className=' duration-300     bg-[#06B1FD] py-3 px-6 rounded-xl lg:w-[137px] lg:h-[46px] text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border hover:text-[#06B1FD]'>
                             {t("businesspageSartnowBtn")}
                         </button>
-                        <button className='border mx-[24.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-6 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white lg:w-[178.5px] lg:h-[46px]'>
+                        <button className=' duration-300     border mx-[24.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-6 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white lg:w-[178.5px] lg:h-[46px]'>
                             {t("FreeOnlineConsultation")}
-                            
+
                         </button>
                     </div>
                 </div>
