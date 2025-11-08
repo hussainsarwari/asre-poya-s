@@ -20,10 +20,21 @@ export const translations = {
         location: "Location",
         contactustext: "You can use these for communication with us",
         contactuswithasrepoya: "Communication with Asre Poya",
-        aboutUsParagraph: "add your paraghraph here"
-
+        aboutUsParagraph: "add your paraghraph here",
+        businessPageTitle:"business page title",
+        businessPageTitle2:"business page title2",
+        businessPageParaghraph:"**Asre Poya** is a leading software development company based in Afghanistan, dedicated to delivering innovative digital solutions that empower businesses and organizations. The company specializes in building modern web and mobile applications, custom enterprise software, and technology-driven platforms that meet the needs of local and international clients. With a strong focus on quality, creativity, and user experience, Asre Poya combines cutting-edge technologies with a deep understanding of market needs to help businesses grow and operate more efficiently in the digital era. Through its commitment to excellence and innovation, Asre Poya is playing an important role in shaping Afghanistan’s technology landscape and supporting the nation’s digital transformation.",
+businesspageparagraph2:"write second paragraph here",
+businesspageSartnowBtn:"Start now",
+FreeOnlineConsultation:"Free Online Consultation",
     },
     fa: {
+        FreeOnlineConsultation:"مشاوره آنلاین (رایگان)",
+        businesspageSartnowBtn:"الان شروع کنید",
+        businesspageparagraph2:"کنترول قفسه کلید موفقیت است سطح بهینه موجودی را حفظ کنید؛ با ایجاد خودکار سفارشات خرید هنگامی که موجودی از حد معین پایین‌تر می‌آید، اطمینان حاصل کنید که همیشه حداقل مقدار در دسترس باشد.",
+        businessPageTitle:"عنوان صفحه کسب کار",
+        businessPageTitle2:"عنوان صفحه کسب کار2",
+        businessPageParaghraph:"عصرپویا به شما اجازه می‌دهد کُدهای ISBN کتاب‌های خود را اسکن کنید و مجموعه‌ای از امکانات را هم در بخش مدیریت موجودی و هم در خدمات مشتری باز کنید.",
         vision:"چشم انداز",
         aboutuscalendartick:"هدف ما این است که به‌عنوان یک رهبر جهانی در توسعه نرم‌افزار شناخته شویم؛ شناخته برای راه‌حل‌های نوآورانه، تعهد به برتری و وقف در ایجاد فناوری‌های فراگیر و پایدار که جوامع را توانمند ساخته و تغییرات مثبت را به حرکت درمی‌آورند.ما دنیایی را مجسم می‌کنیم که در آن فناوری‌ها فاصله‌ها را از میان برداشته، زندگی‌ها را بهبود بخشیده و آینده‌ای عادلانه‌تر و برخوردار از رفاه بیشتر را برای همه رقم می‌زند.",
         aboutusfirstParagraph:"شرکت عصر پویا یک شرکت پیشتاز فناوری در افغانستان است که در زمینه‌ی توسعه نرم‌افزار، طراحی و توسعه وب، و ارائه خدمات جامع میزبانی وب و ایمیل تخصص دارد.",
