@@ -5,12 +5,12 @@ import Section4 from './components/section4'
 
 export default function business(){
     return (
-     <div className='flex  flex-col mt-[102px] w-[1056px] mx-auto'>
+     <div className='flex  flex-col mt-[102px] md:w-[744px] lg:w-[1056px] mx-auto'>
     
        <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
+<Section2 />
+         <Section3 />
+         <Section4 />
      </div>
     )
 }
