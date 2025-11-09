@@ -66,7 +66,7 @@ export default function section1() {
 
         <div className="h-[70px] flex mt-[66px]">
           <div className="border-r flex items-center justify-center px-3.5 border-[#1E1E2B33]">
-            <span className="text-2xl fond-bold">
+            <span className="text-2xl font-bold">
               +1000
             </span>
           <h1 className="text-[#1E1E2B99]">
@@ -74,7 +74,7 @@ export default function section1() {
             </h1>
           </div>
           <div className="border-r flex items-center justify-center px-3.5 border-[#1E1E2B33]">
-            <span className="text-xl fond-bold">
+            <span className="text-xl font-bold">
               +6
             </span>
        <h1 className="text-[#1E1E2B99]">

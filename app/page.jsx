@@ -15,7 +15,7 @@ export default function Home() {
   <Section3 />
   <Section4 />
   <Section5 />
-  <Image src={whatsapp} alt="whatsapp" className="fixed right-3 top-[666px]" />
+  <Image src={whatsapp} alt="whatsapp" className="fixed right-3 top-[666px] cursor-pointer" />
 </div>
   );
 }
