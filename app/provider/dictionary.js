@@ -50,6 +50,10 @@ export const translations = {
         description5:"",
         description6:"",
         active_users:"",
+        online_marketing_company:"",
+        home_paragraph:"",
+        active_clients:"",
+        exprence:"",
     },
     fa: {
           box1:"گزارش‌دهی",
@@ -114,7 +118,18 @@ export const translations = {
         addressmazar: "کاتب زاده ٫ منزل چهارم ٫ دروازه بلخ ٫ مزارشریف ",
         addresskabul: "کابل افغانستان",
         contactustext: "برای ارتباط با ما لطفا از این رویش استفاده کن",
-        contactuswithasrepoya: "ارتباط با شرکت عصر پویا"
+        contactuswithasrepoya: "ارتباط با شرکت عصر پویا",
+        do_you_need_consultation:"آیا به مشاوره نیاز داری؟",
+        we_are_here:"ما اینجا هستیـم تـا بـه شما کمک کنیم",
+        send:"ارسال",
+        name_and_lastname:"نام و نام خانوادگی:",
+        description:"توضیحات",
+        online_marketing_company:"شرکت بین المللی مارکتینگ",
+        home_paragraph:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم صــنعــت و بـا اسـتــفــاده از طـراحــان گـرافــیک که  چاپگرها و متون بلــکه و از.",
+        business_assistant:"بیزنس اسیستانت",
+        doctor_assistant:"دکتر اسیستانت",
+        active_clients:"کاربر فعال",
+        exprence:"سال سابقه کار",
     }
 }
 
