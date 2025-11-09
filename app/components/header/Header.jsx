@@ -68,7 +68,7 @@ export default function Header() {
       {/* سایدبار موبایل و تبلت */}
       <div
         dir={sidebarDir}
-        className={`fixed top-0 h-full z-50 transform transition-transform duration-300 
+        className={`fixed top-0 z-110 h-full z-50 transform transition-transform duration-300 
           ${sidebarDir === "rtl" ? "right-0" : "left-0"} 
           ${sidebarOpen
             ? "translate-x-0"
