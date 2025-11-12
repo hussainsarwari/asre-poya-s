@@ -1,5 +1,5 @@
 "use client";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../provider/languageProvider";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/icons/footer/asrepoyaLogo.png";
@@ -41,7 +41,7 @@ export default function Footer() {
         <h2 className=" text-end text-white lg:w-100 text-[20px] lg:text-[24px]">
           {t("contact_info")}
         </h2>
-        <div className="grid  w-full grid-cols-2 grid-rows-2 gap-4 text-sm text-white lg:gap-8 lg:grid-cols-4 lg:grid-rows-1 ">
+        <div className="grid w-full grid-cols-2 grid-rows-2 gap-4 text-sm text-white lg:gap-8 lg:grid-cols-4 lg:grid-rows-1 ">
           <div className="w-full text-sm h-30 lg:h-15">
             <h3 className="flex items-center justify-end pb-4">
               {t("job")}
@@ -70,7 +70,7 @@ export default function Footer() {
             <p className="text-[#FFFFFF99] text-right">+9377777777777</p>
           </div>
           <div className="border-l h-30 lg:h-15 w-full text-sm border-[#06B1FD33]">
-            <h3 className="flex pb-4 justify-end gap-1">
+            <h3 className="flex justify-end gap-1 pb-4">
               {t("location")}
               <span>
                 <Image src={location} alt="location" width={20} />

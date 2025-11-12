@@ -28,7 +28,7 @@ export default function section1() {
           </div>
 
           <form method="post" className="flex items-center gap-2 mr-8" dir="rtl">
-            <input type="text" name="name_lastname" id="name and lastname" placeholder={`${t("name_and_lastname")}`} className="text-white border border-[#FFFFFF66]  w-[120px] h-7 rounded-lg] py-2 px-3 text-[8px]" />
+            <input type="text" name="name_lastname" id="name and lastname" placeholder={`${t("name_and_lastname")}`} className="text-white border border-[#FFFFFF66]  w-[120px] h-7 rounded-lg py-2 px-3 text-[8px]" />
             <input type="text" name="description" id="description" className="text-white border border-[#FFFFFF66]   w-[120px] h-7 rounded-lg py-2 px-3 text-[8px]" placeholder={`${t("description")}`} />
             <button className="bg-[#06B1FD] rounded-lg w-[76px] h-[35px] text-center text-white text-[12px] flex flex-row-reverse items-center justify-center gap-1 mr-8">
               {t("send")}

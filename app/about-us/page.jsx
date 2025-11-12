@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { useLoading } from "@/app/provider/LoadingProvider";
 import { useLanguage } from "../provider/languageProvider";
 import Gallery from "./component/Gallery.jsx";
 import Image from "next/image";
@@ -13,8 +15,22 @@ import calenderSearch from "@/public/icons/calendar-search.svg";
 import calendartick from "@/public/icons/calendar-tick.svg";
 
 export default function AboutUs() {
+  
   const { t, dir } = useLanguage();
 
+ const { isLoading, showLoading, hideLoading } = useLoading();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    showLoading(); // شروع لودینگ
+    const timer = setTimeout(() => {
+      hideLoading(); // پایان لودینگ
+      setLoaded(true);
+    }, 1000); // شبیه‌سازی لودینگ 1 ثانیه‌ای
+    return () => clearTimeout(timer);
+  }, []);
+
+  
   return (
     <div className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto mt-[56px] mb-[7px]">
       <div>

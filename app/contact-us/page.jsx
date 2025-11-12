@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { useLoading } from "@/app/provider/LoadingProvider";
 import { useLanguage } from "../provider/languageProvider";
 import Image from "next/image";
 import sms from "@/public/icons/footer/sms.svg";
@@ -8,6 +10,24 @@ import location from "@/public/icons/footer/location.svg";
 
 export default function ContactUs() {
   const { t } = useLanguage();
+
+
+   const { isLoading, showLoading, hideLoading } = useLoading();
+    const [loaded, setLoaded] = useState(false);
+  
+  useEffect(() => {
+    // ابتدا لودینگ رو فعال کن
+    showLoading();
+
+    // بعد با timeout جدا از render اصلی، لودینگ رو hide کن و state تغییر بده
+    const timer = setTimeout(() => {
+      hideLoading();
+      setLoaded(true);
+    }, 500); // زمان شبیه‌سازی لودینگ
+
+    return () => clearTimeout(timer);
+  }, [showLoading, hideLoading]);
+
 
   return (
     <div className="flex flex-col gap-0 lg:gap-8    mx-auto    mt-[89px]  lg:mt-[142px] w-[300px] md:w-[616px]  lg:w-[1056px]" dir="rtl">

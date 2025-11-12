@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header/Header.jsx";
+import Header from "./components/Header.jsx";
 import { LanguageProvider } from "./provider/languageProvider";
+import { LoadingProvider } from "./provider/LoadingProvider";
 import localFont from "next/font/local";
-import Footer from "./components/footer/Footer.jsx";
+import Footer from "./components/Footer.jsx";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 // ایمپورت فونت محلی Yekan Bakh
 const yekanBakh = localFont({
@@ -32,13 +33,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="af">
       
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${yekanBakh.variable} font-yekan antialiased min-h-screen flex flex-col`}
       >
         <LanguageProvider>
+          <LoadingProvider>
+            
           <Header />
           <main className="grow">{children}</main>
           <Footer />
+          </LoadingProvider>
         </LanguageProvider>
       </body>
     </html>
