@@ -34,11 +34,11 @@ export default function Home() {
 
       {loaded && (
         <>
-          <Section1 className="bg-white" />
-          <Section2 />
-          <Section3 />
+          {/* <Section1  /> */}
+          {/* <Section2 /> */}
+          {/* <Section3 /> */}
           <Section4 />
-          <Section5 />
+          {/* <Section5 /> */}
           <Image
             src={whatsapp}
             alt="whatsapp"

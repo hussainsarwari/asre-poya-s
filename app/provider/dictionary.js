@@ -81,9 +81,14 @@ export const translations = {
         feadback_date1:"",
         home_page_section5_aboutusparagraph:"",
         see_all:"See All",
+        
+      our_client:"",
+      our_client_paragraph:"",
     },
     fa: {
-          home_page_section5_about_us_exprience_title2:"دارای یک تیم مجرب",
+      our_client:"همراهان ما",
+      our_client_paragraph:"لورم ایپسوم متن ساختگی",
+        home_page_section5_about_us_exprience_title2:"دارای یک تیم مجرب",
         home_page_section5_about_us_exprience_paragraph2:"با تیمی متخصص و متعهد از نقاط مختلف دنیا توانسته جایگاه قابل توجهی برای خود کسب کند .",
           home_page_section5_about_us_exprience_title3:"نحوه کار شرکت ما",
         home_page_section5_about_us_exprience_paragraph3:"با تیمی متخصص و متعهد از نقاط مختلف دنیا توانسته جایگاه قابل توجهی برای خود .",

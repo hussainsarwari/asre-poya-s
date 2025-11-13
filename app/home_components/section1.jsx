@@ -11,13 +11,13 @@ import doctor_assistant from "@/public/icons/home/doctor_assistant.svg"
 export default function section1() {
   const { t } = useLanguage();
   return (
-    <div className="flex items-center mx-auto ">
+    <div className="flex flex-col-reverse items-center mx-auto lg:flex-row lg:h-[550px] ">
       {/* section 1 */}
       <div className="">
 
-        <Image src={bg_img} alt="background image" />
+        <Image src={bg_img} alt="background image" className="md:w-[616px] w-[376px] lg:w-full"/>
         {/* description box */}
-        <div className="bg-[#1E1E2B] w-[619px] h-[91px] py-7 px-10 rounded-2xl flex flex-row-reverse items-center ">
+        <div className="bg-[#1E1E2B] hidden lg:flex w-[619px] h-[91px] py-7 px-10 rounded-2xl  flex-row-reverse items-center ">
           <div className="flex flex-row-reverse items-center justify-center ">
             <Image src={Headphone} alt="Headphone" width={18} />
             <div>
@@ -41,30 +41,32 @@ export default function section1() {
         </div>
 
       </div>
-      <div className="w-[380px]" dir="rtl">
+      <div className="w-[380px] relative" dir="rtl">
         {/* section 2 */}
-
-        <h1 className="bg-[#06B1FD0D] rounded-3xl text-[20px] text-[#0972A0] text-center  flex items-center justify-center w-[289px] h-[46px]">
+    <div className="mb-30">
+      
+        <h1 className="bg-[#06B1FD0D] rounded-3xl text-[12px] m-auto lg:m-0 lg:text-[20px] text-[#0972A0] text-center  flex items-center justify-center w-[202px] lg:w-[289px] h-[42px] lg:h-[46px]">
           {t("online_marketing_company")}
         </h1>
-        <Image src={asrepoya} alt="asrepoya" className="mt-8" />
-        <Image src={vector} alt="vector" className="mr-[110.9px] mt-5" />
-        <p className="text-[14px] text-[#1E1E2B] my-4">
+        <Image src={asrepoya} alt="asrepoya" className="mx-auto mt-8 lg:mx-0 w-[187px] lg:w-full" />
+        <Image src={vector} alt="vector" className="lg:mr-[190.9px] mr-40 mt-5 w-[183px]  lg:w-[208px]" />
+        <p className="lg:text-[14px] text-[12px] text-[#1E1E2B] my-4">
           {t("home_paragraph")}
         </p>
         {/*  btn */}
-        <div className="flex gap-4 mt-8">
-          <button className="w-[181px] h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
+        <div className="flex items-center justify-center gap-4 mt-8">
+          <button className="w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
             <Image src={business_assistant} alt="business assistant" />
             {t("business_assistant")}
 
           </button>
-          <button className="w-[169px] h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
+          <button className="w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
             <Image src={doctor_assistant} alt="doctor assistant" />
             {t("doctor_assistant")}</button>
         </div>
 
-        <div className="h-[70px] flex mt-[66px]">
+    </div>
+        <div className="h-[70px] flex mt-[166px] absolute md:top-[660px] top-[500px] lg:top-[260px]">
           <div className="border-r flex items-center justify-center px-3.5 border-[#1E1E2B33]">
             <span className="text-2xl font-bold">
               +1000
