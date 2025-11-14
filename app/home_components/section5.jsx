@@ -58,7 +58,7 @@ export default function Section5() {
   ];
 
   return (
-    <div className="lg:relative overflow-hidden -mt-15 h-[1200px] lg:h-[870px] relative">
+    <div className="lg:relative overflow-hidden mt-15 h-[1200px] lg:h-[870px] relative">
 
       {/* blue background section */} 
       <div className="lg:w-[50%] h-[285px] absolute hidden lg:block lg:top-[120px] md:w-[1700px] top-[500px] md:right-[10%] z-0 rounded-tr-[32px] rounded-br-[32px] bg-[#06B1FD] lg:left-0"></div>
