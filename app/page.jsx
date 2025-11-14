@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+
 
 import Section1 from "./home_components/section1.jsx";
 import Section2 from "./home_components/section2.jsx";
@@ -9,7 +9,6 @@ import Section3 from "./home_components/section3.jsx";
 import Section4 from "./home_components/section4.jsx";
 import Section5 from "./home_components/section5.jsx";
 import { useLoading } from "@/app/provider/LoadingProvider";
-import whatsapp from "@/public/icons/home/whatsapp_green.svg";
 
 export default function Home() {
   const { isLoading, showLoading, hideLoading } = useLoading();
@@ -37,11 +36,7 @@ export default function Home() {
           <Section3 />
           <Section4 />
           <Section5 />
-          <Image
-            src={whatsapp}
-            alt="whatsapp"
-            className="fixed z-30 w-12 h-12 cursor-pointer bottom-3 right-3 sm:w-14 sm:h-14 md:w-16 md:h-16"
-          />
+         
         </>
       )}
     </div>
