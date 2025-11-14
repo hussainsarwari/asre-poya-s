@@ -11,7 +11,7 @@ import img2 from "@/public/icons/home/bg_img2.svg";
 import img3 from "@/public/icons/home/bg_img3.svg";
 import img4 from "@/public/icons/home/bg_img2.svg";
 import img5 from "@/public/icons/home/bg_img2.svg";
-
+import border_top from "@/public//icons/home/border_top.svg"
 import arrow from "@/public/icons/home/arrow.svg";
 import left_arrow from "@/public/icons/home/arrow-left2.svg";
 
@@ -95,7 +95,7 @@ export default function Section3() {
 
       <div
         dir="ltr"
-        className="lg:w-[1056px] md:w-[716px] w-[380px]  mx-auto lg:h-[621px] mt-20 overflow-visible"
+        className="lg:w-[1056px] md:w-[716px] w-[350px]  mx-auto lg:h-[621px] mt-20 overflow-visible"
       >
         <div className="right-0 hidden bottom-150 lg:inline ">
           {/* عنوان بالا */}
@@ -107,7 +107,8 @@ export default function Section3() {
           </p>
         </div>
         {/* بخش اصلی */}
-        <div className="flex flex-col items-center justify-between lg:mt-2 md:mt-5 -mt-10 lg:h-[621px] relative md:w-full  md:pr-30">
+        <div className="flex flex-col items-center justify-between lg:mt-2 md:mt-5 -mt-10 lg:h-[621px] relative md:w-full  md:pr-30 ">
+          <div className="absolute w-full border top-45 border-[#1E1E2B1A] md:hidden"></div>
           <div className="flex flex-col items-end justify-between lg:items-center lg:w-full lg:flex-row ">
             {/* tesktop btn */}
             <div className="items-center hidden gap-3 mb-0 lg:flex-col lg:flex">

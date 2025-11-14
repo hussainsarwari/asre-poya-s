@@ -30,22 +30,21 @@ export default function Home() {
 
   return (
     <div className="flex flex-col mt-[134px]">
-   
-
       {loaded && (
         <>
-          {/* <Section1  /> */}
-          {/* <Section2 /> */}
-          {/* <Section3 /> */}
+          <Section1 />
+          <Section2 />
+          <Section3 />
           <Section4 />
-          {/* <Section5 /> */}
+          <Section5 />
           <Image
             src={whatsapp}
             alt="whatsapp"
-            className="fixed right-3 top-[666px] cursor-pointer"
+            className="fixed z-30 w-12 h-12 cursor-pointer bottom-3 right-3 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
         </>
       )}
     </div>
   );
 }
+//

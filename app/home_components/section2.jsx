@@ -212,7 +212,7 @@ export default function Section2() {
                         {card.text}
                       </p>
                       <span
-                        className={`w-8 border-2 block rounded-full  md:mt-4 ${
+                        className={`w-8 border-1 md:border-2 block rounded-full -mt-4  md:mt-4 ${
                           card.dark ? "border-white" : "border-[#06B1FD]"
                         }`}
                       ></span>
