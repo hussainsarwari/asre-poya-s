@@ -27,7 +27,7 @@ export default function Business() {
 
   return (
     <div className='flex flex-col mt-[102px] md:w-[744px] lg:w-[1056px] mx-auto'>
-    
+
 
       {loaded && (
         <>
