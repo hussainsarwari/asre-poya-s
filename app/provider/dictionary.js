@@ -84,8 +84,10 @@ export const translations = {
         
       our_client:"",
       our_client_paragraph:"",
+      services:"Services",
     },
     fa: {
+      services:"خدمات",
       our_client:"همراهان ما",
       our_client_paragraph:"لورم ایپسوم متن ساختگی",
         home_page_section5_about_us_exprience_title2:"دارای یک تیم مجرب",
