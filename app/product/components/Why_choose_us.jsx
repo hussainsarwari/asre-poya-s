@@ -7,7 +7,7 @@ export default function why_choose_us() {
   const { t } = useLanguage();
 
   return (
-    <div className="w-[380px] md:w-[616px] lg:w-[1056px] relative bottom-140">
+    <div className="w-[380px] md:w-[616px] lg:w-[1056px]">
       <div className="flex flex-col items-end">
         <h1 className="relative font-bold lg:text-[32px] text-xl text-[#1E1E2B]">
           {t("why_choose_us_title")}
@@ -17,14 +17,14 @@ export default function why_choose_us() {
             className="absolute right-0 top-7"
           />
         </h1>
-        <p className="mt-2 text-[14px] text-[#1E1E2B99]">
+        <p className="mt-3 text-[14px] text-[#1E1E2B99]">
           {t("why_choose_us_paragraph")}
         </p>
       </div>
 
 
       {/* ==================== */}
-      <div className="flex justify-between mt-20">
+      <div className="flex justify-between mt-10">
         <div className="flex justify-center">
           <div className="flex flex-col pr-6 border-r h-[440px] justify-center border-[#00000033]">
             {/* box4 */}
