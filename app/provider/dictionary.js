@@ -133,26 +133,155 @@ export const translations = {
     why_choose_us_right_box_paragraph: "",
     why_choose_us_btn1: "",
     why_choose_us_btn2: "",
+    product_software_versions_title: "",
+    product_sofware_version_paragraph: "",
+    product_software_version_box1_title: "",
+    product_software_version_box1_paragraph: "",
+    product_software_version_box1_view_btn: "",
+    product_software_version_box2_title: "",
+    product_software_version_box2_paragraph: "",
+    product_software_version_box2_view_btn: "",
+    product_software_version_box3_title: "",
+    product_software_version_box3_paragraph: "",
+    product_software_version_box3_view_btn: "",
+    product_software_version_box4_title: "",
+    product_software_version_box4_paragraph: "",
+    product_software_version_box4_view_btn: "",
+    client_opinion_title: "",
+    client_opinion_pargraph: "",
+    doctor_assistant: "",
+    cleint_name1: "",
+    cleint_jobe1: "",
+    client_opinion_paragraph: "",
+    client_opition_date: "",
+    faq_title: "",
+    faq_paragragh: "",
+    faq_title: "Frequently Asked Questions",
+    faq_paragragh: "Lorem ipsum placeholder text for the FAQ description",
+
+    faq_q1:
+      "Why choose custom software development instead of ready-made software?",
+    faq_a1:
+      "Ready-made software often has limitations, while custom development gives you exactly what your business needs.",
+
+    faq_q2: "How do we migrate from legacy software?",
+    faq_a2:
+      "With proper data migration and redesign, you can move smoothly into the new system.",
+
+    faq_q3: "What are the benefits of custom data platforms?",
+    faq_a3:
+      "You get full control over data, stronger security, and better scalability compared to ready-made tools.",
   },
   fa: {
+    faq_title: "سوالات متداول",
+    faq_paragragh: "لورم ایپسوم متن ساختگی با تولید ساده گی نامفهوم",
+
+    faq_q1:
+      "چرا خدمات توسعه نرم‌افزار سفارشی را به‌جای نرم‌افزارهای آماده انتخاب کنیم؟",
+    faq_a1:
+      "نرم‌افزارهای آماده معمولاً محدودیت دارن، ولی توسعه سفارشی دقیقاً همون چیزی‌ رو می‌سازه که بیزنس‌ت لازم داره.",
+
+    faq_q2: "چطور از نرم‌افزارهای قدیمی مهاجرت کنیم؟",
+    faq_a2:
+      "با انتقال داده اصولی و بازطراحی درست، بدون دردسر وارد سیستم جدید می‌شی.",
+
+    faq_q3: "پلتفرم‌های داده‌ای سفارشی چه مزیتی دارن؟",
+    faq_a3:
+      "کنترل کامل روی دیتا، امنیت بیشتر و مقیاس‌پذیری بهتر نسبت به ابزارهای آماده داری.",
+    faq_paragragh: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم ",
+    currency: "افغانی",
+    product_price_plane_title: "پلن های ما",
+    product_price_plane_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+    doctor_assistant: "دکتر اسیستانت",
+    pharmacy: "نرم‌افزار داروخانه",
+    laboratory: "نرم‌افزار آزمایشگاه",
+
+    // Doctor plans
+    plan1_title: "پلن پایه",
+    plan1_price: "۱۰۰۰",
+    plan1_paragraph: "ویژگی‌های پایه برای کلینیک‌های کوچک.",
+    plan2_title: "پلن استاندارد",
+    plan2_price: "۲۰۰۰",
+    plan2_paragraph: "شامل ویژگی‌های استاندارد برای کلینیک‌ها.",
+    plan3_title: "پلن پریمیوم",
+    plan3_price: "۳۰۰۰",
+    plan3_paragraph: "تمام ویژگی‌ها برای کلینیک‌های بزرگ.",
+
+    // Pharmacy plans
+    plan4_title: "پلن شروع",
+    plan4_price: "۱۲۰۰",
+    plan4_paragraph: "مدیریت پایه داروخانه.",
+    plan5_title: "پلن پیشرفته",
+    plan5_price: "۲۲۰۰",
+    plan5_paragraph: "ویژگی‌های بیشتر برای عملیات داروخانه.",
+    plan6_title: "پلن سازمانی",
+    plan6_price: "۳۵۰۰",
+    plan6_paragraph: "تمام ویژگی‌ها برای داروخانه‌های بزرگ.",
+
+    // Laboratory plans
+    plan7_title: "لاب پایه",
+    plan7_price: "۱۵۰۰",
+    plan7_paragraph: "ویژگی‌های ضروری مدیریت آزمایشگاه.",
+    plan8_title: "لاب استاندارد",
+    plan8_price: "۲۵۰۰",
+    plan8_paragraph: "شامل عملیات استاندارد آزمایشگاه.",
+    plan9_title: "لاب پریمیوم",
+    plan9_price: "۴۰۰۰",
+    plan9_paragraph: "مدیریت آزمایشگاه به‌طور کامل.",
+
+    // Features (shared for all plans)
+    price_plan1_feature_title: "ویژگی‌ها",
+    price_plan1_feature_paragraph: "هر پلن شامل ویژگی‌های زیر است:",
+    price_plan1_feature1: "ویژگی ۱",
+    price_plan1_feature2: "ویژگی ۲",
+    price_plan1_feature3: "ویژگی ۳",
+    price_plan1_feature4: "ویژگی ۴",
+    buy: "خرید",
+
+    product_software_versions_title: "نسخه‌های نرم افزار",
+    product_sofware_version_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    product_software_version_box1_title: "عنوان محصول",
+    product_software_version_box1_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    product_software_version_box1_view_btn: "مشاهده",
+    product_software_version_box2_title: "عنوان محصول",
+    product_software_version_box2_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    product_software_version_box2_view_btn: "مشاهده",
+    product_software_version_box3_title: "عنوان محصول",
+    product_software_version_box3_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    product_software_version_box3_view_btn: "مشاهده",
+    product_software_version_box4_title: "عنوان محصول",
+    product_software_version_box4_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    product_software_version_box4_view_btn: "مشاهده",
     why_choose_us_title: "چرا این محصول را انتخاب میکنم؟",
-    why_choose_us_paragraph: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    why_choose_us_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
     why_choose_us_number1: "۱",
     why_choose_us_box1_title: "پشنهاد کامل و دقیق",
-    why_choose_us_box1_paragraph: "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
+    why_choose_us_box1_paragraph:
+      "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
     why_choose_us_number2: "۲",
     why_choose_us_box2_title: "پشنهاد کامل و دقیق",
-    why_choose_us_box2_paragraph: "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
+    why_choose_us_box2_paragraph:
+      "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
     why_choose_us_number3: "۳",
     why_choose_us_box3_title: "پشنهاد کامل و دقیق",
-    why_choose_us_box3_paragraph: "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
+    why_choose_us_box3_paragraph:
+      "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
     why_choose_us_number4: "۴",
     why_choose_us_box4_title: "پشنهاد کامل و دقیق",
-    why_choose_us_box4_paragraph: "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
+    why_choose_us_box4_paragraph:
+      "برای توسعه نرم افزار سفارشی به شما ارايه می دهیم",
     why_choose_us_right_box_title_start: "لورم ایپسوم متن ساختگی با تولید ",
     why_choose_us_right_box_title_middle: "نامفهوم از صنعت چاپ ",
     why_choose_us_right_box_title_end: "و با استفاده از طراحان گرافیک است",
-    why_choose_us_right_box_paragraph: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که",
+    why_choose_us_right_box_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که",
     why_choose_us_btn1: "لورم ایپسوم",
     why_choose_us_btn2: "لورم ایپسوم متن",
     product_section3_title: "قابلیت های کلیدی نرم افزار",
@@ -329,5 +458,15 @@ export const translations = {
     doctor_assistant: "دکتر اسیستانت",
     active_clients: "کاربر فعال",
     exprence: "سال سابقه کار",
+    client_opinion_title: "دیدگاه مشتریان",
+    client_opinion_pargraph:
+      "ما به پروژه‌هایی که در آن‌ها به‌عنوان توسعه‌دهنده نرم‌افزار سفارشی دخیل بوده ایم افتخار می‌کنیم. این هم نظر مشتریان ما در مورد تخصص ما در ادامه نظریات مشتریان ازائه میشود",
+    doctor_assistant: "دکتر اسیستانت",
+    cleint_name1: "سام احمدی نیا",
+    cleint_jobe1: "مدیر داخلی دیجی کالا",
+    client_opinion_paragraph:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه.",
+    client_opition_date: "24 سرطان",
+    faq_title: "سوالات متداول",
   },
 };

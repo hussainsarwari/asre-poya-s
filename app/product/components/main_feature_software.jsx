@@ -13,10 +13,10 @@ export default function Section1() {
   const { t } = useLanguage();
 
   return (
-    <div className="lg:w-[1056px] md:w-[616px] w-[376px] m-auto relative lg:top-50 md:mt-0 mt-0">
+    <div className="lg:w-[1056px] md:w-[616px] w-[376px] m-auto  md:mt-50 mt-0 ">
       <div className="flex flex-col items-end ">
-        <h1 className="text-[#1E1E2B] lg:text-[32px] text-[20px] relative">{t("product_section3_title")}
-    <Image src={Rectangle} alt="Rectangle" className="absolute right-0 top-6"/>
+        <h1 className="text-[#1E1E2B] lg:text-[32px] text-[20px] relative font-bold">{t("product_section3_title")}
+    <Image src={Rectangle} alt="Rectangle" className="absolute right-0 top-7"/>
 
         </h1>
         <p className="text-[14px] text-[#1E1E2B99]">{t("product_section3_paragraph")}</p>
