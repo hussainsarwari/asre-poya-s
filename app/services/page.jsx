@@ -8,6 +8,8 @@ import Know_needs from "./components/know_needs.jsx";
 import Specializing_in_custom_software from "./components//Specializing_in_custom_software.jsx" 
 import Software_development_lifecycle from "./components/software_development_lifecycle.jsx";
 import Ask_project_price from "./components/ask_project_price.jsx";
+import My_project from './components/my_projects';
+import Counseling from "./components/counseling.jsx"
 export default function Product(){
 
   
@@ -22,8 +24,10 @@ export default function Product(){
 <Specializing_in_custom_software />
 <Software_development_lifecycle />
 <Ask_project_price />
+<My_project />
 <Client_opinion />
 <Faq />
+<Counseling />
 
         </div>
     )
