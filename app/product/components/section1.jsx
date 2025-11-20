@@ -7,7 +7,7 @@ export default function Section1() {
 
   return (
     <>
-      <div className="lg:w-[1056px] md:w-[616px] w-[360px]">
+      <div className="lg:w-[1056px] md:w-[616px] w-[360px] mt-4">
         <div className="hidden bg-white rounded-[8px] m-auto  w-[407px] h-[78px] border border-[#00000014] shadow-2xl shadow-[#0000001C] lg:grid relative grid-cols-3 grid-rows-2 text-[12px] text-[#1E1E2B99] text-center top-10 mt-[14px] m-auto">
           <span className="pt-4">{t("hospital")}</span>
           <span className="pt-4 text-[#06B1FD]">{t("doctor_assistant")}</span>

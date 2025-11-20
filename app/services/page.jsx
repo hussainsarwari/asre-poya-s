@@ -1,15 +1,30 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useLoading } from "@/app/provider/LoadingProvider";
 
-export default function services(){
-   
+
+import Faq from "@/app/product/components/FAQ.jsx"
+import Client_opinion from "../product/components/client_opinion.jsx";
+import Customized_software_development_services from "./components/customized_software_development_services.jsx"
+import Loading from '@/app/components/loading.jsx'
+import Know_needs from "./components/know_needs.jsx";
+import Specializing_in_custom_software from "./components//Specializing_in_custom_software.jsx" 
+import Software_development_lifecycle from "./components/software_development_lifecycle.jsx";
+import Ask_project_price from "./components/ask_project_price.jsx";
+export default function Product(){
+
+  
     return (
-        <div className="lg:w-[1056px] md:w-[616px] w-[380px] m-auto flex flex-col  h-[2900px]">
+        <div className="">
+<Loading />
 
 
 
-   
+<Customized_software_development_services />
+<Know_needs />
+<Specializing_in_custom_software />
+<Software_development_lifecycle />
+<Ask_project_price />
+<Client_opinion />
+<Faq />
+
         </div>
     )
 }
