@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import { useLanguage } from "../../provider/languageProvider";
 import Image from "next/image";
@@ -43,7 +44,7 @@ export default function FAQSection() {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className={`w-full flex items-center ${
                 openIndex === index ? "bg-[#06B1FD0D]" : "bg-[#1E1E2B0D]"
-              } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold px-4 lg:text-[18px] ${
+              } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold text-right px-4 lg:text-[18px] ${
                 openIndex === index ? "text-[#06B1FD]" : "text-[#1E1E2B]"
               } ${lang !== "fa" ? "flex-row" : "flex-row-reverse"}`}
             >
@@ -72,7 +73,7 @@ export default function FAQSection() {
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A] rounded-[12px] mt-4">
+                  <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A] text-right rounded-[12px] mt-4">
                     {faq.answer}
                   </div>
                 </motion.div>

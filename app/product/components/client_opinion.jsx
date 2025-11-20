@@ -12,7 +12,7 @@ export default function client_opinion() {
   const { t } = useLanguage();
 
   return (
-    <div className="w-[380px] md:w-[616px] lg:w-[1056px] m-auto my-20">
+    <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-20">
       <div className="flex flex-col items-end">
         <h1 className="relative text-[20px] font-bold lg:text-[32px] text-[#1E1E2B]">
           {t("client_opinion_title")}
@@ -26,22 +26,22 @@ export default function client_opinion() {
           {t("client_opinion_pargraph")}
         </p>
       </div>
-      <div className="flex flex-col justify-between mt-10 md:flex-row">
+      <div className="flex flex-col-reverse justify-between mt-10 md:flex-row">
         {/* image */}
-       <div className="md:w-[298px] lg:w-[663px] h-[305px]  relative overflow-hidden  rounded-[16px]">
-  <Image
-    src={programming_img}
-    alt="programming image"
-    fill
-    style={{
-      objectFit: "cover",      // تصویر کل container رو پر می‌کنه و اضافات cut می‌شوند
-      objectPosition: "center", // تصویر از وسط بریده می‌شه
-    }}
-  />
-</div>
+        <div className="md:w-[298px] lg:w-[663px] h-[305px]  relative overflow-hidden  rounded-[16px]">
+          <Image
+            src={programming_img}
+            alt="programming image"
+            fill
+            style={{
+              objectFit: "cover", // تصویر کل container رو پر می‌کنه و اضافات cut می‌شوند
+              objectPosition: "center", // تصویر از وسط بریده می‌شه
+            }}
+          />
+        </div>
 
         {/* text */}
-        <div className="lg:w-[305px] flex flex-col items-end justify-around">
+        <div className="lg:w-[305px] w-[298px] flex flex-col items-end justify-around">
           <h4 className="flex  text-[#06B1FD] text-[16px] items-center gap-3">
             {t("doctor_assistant")}
             <Image src={arr} alt="arr" />
@@ -61,11 +61,11 @@ export default function client_opinion() {
           <p className="text-right text-[16px] mt-[14px] text-[#1E1E2BCC]">
             {t("client_opinion_paragraph")}
           </p>
-          <div className="flex justify-between w-full mt-[70px]">
+          <div className="flex justify-between   lg:w-full w-[268px] mt-[70px] my-10 md:my-0">
             <span className="text-[12px] text-[#06B1FD99]">
               {t("client_opition_date")}
             </span>
-            <span className="flex">
+            <span className="flex ">
               <Image src={star} alt="rating star" />
               <Image src={star} alt="rating star" />
               <Image src={star} alt="rating star" />

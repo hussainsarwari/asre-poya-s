@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
 
 
 import Section1 from "./home_components/section1.jsx";
@@ -8,37 +5,22 @@ import Section2 from "./home_components/section2.jsx";
 import Section3 from "./home_components/section3.jsx";
 import Section4 from "./home_components/section4.jsx";
 import Section5 from "./home_components/section5.jsx";
-import { useLoading } from "@/app/provider/LoadingProvider";
+import Loaded from '@/app/components/loading.jsx'
 
 export default function Home() {
-  const { isLoading, showLoading, hideLoading } = useLoading();
-  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    // ابتدا لودینگ رو فعال کن
-    showLoading();
-
-    // بعد با timeout جدا از render اصلی، لودینگ رو hide کن و state تغییر بده
-    const timer = setTimeout(() => {
-      hideLoading();
-      setLoaded(true);
-    }, 500); // زمان شبیه‌سازی لودینگ
-
-    return () => clearTimeout(timer);
-  }, [showLoading, hideLoading]);
 
   return (
     <div className="flex flex-col mt-[134px]">
-      {loaded && (
-        <>
+      <Loaded />
+    
           <Section1 />
           <Section2 />
           <Section3 />
           <Section4 />
           <Section5 />
          
-        </>
-      )}
+       
     </div>
   );
 }
