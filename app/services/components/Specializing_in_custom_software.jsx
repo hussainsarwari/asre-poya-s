@@ -30,7 +30,7 @@ export default function FAQSection() {
 
   return (
     <div
-      className={`lg:w-[1056px] md:w-[616px] w-[380px] mx-auto py-12 px-4 ${
+      className={`lg:w-[1056px] md:w-[616px] w-[380px] mx-auto py-0 px-4 ${
         lang === "fa" ? "text-right" : "text-left"
       }`}
     >
@@ -47,10 +47,10 @@ export default function FAQSection() {
         {t("faq_paragragh")}
       </p>
 
-      <div className="flex justify-between gap-3 mt-12">
+      <div className="flex flex-col items-center justify-between gap-3 mt-12 lg:flex-row ">
 
         {/* LEFT COLUMN */}
-        <div className="flex flex-col gap-3 w-lg">
+        <div className="flex flex-col gap-3 lg:w-lg md:w-[616px] w-full">
           {faqs1.map((faq, index) => {
             const unifiedIndex = makeIndex(0, index);
             return (
@@ -103,7 +103,7 @@ export default function FAQSection() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="flex flex-col gap-3 w-lg">
+        <div className="flex flex-col gap-3 lg:w-lg md:w-[616px] w-full">
           {faqs2.map((faq, index) => {
             const unifiedIndex = makeIndex(1, index);
             return (

@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 import arr_left from "@/public/icons/home/arrow-left2.svg";
 import calendar from "@/public/icons/products/calendar.png";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Price_plane() {
+export default function Price_plane({
+  SectionName,
+}) {
   const { t } = useLanguage();
   const [selectedSoft, setSelectedSoft] = useState("doctor");
 
@@ -92,7 +94,7 @@ export default function Price_plane() {
    <div className="flex flex-col gap-6 -mt-10 md:flex-row">
 {/* PLANS */}
 <div className="flex flex-col gap-6 my-25 md:flex-row">
-  <AnimatePresence mode="wait">
+  <AnimatePresence mode="sync">
     {plans[selectedSoft].map((p, index) => (
       <motion.div
         key={p}

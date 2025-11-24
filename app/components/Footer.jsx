@@ -45,11 +45,11 @@ export default function Footer() {
           <div className="w-full text-sm h-30 lg:h-15">
             <h3 className="flex items-center justify-end pb-4">
               {t("job")}
-              <span>
                 <Image src={sms} alt="jobs" width={20} />
-              </span>
             </h3>
+              <Link href={"/jobs_page"}>
             <p className="text-[#FFFFFF99] text-right">{t("jobList")}</p>
+              </Link>
           </div>
           <div className="border-l h-30 lg:h-15 w-full text-sm border-[#06B1FD33]">
             <h3 className="flex items-center justify-end gap-1 pb-4">
