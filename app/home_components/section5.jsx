@@ -22,7 +22,7 @@ import our_client6 from "@/public/icons/home/Frame6.svg";
 import our_client7 from "@/public/icons/home/Frame7.svg";
 import our_client8 from "@/public/icons/home/Frame8.svg";
 import our_client9 from "@/public/icons/home/Frame9.svg";
-import OurClient from "@/app/product/components/our_client.jsx";
+import OurClient from "@/app/product/doctor-assistant/components/our_client.jsx";
 
 export default function Section5() {
   const { t } = useLanguage();

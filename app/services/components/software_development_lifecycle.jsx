@@ -2,25 +2,40 @@
 import Image from "next/image";
 import { useLanguage } from "../../provider/languageProvider";
 import image_backBox from "@/public/icons/services/box_tablet.svg";
-import software_development_lifecycle from "./software_development_lifecycle";
+import image_backBox_tablet from "@/public/icons/services/tablet_box.svg";
+import image_backBox_mobile from "@/public/icons/services/mobile_box.svg";
 export default function Software_development_lifecycle() {
   const { t } = useLanguage();
 
   return (
     <div className="relative my-20 m-autlo w-ful">
+      {/* desktop image */}
       <Image
         src={image_backBox}
         alt="background image"
-        className="w-full "
+        className="hidden w-full lg:inline"
+      />
+      {/* tablet image */}
+      <Image
+        src={image_backBox_tablet}
+        alt="background image"
+        className="hidden w-full md:inline lg:hidden"
+      />
+      
+      {/* mobile image */}
+      <Image
+        src={image_backBox_mobile}
+        alt="background image"
+        className="w-full md:hidden min-h-[1174px]"
       />
       <div className="absolute top-0 w-full">
         
-      <div className="lg:w-[1056px] md:w-[616px] w-[380px] m-auto">
-        <h5 className="mt-12 text-2xl font-bold text-right text-white">{t("software_development_lifecycle_title")}</h5>
-        <p className="text-[18px] text-[#FFFFFFCC] text-right mt-1">{t("software_development_lifecycle_paragraph")}</p>
+      <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto">
+        <h5 className="mt-12 text-xl font-bold text-right text-white lg:text-2xl">{t("software_development_lifecycle_title")}</h5>
+        <p className="lg:text-[18px] text-[#FFFFFFCC] text-right mt-1 text-[14px]">{t("software_development_lifecycle_paragraph")}</p>
       </div>
-      <div className="lg:w-[1056px] md:w-[616px] w-[380px] m-auto grid md:grid-cols-2 md:grid-rows-2 gap-6 mt-12"> 
-        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right">
+      <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto grid md:grid-cols-2 md:grid-rows-2 gap-3 lg:gap-6 lg:mt-12 mt-3"> 
+        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right ">
           <h6 className="text-[#1E1E2B] text-[18px] font-bold " dir="rtl">{t("software_development_lifecycle_box_title")}</h6>
           <p className="text-right text-[14px] text-[#1E1E2B99] mt-2">
             {t("software_development_lifecycle_box_paragraph")}
@@ -31,7 +46,7 @@ export default function Software_development_lifecycle() {
               <li className="text-[#1E1E2BCC] text-[16px]" dir="rtl">{t("software_development_lifecycle_listItems")}</li>
             </ul>
         </div>
-        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right">
+        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right ">
           <h6 className="text-[#1E1E2B] text-[18px] font-bold " dir="rtl">{t("software_development_lifecycle_box_title")}</h6>
           <p className="text-right text-[14px] text-[#1E1E2B99] mt-2">
             {t("software_development_lifecycle_box_paragraph")}
@@ -42,7 +57,7 @@ export default function Software_development_lifecycle() {
               <li className="text-[#1E1E2BCC] text-[16px]" dir="rtl">{t("software_development_lifecycle_listItems")}</li>
             </ul>
         </div>
-        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right">
+        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right ">
           <h6 className="text-[#1E1E2B] text-[18px] font-bold " dir="rtl">{t("software_development_lifecycle_box_title")}</h6>
           <p className="text-right text-[14px] text-[#1E1E2B99] mt-2">
             {t("software_development_lifecycle_box_paragraph")}
@@ -53,7 +68,7 @@ export default function Software_development_lifecycle() {
               <li className="text-[#1E1E2BCC] text-[16px]" dir="rtl">{t("software_development_lifecycle_listItems")}</li>
             </ul>
         </div>
-        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right">
+        <div className="lg:w-[516px] lg:h-[244px] bg-white rounded-2xl p-6 text-right ">
           <h6 className="text-[#1E1E2B] text-[18px] font-bold " dir="rtl">{t("software_development_lifecycle_box_title")}</h6>
           <p className="text-right text-[14px] text-[#1E1E2B99] mt-2">
             {t("software_development_lifecycle_box_paragraph")}

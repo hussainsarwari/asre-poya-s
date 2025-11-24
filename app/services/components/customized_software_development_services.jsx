@@ -21,26 +21,26 @@ export default function client_opinion() {
       {/* image */}
       <Image src={programming_img} alt="programming img" className="my-8" />
       {/* footer of section 1 */}
-      <div className="flex flex-row-reverse justify-between gap-[31px]">
-        <div className="h-[82px] pr-6 border-r  border-[#06B1FD99] flex flex-col justify-between ">
-          <h3 className="text-[24px] font-bold">
+      <div className="flex flex-col lg:flex-row-reverse  justify-between gap-[31px] relative my-10">
+        <div className="md:h-[50px] lg:h-[82px] pr-6 border-r  border-[#06B1FD99] flex flex-col justify-between items-end">
+          <h3 className="lg:text-[24px] md:text-[20px] font-bold text-right w-70">
             {t("customized_software_development_title")}
           </h3>
-          <p className="text-[18px] text-right text-[#1E1E2B99]">
+          <p className="text-[14px] lg:text-[18px] text-right text-[#1E1E2B99]">
             {t("customized_software_development_pragraph")}
           </p>
         </div>
-        <div className="flex flex-row-reverse gap-3">
+        <div className="flex flex-row-reverse gap-3 lg:w-[759px] lg:overflow-hidden overflow-x-scroll absolute w-[380px] md:w-[616px] overflow-visible lg:relative right-0 top-15 lg:top-3 my-10">
 
-        <div className="flex w-[211px] h-[84px] rounded-3xl border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
+        <div className="flex w-[211px] h-[84px]  min-w-[211px] rounded-3xl border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
           <Image src={clock} alt="clock" />
           <h5>{t("more_18_years_exprience")}</h5>
         </div>
-        <div className="flex w-[245px] h-[84px] rounded-3xl border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
+        <div className="flex w-[245px] h-[84px] rounded-3xl min-w-[211px] border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
           <Image src={calendar} alt="calendar" />
           <h5>{t("more_1000_project")}</h5>
         </div>
-        <div className="flex w-[231px] h-[84px] rounded-3xl border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
+        <div className="flex w-[231px] h-[84px] rounded-3xl min-w-[211px] border border-[#1E1E2B1A] flex-row-reverse text-[#1E1E2B] text-[12px] gap-2 items-center py-6 px-4">
           <Image src={people_search} alt="people_search" />
           <h5>{t("more_200_support")}</h5>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 
 import programming_img from "@/public/icons/img_programming.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
@@ -8,7 +8,9 @@ import star from "@/public/icons/home/Star.svg";
 import user_img from "@/public/icons/user_man.svg";
 import star_fill from "@/public/icons/home/Star_fill.svg";
 import arr from "@/public/icons/products/arrow-circle-right.svg";
-export default function client_opinion() {
+export default function client_opinion({
+  SectionName,
+}) {
   const { t } = useLanguage();
 
   return (

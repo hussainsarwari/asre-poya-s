@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 import arr_left from "@/public/icons/products/arrow-left.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
-export default function why_choose_us() {
+export default function why_choose_us({
+  SectionName,
+})  {
   const { t } = useLanguage();
 
   return (

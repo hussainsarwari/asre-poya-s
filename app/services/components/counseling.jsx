@@ -43,7 +43,7 @@ export default function FreeConsultation() {
   const clients = [client1, client2, client3, client4, client5, client6,client7,client8,client9];
 
   return (
-    <div className="flex flex-col mx-auto w-[380px] md:w-[616px] lg:w-[1059px] md:flex md:gap-16 mt-20">
+    <div className="flex flex-col mx-auto w-[360px] md:w-[616px] lg:w-[1059px] md:flex md:gap-16 mt-20">
       <div className="flex flex-col items-end">
         <h2 className="mb-4 text-2xl text-[#1E1E2B] relative font-bold">
           {t("free_counseling")}
@@ -60,10 +60,10 @@ export default function FreeConsultation() {
       </div>
 
       {/* Left: Form */}
-      <div className="flex justify-between ">
+      <div className="flex flex-col-reverse justify-between md:flex-row">
         <form
           onSubmit={handleSubmit}
-          className="lg:w-[415px] lg:h-[364px] bg-[#1E1E2B08] rounded-2xl px-10"
+          className="lg:w-[415px] md:w-[292px] w-full lg:h-[364px] bg-[#1E1E2B08] rounded-2xl lg:px-10 px-5 pb-5 my-10 md:my-0"
         >
           <input
             type="text"
@@ -103,29 +103,29 @@ export default function FreeConsultation() {
 
           <button
             type="submit"
-            className="w-[334px]  h-10 text-white transition bg-[#06B1FD] rounded-[8px] mt-10 "
+            className="lg:w-[334px] md:w-[244px] w-full  h-10 text-white transition bg-[#06B1FD] rounded-lg lg:mt-10 mt-2 "
           >
             {t("submit_request")}
           </button>
         </form>
 
         {/* Right: Steps + Clients */}
-        <div className="flex flex-col justify-between  lg:h-[354px] " dir="rtl">
+        <div className="flex flex-col justify-between  lg:h-[354px]  md:w-[292px] lg:w-[587px]" dir="rtl">
           <div className="flex flex-col gap-6">
             {steps.map((step, idx) => (
               <div
                 key={idx}
                 className="flex flex-row-reverse items-center justify-end gap-4 "
               >
-                <p className=" text-[#1E1E2BCC] text-[16px]">{step}</p>
-                <span className="rounded-full w-8  h-8 bg-[#06B1FD1A] flex justify-center items-center text-[#06B1FD] text-[18px]">
+                <p className=" text-[#1E1E2BCC] text-[14px] lg:text-[16px]">{step}</p>
+                <span className="rounded-full w-8   h-8 bg-[#06B1FD1A] flex justify-center items-center text-[#06B1FD] text-[18px]">
                   {t(`number${idx + 1}`)}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="mb-3">
+          <div className="hidden mb-3 lg:inline">
             <h3 className="mb-4 font-semibold">{t("trusted_clients")}</h3>
             <div className="flex flex-wrap gap-4">
               {clients.map((client, idx) => (

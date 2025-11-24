@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 import softwareversion1 from "@/public/icons/products/box1.png";
 import softwareversion2 from "@/public/icons/products/box2.png";
 import softwareversion3 from "@/public/icons/products/box3.png";
 import softwareversion4 from "@/public/icons/products/box4.svg";
 
 import Rectangle from "@/public/icons/products/Rectangle.svg";
-export default function Section1() {
+export default function softwareversion({
+  SectionName,
+})  {
   const { t } = useLanguage();
 
   return (

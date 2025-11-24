@@ -15,12 +15,15 @@ import user2 from "@/public/icons/user2.svg";
 export default function Header() {
   const { showLoading } = useLoading();
   const { t, lang, setLang, dir } = useLanguage();
+
   const [langBox, setLangBox] = useState(false);
-  const [active, setActive] = useState("home"); // مقداردهی اولیه ثابت
+  const [active, setActive] = useState("product"); // پیش‌فرض Product فعال
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // بعد از mount، localStorage خوانده می‌شود و scroll listener اضافه می‌شود
+  const [productOpenMobile, setProductOpenMobile] = useState(false);
+  const [productOpenDesktop, setProductOpenDesktop] = useState(false);
+
   useEffect(() => {
     const saved = localStorage.getItem("activeMenu");
     if (saved) setActive(saved);
@@ -111,23 +114,74 @@ export default function Header() {
         </button>
 
         <ul className="flex flex-col gap-4 p-6">
-          {menuItems.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.href}
-                onClick={() => {
-                  handleSetActive(item.id);
-                  setSidebarOpen(false);
-                  showLoading();
-                }}
-                className={`block text-[16px] font-semibold ${
-                  active === item.id ? "font-bold text-blue-500" : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {menuItems.map((item) =>
+            item.id === "product" ? (
+              <li key="product" className="flex flex-col">
+                <button
+                  onClick={() => setProductOpenMobile(!productOpenMobile)}
+                  className={`flex justify-between items-center w-full font-semibold text-[16px] px-2 py-2 rounded-lg transition ${
+                    active.startsWith("product")
+                      ? "bg-gray-50 text-black"
+                      : "bg-gray-100 hover:bg-gray-200"
+                  }`}
+                >
+                  {item.label} {/* متن ثابت Product */}
+                  <span>{productOpenMobile ? "▲" : "▼"}</span>
+                </button>
+
+                {productOpenMobile && (
+                  <div className="flex flex-col gap-2 pl-4 mt-2 text-sm">
+                    <Link
+                      href="/product/doctor-assistant"
+                      onClick={() => {
+                        handleSetActive("product/doctor-assistant");
+                        setSidebarOpen(false);
+                        showLoading();
+                      }}
+                      className={`transition hover:text-blue-500 ${
+                        active === "product/doctor-assistant"
+                          ? "text-blue-500 font-bold"
+                          : ""
+                      }`}
+                    >
+                      Doctor Assistant
+                    </Link>
+                    <Link
+                      href="/product/business-assistant"
+                      onClick={() => {
+                        handleSetActive("product/business-assistant");
+                        setSidebarOpen(false);
+                        showLoading();
+                      }}
+                      className={`transition hover:text-blue-500 ${
+                        active === "product/business-assistant"
+                          ? "text-blue-500 font-bold"
+                          : ""
+                      }`}
+                    >
+                      Business Assistant
+                    </Link>
+                  </div>
+                )}
+              </li>
+            ) : (
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  onClick={() => {
+                    handleSetActive(item.id);
+                    setSidebarOpen(false);
+                    showLoading();
+                  }}
+                  className={`block text-[16px] font-semibold ${
+                    active === item.id ? "font-bold text-blue-500" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            )
+          )}
         </ul>
 
         {/* انتخاب زبان موبایل */}
@@ -145,28 +199,46 @@ export default function Header() {
           <div
             className={`absolute top-12 ${
               dir === "rtl" ? "right-[1.5em]" : "left-[1.5em]"
-            } mt-2 flex flex-col gap-3 bg-white shadow-2xl w-24 h-28 rounded-md transition-all ${
+            } mt-2 flex flex-col gap-3 bg-white shadow-2xl w-34 h-28 rounded-md transition-all ${
               langBox ? "flex" : "hidden"
             }`}
           >
-            <button
-              className="mx-2 rounded hover:bg-gray-100"
-              onClick={() => setLang("fa")}
-            >
-              {t("persian")}
-            </button>
-            <button
-              className="mx-2 rounded hover:bg-gray-100"
-              onClick={() => setLang("ps")}
-            >
-              {t("pashto")}
-            </button>
-            <button
-              className="mx-2 rounded hover:bg-gray-100"
-              onClick={() => setLang("en")}
-            >
-              {t("english")}
-            </button>
+          
+                <button
+                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+                  onClick={() => setLang("fa")}
+                >
+                  <img
+                    src="/flags/af.png"
+                    alt="AF"
+                    className="w-5 h-5 rounded-sm"
+                  />
+                  {t("persian")}
+                </button>
+
+                <button
+                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+                  onClick={() => setLang("ps")}
+                >
+                  <img
+                    src="/flags/af.png"
+                    alt="AF"
+                    className="w-5 h-5 rounded-sm"
+                  />
+                  {t("pashto")}
+                </button>
+
+                <button
+                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+                  onClick={() => setLang("en")}
+                >
+                  <img
+                    src="/flags/us.png"
+                    alt="US"
+                    className="w-5 h-5 rounded-sm"
+                  />
+                  {t("english")}
+                </button>
           </div>
         </div>
 
@@ -186,18 +258,14 @@ export default function Header() {
       </div>
 
       {/* دسکتاپ */}
-
-        <header
-          className={`hidden lg:inline w-full  m-auto  z-90 
-          ${
-            isScrolled
-              ? "fixed top-0 left-1/2 -translate-x-1/2  opacity-100  h-10 bg-white/80 py-6 "
-              : "relative h-12 top-12"
-          }
-          `}
-        >
-          <div className="flex items-center justify-between w-[1056px] m-auto absolute top-0 left-1/2 -translate-x-1/2">
-
+      <header
+        className={`hidden lg:inline w-full m-auto z-90 ${
+          isScrolled
+            ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 py-6 backdrop-blur-sm"
+            : "absolute h-12 top-12"
+        }`}
+      >
+        <div className="flex items-center justify-between w-[1056px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
           <div className="relative flex items-center gap-4">
             <Link
               href="/login"
@@ -219,60 +287,136 @@ export default function Header() {
                 onClick={() => setLangBox(!langBox)}
               />
               <div
-                className={`absolute top-12 left-[-1.5em] mt-2 flex flex-col  gap-2  bg-white shadow-2xl w-24 h-28 rounded-md transition-all ${
-                  langBox ? "flex" : "hidden"
+                className={`absolute top-12 left-[-1.5em] mt-2 flex flex-col gap-2 bg-white shadow-2xl w-34 h-28 rounded-md transition-all ${
+                  langBox ? "flex items-center justify-center" : "hidden"
                 }`}
               >
                 <button
-                  className="w-20 mx-2 text-right rounded hover:bg-gray-100"
+                  className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => setLang("fa")}
                 >
+                  <img
+                    src="/flags/af.png"
+                    alt="AF"
+                    className="w-5 h-5 rounded-sm"
+                  />
                   {t("persian")}
                 </button>
+
                 <button
-                  className="w-20 mx-2 text-right rounded hover:bg-gray-100"
+                  className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => setLang("ps")}
                 >
+                  <img
+                    src="/flags/af.png"
+                    alt="AF"
+                    className="w-5 h-5 rounded-sm"
+                  />
                   {t("pashto")}
                 </button>
+
                 <button
-                  className="w-20 mx-2 text-right rounded hover:bg-gray-100"
+                  className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => setLang("en")}
                 >
+                  <img
+                    src="/flags/us.png"
+                    alt="US"
+                    className="w-5 h-5 rounded-sm"
+                  />
                   {t("english")}
                 </button>
               </div>
             </div>
           </div>
 
+          {/* منو دسکتاپ */}
           <div className="bg-[#faf9f9] w-[410px] h-[43.5px] flex items-center justify-center rounded-lg opacity-100">
             <ul className="flex flex-row-reverse justify-around gap-4">
-              {menuItems.map((item) => (
-                <li key={item.id} className="relative group">
-                  <Link
-                    href={item.href}
-                    onClick={() => {
-                      handleSetActive(item.id);
-                      showLoading();
-                    }}
-                    className={`relative text-[12px] transition-colors duration-200 ${
-                      active === item.id
-                        ? "text-black font-bold"
-                        : "text-[#1E1E2B66] hover:text-gray-600"
-                    }`}
+              {menuItems.map((item) =>
+                item.id === "product" ? (
+                  <li
+                    key="product"
+                    className="relative group"
+                    onMouseEnter={() => setProductOpenDesktop(true)}
+                    onMouseLeave={() => setProductOpenDesktop(false)}
                   >
-                    {item.label}
-                    <span
-                      className={`absolute left-1/2 -translate-x-1/2 -bottom-3 h-1 bg-sky-500 rounded-full origin-center transition-transform duration-300 ${
-                        active === item.id
-                          ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
+                    <button
+                      className={`relative text-[12px] px-3 py-2 rounded-lg font-semibold transition-colors duration-200 ${
+                        active.startsWith("product")
+                          ? "text-black font-bold"
+                          : "text-[#1E1E2B66]"
                       }`}
-                      style={{ width: "26.02px" }}
-                    />
-                  </Link>
-                </li>
-              ))}
+                    >
+                      {item.label}
+                      <span
+                        className={`absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
+                          active.startsWith("product")
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }`}
+                        style={{ width: "26px" }}
+                      />
+                    </button>
+
+                    {productOpenDesktop && (
+                      <div className="absolute z-50 flex flex-col items-center gap-2 px-4 py-3 -translate-x-1/2 bg-white rounded-lg shadow-xl w-50 top-7 left-1/2">
+                        <Link
+                          href="/product/doctor-assistant"
+                          className={`transition ${
+                            active === "product/doctor-assistant"
+                              ? "text-sky-500 font-bold"
+                              : "text-gray-800"
+                          }`}
+                          onClick={() =>
+                            handleSetActive("product/doctor-assistant")
+                          }
+                        >
+                          {t("doctor_assistant")}
+                        </Link>
+                        <Link
+                          href="/product/business-assistant"
+                          className={`transition ${
+                            active === "product/business-assistant"
+                              ? "text-sky-500 font-bold"
+                              : "text-gray-900"
+                          }`}
+                          onClick={() =>
+                            handleSetActive("product/business-assistant")
+                          }
+                        >
+                          {t("business_assistant")}
+                        </Link>
+                      </div>
+                    )}
+                  </li>
+                ) : (
+                  <li key={item.id} className="relative group">
+                    <Link
+                      href={item.href}
+                      onClick={() => {
+                        handleSetActive(item.id);
+                        showLoading();
+                      }}
+                      className={`relative text-[12px] transition-colors duration-200 ${
+                        active === item.id
+                          ? "text-black font-bold"
+                          : "text-[#1E1E2B66] hover:text-gray-600"
+                      }`}
+                    >
+                      {item.label}
+                      <span
+                        className={`absolute left-1/2 -translate-x-1/2 -bottom-3 h-1 bg-sky-500 rounded-full origin-center transition-transform duration-300 ${
+                          active === item.id
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }`}
+                        style={{ width: "26.02px" }}
+                      />
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -286,9 +430,8 @@ export default function Header() {
               />
             </Link>
           </div>
-          </div>
-        </header>
-    
+        </div>
+      </header>
     </>
   );
 }

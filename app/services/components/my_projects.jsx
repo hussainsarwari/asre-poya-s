@@ -44,7 +44,7 @@ export default function MyProject() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % projects.length);
-    }, 6000); // 6 seconds
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
@@ -58,6 +58,7 @@ export default function MyProject() {
 
   return (
     <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-20 transition-all duration-500 ease-in-out">
+
       {/* header */}
       <div className="flex flex-col items-end">
         <h1 className="relative text-[20px] font-bold lg:text-[24px] text-[#1E1E2B]">
@@ -74,12 +75,13 @@ export default function MyProject() {
       </div>
 
       {/* content */}
-      <div className="flex flex-col-reverse justify-between mt-7 md:flex-row">
+      <div className="flex flex-col-reverse items-center justify-between mt-7 md:flex-row h-[600px] md:h-fit">
         <AnimatePresence mode="wait">
+
           {/* image section */}
           <motion.div
             key={current.img.src}
-            className="md:w-[298px] lg:w-[309px] h-[229px] relative overflow-hidden rounded-[8px]"
+            className="md:w-[298px] lg:w-[309px] h-[229px] relative overflow-hidden rounded-lg bg-gray-200 mt-5 md:mt-0"
             variants={slideVariant}
             initial="hidden"
             animate="visible"
@@ -90,15 +92,12 @@ export default function MyProject() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              whileHover={{ scale: 1.05 }}
               className="w-full h-full"
             >
-              <Image
-                src={current.img}
+              <img
+                src={current.img.src}
                 alt="project image"
-                fill
-                className="transition-all duration-700 ease-in-out"
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                className="object-cover object-center w-full h-full"
               />
             </motion.div>
           </motion.div>
@@ -106,7 +105,7 @@ export default function MyProject() {
           {/* text section */}
           <motion.div
             key={current.titleKey}
-            className="lg:w-[629px] h-[229px] w-[298px] flex flex-col items-end justify-between"
+            className="lg:w-[629px] md:w-[300px] w-full h-[330px] lg:h-[230px] flex flex-col items-end justify-between"
             variants={slideVariant}
             initial="hidden"
             animate="visible"
@@ -157,7 +156,7 @@ export default function MyProject() {
         {projects.map((_, i) => (
           <div
             key={i}
-            className={` rounded-full transition-all duration-300 ${
+            className={`rounded-full transition-all duration-300 ${
               i === index ? "bg-[#06B1FD] w-4" : "bg-[#1E1E2B1A] w-2 h-2"
             }`}
           ></div>

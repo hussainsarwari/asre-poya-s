@@ -1,13 +1,15 @@
 "use client"
 import { useState } from "react";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 import arr_down from "@/public/icons/products/arrow-down.svg";
 import arrow_black from "@/public/icons/products/arrow-left_black.svg";
 
-export default function FAQSection() {
+export default function FAQSection({
+  SectionName,
+})  {
   const { t, lang } = useLanguage();
 
   const faqs = [

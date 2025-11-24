@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../../../provider/languageProvider";
 import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
 
@@ -16,7 +16,9 @@ import our_client8 from "@/public/icons/home/Frame8.svg";
 import our_client9 from "@/public/icons/home/Frame9.svg";
 import { useState } from "react";
 
-export default function Section1() {
+export default function our_client({
+  SectionName,
+})  {
   const [index, setIndex] = useState(0);
   const { t } = useLanguage();
   const clients = [
@@ -81,7 +83,7 @@ export default function Section1() {
 
         {/* slider */}
         <div className="relative right-0 flex mt-10 lg:w-[1056px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <motion.div
               key={index}
               initial={{ opacity: 0, x: 100 }}
