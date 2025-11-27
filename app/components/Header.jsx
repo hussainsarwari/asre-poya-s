@@ -257,21 +257,18 @@ export default function Header() {
         </div>
       </div>
 
-      {/* https://hazratgulharoon.doctorassistant.net/clinicDashboard.php */}
-
+    
       {/* دسکتاپ */}
       <header
         onMouseLeave={() => setProductOpenDesktop(false)}
         className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
             ? 
-             productOpenDesktop?
+             (productOpenDesktop ?
              
             "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90 py-6 backdrop-blur-sm":
-             "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90 py-6 backdrop-blur-sm"
-            : productOpenDesktop
-            ? "absolute h-82 top-12 z-90 bg-white shadow-xl"
-            : "absolute h-17 top-12 z-90 bg-white "
+             "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90 py-6 backdrop-red-sm")
+            :( productOpenDesktop ? "absolute h-82 top-12 z-900 bg-white shadow-xl": "absolute h-17 top-12 z-90 bg-white ")
         }`}
       >
         <div className="flex items-center justify-between w-[1056px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
@@ -372,7 +369,7 @@ export default function Header() {
                   <li
                     key={item.id}
                     className="relative group"
-                    onMouseEnter={() => setProductOpenDesktop(false)}
+                    onMouseEnter={()=>{   setProductOpenDesktop(false)}}
                   >
                     <Link
                       href={item.href}
@@ -418,7 +415,7 @@ export default function Header() {
         {productOpenDesktop && (
           <div
           dir="rtl"
-          className=" flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
+          className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
           {/* doctor assistant */}
           <div>
