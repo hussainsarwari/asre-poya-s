@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import bg_image from "@/public/icons/img_programming.svg";
 
-export default function Section1({ activeTab, setActiveTab }) {
+export default function Section1({ activeTab, setActiveTab,SectionName }) {
   const { t } = useLanguage();
 
   const tabs = [
@@ -21,7 +21,7 @@ export default function Section1({ activeTab, setActiveTab }) {
     <>
       <div className="lg:w-[1056px] md:w-[616px] w-[360px] mt-14">
 
-        <div className="hidden lg:flex flex-row-reverse   w-full  h-[51px] border-y border-y-[#00000014]  items-center gap-6 justify-start mx-auto mt-15">
+        {/* <div className="hidden lg:flex flex-row-reverse   w-full  h-[51px] border-y border-y-[#00000014]  items-center gap-6 justify-start mx-auto mt-15">
           {tabs.map((item) => (
             <button
               key={item.key}
@@ -35,7 +35,7 @@ export default function Section1({ activeTab, setActiveTab }) {
               {item.label}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Title */}
         <h1 className="font-bold mt-15 text-[24px] text-center">

@@ -250,7 +250,7 @@ business_assistant_proffessional:"",
 business_assistant_multi_profile:"",
   },
   fa: {
-    business_assistant_standart:" نسخه استندارد",
+    business_assistant_standard:" نسخه استندارد",
 business_assistant_proffessional:" نسخه پروفیشنل",
 business_assistant_multi_profile:"نسخه چندین پروفایل",
     operation:"عملیات خانه",

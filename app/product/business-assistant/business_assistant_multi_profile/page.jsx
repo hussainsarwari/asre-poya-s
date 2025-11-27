@@ -11,13 +11,13 @@ export default function clinic() {
     <>
         <Loading />
     <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto flex flex-col">
-      <Section1 SectionName='hospital'/>
-      <Main_feature_software SectionName='hospital'/>
-      <Why_choose_us SectionName='hospital'/>     
-      <Software_versions SectionName='hospital'/>
-      <Price_plane SectionName='hospital'/>
-      <Client_opinion SectionName='hospital'/>
-      <FAQ SectionName='hospital'/>
+      <Section1 SectionName='bussiness_assistant_multi_profile'/>
+      <Main_feature_software SectionName='bussiness_assistant_multi_profile'/>
+      <Why_choose_us SectionName='bussiness_assistant_multi_profile'/>     
+      <Software_versions SectionName='bussiness_assistant_multi_profile'/>
+      <Price_plane SectionName='bussiness_assistant_multi_profile'/>
+      <Client_opinion SectionName='bussiness_assistant_multi_profile'/>
+      <FAQ SectionName='bussiness_assistant_multi_profile'/>
     </div>
     </>
   );

@@ -59,7 +59,7 @@ export default function Software_development_lifecycle() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3"
+            className="absolute right-0 h-full top-3 z-[-1]"
           />
         </h5>
 

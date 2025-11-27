@@ -1,7 +1,7 @@
 
 
-import Faq from "@/app/product/doctor-assistant/components/FAQ.jsx"
-import Client_opinion from "../product/doctor-assistant/components/client_opinion.jsx";
+import Faq from "@/app/product/components/FAQ.jsx"
+import Client_opinion from "../product/components/client_opinion.jsx";
 import Customized_software_development_services from "./components/customized_software_development_services.jsx"
 import Loading from '@/app/components/loading.jsx'
 import Know_needs from "./components/know_needs.jsx";
