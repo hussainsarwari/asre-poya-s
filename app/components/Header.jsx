@@ -11,7 +11,8 @@ import worldIcon from "@/public/icons/world.svg";
 import asrepoya from "@/public/icons/AsrePoyaLogoAndName.svg";
 import mobileMenuIcon from "@/public/icons/menuIcon.svg";
 import user2 from "@/public/icons/user2.svg";
-
+import doctor_assistant_icon  from '@/public/icons/home/doctor_assistant.svg';
+import business_assistant_logo from "@/public/icons/BUSINESS_ASSISTANT_LOGO.png"
 export default function Header() {
   const { showLoading } = useLoading();
   const { t, lang, setLang, dir } = useLanguage();
@@ -203,42 +204,41 @@ export default function Header() {
               langBox ? "flex" : "hidden"
             }`}
           >
-          
-                <button
-                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("fa")}
-                >
-                  <img
-                    src="/flags/af.png"
-                    alt="AF"
-                    className="w-5 h-5 rounded-sm"
-                  />
-                  {t("persian")}
-                </button>
+            <button
+              className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+              onClick={() => setLang("fa")}
+            >
+              <img
+                src="/flags/af.png"
+                alt="AF"
+                className="w-5 h-5 rounded-sm"
+              />
+              {t("persian")}
+            </button>
 
-                <button
-                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("ps")}
-                >
-                  <img
-                    src="/flags/af.png"
-                    alt="AF"
-                    className="w-5 h-5 rounded-sm"
-                  />
-                  {t("pashto")}
-                </button>
+            <button
+              className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+              onClick={() => setLang("ps")}
+            >
+              <img
+                src="/flags/af.png"
+                alt="AF"
+                className="w-5 h-5 rounded-sm"
+              />
+              {t("pashto")}
+            </button>
 
-                <button
-                  className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("en")}
-                >
-                  <img
-                    src="/flags/us.png"
-                    alt="US"
-                    className="w-5 h-5 rounded-sm"
-                  />
-                  {t("english")}
-                </button>
+            <button
+              className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
+              onClick={() => setLang("en")}
+            >
+              <img
+                src="/flags/us.png"
+                alt="US"
+                className="w-5 h-5 rounded-sm"
+              />
+              {t("english")}
+            </button>
           </div>
         </div>
 
@@ -257,12 +257,21 @@ export default function Header() {
         </div>
       </div>
 
+      {/* https://hazratgulharoon.doctorassistant.net/clinicDashboard.php */}
+
       {/* دسکتاپ */}
       <header
-        className={`hidden lg:inline w-full m-auto z-90 ${
+        onMouseLeave={() => setProductOpenDesktop(false)}
+        className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
-            ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 py-6 backdrop-blur-sm"
-            : "absolute h-12 top-12"
+            ? 
+             productOpenDesktop?
+             
+            "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90 py-6 backdrop-blur-sm":
+             "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90 py-6 backdrop-blur-sm"
+            : productOpenDesktop
+            ? "absolute h-82 top-12 z-90 bg-white shadow-xl"
+            : "absolute h-17 top-12 z-90 bg-white "
         }`}
       >
         <div className="flex items-center justify-between w-[1056px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
@@ -337,20 +346,20 @@ export default function Header() {
                 item.id === "product" ? (
                   <li
                     key="product"
-                    className="relative group"
+                    className="relative cursor-pointer group"
                     onMouseEnter={() => setProductOpenDesktop(true)}
-                    onMouseLeave={() => setProductOpenDesktop(false)}
                   >
                     <button
-                      className={`relative text-[12px] px-3 py-2 rounded-lg font-semibold transition-colors duration-200 ${
-                        active.startsWith("product")
+                    onClick={()=>setActive("item")}
+                      className={`relative text-[12px] transition-colors duration-200 cursor-pointer ${
+                        active === item.id
                           ? "text-black font-bold"
-                          : "text-[#1E1E2B66]"
+                          : "text-[#1E1E2B66] hover:text-gray-600"
                       }`}
                     >
                       {item.label}
                       <span
-                        className={`absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
+                        className={`absolute left-1/2 top-6 -translate-x-1/2 -bottom-0.5 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
                           active.startsWith("product")
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
@@ -358,40 +367,13 @@ export default function Header() {
                         style={{ width: "26px" }}
                       />
                     </button>
-
-                    {productOpenDesktop && (
-                      <div className="absolute z-50 flex flex-col items-center gap-2 px-4 py-3 -translate-x-1/2 bg-white rounded-lg shadow-xl w-50 top-7 left-1/2">
-                        <Link
-                          href="/product/doctor-assistant"
-                          className={`transition ${
-                            active === "product/doctor-assistant"
-                              ? "text-sky-500 font-bold"
-                              : "text-gray-800"
-                          }`}
-                          onClick={() =>
-                            handleSetActive("product/doctor-assistant")
-                          }
-                        >
-                          {t("doctor_assistant")}
-                        </Link>
-                        <Link
-                          href="/product/business-assistant"
-                          className={`transition ${
-                            active === "product/business-assistant"
-                              ? "text-sky-500 font-bold"
-                              : "text-gray-900"
-                          }`}
-                          onClick={() =>
-                            handleSetActive("product/business-assistant")
-                          }
-                        >
-                          {t("business_assistant")}
-                        </Link>
-                      </div>
-                    )}
                   </li>
                 ) : (
-                  <li key={item.id} className="relative group">
+                  <li
+                    key={item.id}
+                    className="relative group"
+                    onMouseEnter={() => setProductOpenDesktop(false)}
+                  >
                     <Link
                       href={item.href}
                       onClick={() => {
@@ -430,7 +412,46 @@ export default function Header() {
               />
             </Link>
           </div>
+          {/* submenu desktop */}
         </div>
+
+        {productOpenDesktop && (
+          <div
+          dir="rtl"
+          className=" flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
+          >
+          {/* doctor assistant */}
+          <div>
+            <h1 className="flex gap-2 pb-2 text-sm font-bold">
+            <Image src={doctor_assistant_icon} alt="doctor assistant "/>
+              {t("doctor_assistant")}
+            </h1>
+            <span className="w-[200px]  h-[2px] rounded-full absolute    bg-[#c4c3c3]"></span>
+            <ul className="flex flex-col gap-3 mt-3 text-[#706f6f]">
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("hospital")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("clinic")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("pharmacy")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("laborator")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("operation")}</li>
+            </ul>
+          </div>
+          {/* business assistant */}
+            
+            <div>
+            <h1 className="flex gap-2 pb-2 text-sm font-bold">
+              <Image src={business_assistant_logo} alt="business assistant " width={25}/>
+              {t("business_assistant")}
+            </h1>
+            <span className="w-[200px]  h-[2px] rounded-full absolute    bg-[#c4c3c3]"></span>
+            <ul className="flex flex-col gap-3 mt-3 text-[#706f6f]">
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_standart")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_proffessional")}</li>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_multi_profile")}</li>
+            </ul>
+          
+          </div>
+        </div>
+        )} 
       </header>
     </>
   );
