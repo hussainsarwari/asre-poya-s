@@ -80,11 +80,11 @@ export default function section1() {
           </p>
           {/*  btn */}
           <div className="flex items-center justify-center gap-4 mt-8">
-            <button className="w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
+            <button className="hover:bg-[#009cdf] hover:shadow-md duration-150 w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
               <Image src={business_assistant} alt="business assistant" />
               {t("business_assistant")}
             </button>
-            <button className="w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
+            <button className="hover:shadow-md w-[160px] lg:w-[181px] duration-150 h-[43px] lg:h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
               <Image src={doctor_assistant} alt="doctor assistant" />
               {t("doctor_assistant")}
             </button>

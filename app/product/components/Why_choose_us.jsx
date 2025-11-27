@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import arr_left from "@/public/icons/products/arrow-left.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 export default function why_choose_us({
@@ -16,7 +16,7 @@ export default function why_choose_us({
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 top-3 lg:top-7"
+            className="absolute right-0 top-3 lg:top-7 z-[-1]"
           />
         </h1>
         <p className="mt-3 text-[14px] text-right text-[#1E1E2B99]">

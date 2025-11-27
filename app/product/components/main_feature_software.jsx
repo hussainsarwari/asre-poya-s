@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import code_icon1 from "@/public/icons/products/code1.svg";
 import code_icon2 from "@/public/icons/products/code2.svg";
 import code_icon3 from "@/public/icons/products/code3.svg";
@@ -21,7 +21,7 @@ export default function main_feature_software({
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 top-3 lg:top-7 md:top-3"
+            className="absolute right-0 top-3 lg:top-7 md:top-3 z-[-1]"
           />
         </h1>
         <p className="text-[14px] text-[#1E1E2B99] text-right my-2">

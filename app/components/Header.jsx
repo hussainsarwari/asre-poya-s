@@ -5,17 +5,18 @@ import { useLoading } from "@/app/provider/LoadingProvider";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
+import LoginModal from "./login";
 import UserIcon from "@/public/icons/user.svg";
 import worldIcon from "@/public/icons/world.svg";
 import asrepoya from "@/public/icons/AsrePoyaLogoAndName.svg";
 import mobileMenuIcon from "@/public/icons/menuIcon.svg";
 import user2 from "@/public/icons/user2.svg";
-import doctor_assistant_icon  from '@/public/icons/home/doctor_assistant.svg';
-import business_assistant_logo from "@/public/icons/BUSINESS_ASSISTANT_LOGO.png"
+import doctor_assistant_icon from "@/public/icons/home/doctor_assistant.svg";
+import business_assistant_logo from "@/public/icons/BUSINESS_ASSISTANT_LOGO.png";
 export default function Header() {
   const { showLoading } = useLoading();
   const { t, lang, setLang, dir } = useLanguage();
+  const [openLogin, setOpenLogin] = useState(false);
 
   const [langBox, setLangBox] = useState(false);
   const [active, setActive] = useState("product"); // پیش‌فرض Product فعال
@@ -53,36 +54,36 @@ export default function Header() {
 
   return (
     <>
-      {/* موبایل */}
-      <header
-        className={`lg:hidden w-full transition-all duration-200 z-50 ${
-          isScrolled
-            ? "fixed top-0 bg-white/90 py-3"
-            : "relative top-10 md:top-14"
-        }`}
-      >
-        <div className="flex items-center justify-between px-[20px] md:px-0 w-[372px] md:w-[616px] mx-auto">
-          <Image
-            src={user2}
-            alt="user icon"
-            className="w-6 md:w-[37px] h-6 md:h-[37px]"
-          />
-          <Link href="/">
-            <Image
-              src={asrepoya}
-              alt="Asre Poya Logo"
-              width={130}
-              height={37}
-            />
-          </Link>
-          <Image
-            src={mobileMenuIcon}
-            alt="menu icon"
-            className="cursor-pointer w-6 md:w-[37px] h-6 md:h-[37px]"
-            onClick={() => setSidebarOpen(true)}
-          />
-        </div>
-      </header>
+     {/* موبایل */}
+<header
+  className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
+    isScrolled
+      ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
+      : "relative top-10 md:top-14"
+  }`}
+>
+  <div className="w-[372px] md:w-[616px] mx-auto flex items-center justify-between">
+    <Image
+      src={user2}
+      alt="user icon"
+      className="w-6 md:w-[37px] h-6 md:h-[37px]"
+    />
+    <Link href="/">
+      <Image
+        src={asrepoya}
+        alt="Asre Poya Logo"
+        width={130}
+        height={37}
+      />
+    </Link>
+    <Image
+      src={mobileMenuIcon}
+      alt="menu icon"
+      className="cursor-pointer w-6 md:w-[37px] h-6 md:h-[37px]"
+      onClick={() => setSidebarOpen(true)}
+    />
+  </div>
+</header>
 
       {/* Overlay موبایل */}
       {sidebarOpen && (
@@ -113,55 +114,164 @@ export default function Header() {
         >
           ×
         </button>
-
-        <ul className="flex flex-col gap-4 p-6">
+        <ul className="flex flex-col gap-4 p-4 max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-300 scrollbar-track-gray-100">
           {menuItems.map((item) =>
             item.id === "product" ? (
               <li key="product" className="flex flex-col">
+                {/* Main Product Button */}
                 <button
                   onClick={() => setProductOpenMobile(!productOpenMobile)}
-                  className={`flex justify-between items-center w-full font-semibold text-[16px] px-2 py-2 rounded-lg transition ${
-                    active.startsWith("product")
-                      ? "bg-gray-50 text-black"
-                      : "bg-gray-100 hover:bg-gray-200"
-                  }`}
+                  className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
+            ${
+              active.startsWith("product")
+                ? "bg-gray-50 text-black"
+                : "bg-gray-100 hover:bg-gray-200"
+            }`}
                 >
-                  {item.label} {/* متن ثابت Product */}
-                  <span>{productOpenMobile ? "▲" : "▼"}</span>
+                  {item.label}
+                  <span
+                    className={`transform transition-transform duration-300 ${
+                      productOpenMobile ? "rotate-180" : ""
+                    }`}
+                  >
+                    ▼
+                  </span>
                 </button>
 
+                {/* Product Submenu */}
                 {productOpenMobile && (
-                  <div className="flex flex-col gap-2 pl-4 mt-2 text-sm">
-                    <Link
-                      href="/product/doctor-assistant"
-                      onClick={() => {
-                        handleSetActive("product/doctor-assistant");
-                        setSidebarOpen(false);
-                        showLoading();
-                      }}
-                      className={`transition hover:text-blue-500 ${
-                        active === "product/doctor-assistant"
-                          ? "text-blue-500 font-bold"
-                          : ""
-                      }`}
-                    >
-                      Doctor Assistant
-                    </Link>
-                    <Link
-                      href="/product/business-assistant"
-                      onClick={() => {
-                        handleSetActive("product/business-assistant");
-                        setSidebarOpen(false);
-                        showLoading();
-                      }}
-                      className={`transition hover:text-blue-500 ${
-                        active === "product/business-assistant"
-                          ? "text-blue-500 font-bold"
-                          : ""
-                      }`}
-                    >
-                      Business Assistant
-                    </Link>
+                  <div className="flex flex-col gap-4 pr-6 mt-3 text-sm animate-fadeIn">
+                    {/* Doctor Assistant Section */}
+                    <h4 className="font-semibold text-gray-800">
+                      {t("doctor_assistant")}
+                    </h4>
+                    <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+                      <Link href="/product/doctor-assistant/hospital">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/doctor-assistant/hospital"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("hospital")}
+                        </li>
+                      </Link>
+                      <Link href="/product/doctor-assistant/clinic">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive("product/doctor-assistant/clinic");
+                            showLoading();
+                          }}
+                        >
+                          {t("clinic")}
+                        </li>
+                      </Link>
+                      <Link href="/product/doctor-assistant/pharmacy">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/doctor-assistant/pharmacy"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("pharmacy")}
+                        </li>
+                      </Link>
+                      <Link href="/product/doctor-assistant/laborator">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/doctor-assistant/laborator"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("laborator")}
+                        </li>
+                      </Link>
+                      <Link href="/product/doctor-assistant/operation">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/doctor-assistant/operation"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("operation")}
+                        </li>
+                      </Link>
+                    </ul>
+
+                    {/* Business Assistant Section */}
+                    <h4 className="mt-4 font-semibold text-gray-800">
+                      {t("business_assistant")}
+                    </h4>
+                    <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+                      <Link href="/product/business-assistant/business_assistant_standerd">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/business-assistant/business_assistant_standerd"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("business_assistant_standard")}
+                        </li>
+                      </Link>
+                      <Link href="/product/business-assistant/business_assistant_proffessional">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/business-assistant/business_assistant_proffessional"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("business_assistant_proffessional")}
+                        </li>
+                      </Link>
+                      <Link href="/product/business-assistant/business_assistant_multi_profile">
+                        <li
+                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                          onClick={() => {
+                            setSidebarOpen(false);
+                            setProductOpenMobile(false);
+                            handleSetActive(
+                              "product/business-assistant/business_assistant_multi_profile"
+                            );
+                            showLoading();
+                          }}
+                        >
+                          {t("business_assistant_multi_profile")}
+                        </li>
+                      </Link>
+                    </ul>
                   </div>
                 )}
               </li>
@@ -172,10 +282,13 @@ export default function Header() {
                   onClick={() => {
                     handleSetActive(item.id);
                     setSidebarOpen(false);
+                    setProductOpenMobile(false);
                     showLoading();
                   }}
-                  className={`block text-[16px] font-semibold ${
-                    active === item.id ? "font-bold text-blue-500" : ""
+                  className={`block text-[16px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
+                    active === item.id
+                      ? "font-bold text-blue-500 bg-blue-50 shadow-inner"
+                      : "hover:bg-gray-100"
                   }`}
                 >
                   {item.label}
@@ -247,41 +360,43 @@ export default function Header() {
             dir === "rtl" ? "flex-row-reverse" : "flex-row"
           }`}
         >
-          <Link
-            href="/login"
+          <button
+           onClick={() =>{ 
+            setSidebarOpen(false)
+             setOpenLogin(true)
+           }}
             className="text-white text-[14px] flex items-center gap-2 justify-center"
           >
             {t("LoginBtn")}
             <Image src={UserIcon} alt="login icon" width={22} height={22} />
-          </Link>
+          </button>
         </div>
       </div>
 
-    
       {/* دسکتاپ */}
       <header
         onMouseLeave={() => setProductOpenDesktop(false)}
         className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
-            ? 
-             (productOpenDesktop ?
-             
-            "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90 py-6 backdrop-blur-sm":
-             "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90 py-6 backdrop-red-sm")
-            :( productOpenDesktop ? "absolute h-82 top-12 z-900 bg-white shadow-xl": "absolute h-17 top-12 z-90 bg-white ")
+            ? productOpenDesktop
+            ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90  backdrop-blur-sm shadow-sm"
+            : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
+            : productOpenDesktop
+            ? "absolute h-82 top-12 z-900 bg-white shadow-sm"
+            : "absolute h-17 top-12 z-90 bg-white "
         }`}
       >
-        <div className="flex items-center justify-between w-[1056px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
+        <div className="flex items-center justify-between lg:w-[1056px] md:w-[616px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
           <div className="relative flex items-center gap-4">
-            <Link
-              href="/login"
-              className="bg-[#06B1FD] rounded-xl text-white px-6 py-3 shadow shadow-[#06B1FD33] w-[166px] h-[46px] flex items-center gap-2"
+            <button
+              onClick={() => setOpenLogin(true)}
+              className="bg-[#06B1FD] cursor-pointer rounded-xl text-white px-6 py-3 shadow shadow-[#06B1FD33] w-[166px] h-[46px] flex items-center gap-2"
             >
               <Image src={UserIcon} alt="login icon" width={22} height={22} />
               <span className="flex items-center font-semibold text-[13px] my-auto">
                 {t("LoginBtn")}
               </span>
-            </Link>
+            </button>
 
             <div className="relative">
               <Image
@@ -347,7 +462,7 @@ export default function Header() {
                     onMouseEnter={() => setProductOpenDesktop(true)}
                   >
                     <button
-                    onClick={()=>setActive("item")}
+                      onClick={() => setActive("item")}
                       className={`relative text-[12px] transition-colors duration-200 cursor-pointer ${
                         active === item.id
                           ? "text-black font-bold"
@@ -369,7 +484,9 @@ export default function Header() {
                   <li
                     key={item.id}
                     className="relative group"
-                    onMouseEnter={()=>{   setProductOpenDesktop(false)}}
+                    onMouseEnter={() => {
+                      setProductOpenDesktop(false);
+                    }}
                   >
                     <Link
                       href={item.href}
@@ -414,42 +531,97 @@ export default function Header() {
 
         {productOpenDesktop && (
           <div
-          dir="rtl"
-          className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
+            dir="rtl"
+            className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
-          {/* doctor assistant */}
-          <div>
-            <h1 className="flex gap-2 pb-2 text-sm font-bold">
-            <Image src={doctor_assistant_icon} alt="doctor assistant "/>
-              {t("doctor_assistant")}
-            </h1>
-            <span className="w-[200px]  h-[2px] rounded-full absolute    bg-[#c4c3c3]"></span>
-            <ul className="flex flex-col gap-3 mt-3 text-[#706f6f]">
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("hospital")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("clinic")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("pharmacy")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("laborator")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("operation")}</li>
-            </ul>
-          </div>
-          {/* business assistant */}
-            
+            {/* doctor assistant */}
             <div>
-            <h1 className="flex gap-2 pb-2 text-sm font-bold">
-              <Image src={business_assistant_logo} alt="business assistant " width={25}/>
-              {t("business_assistant")}
-            </h1>
-            <span className="w-[200px]  h-[2px] rounded-full absolute    bg-[#c4c3c3]"></span>
-            <ul className="flex flex-col gap-3 mt-3 text-[#706f6f]">
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_standart")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_proffessional")}</li>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t("business_assistant_multi_profile")}</li>
-            </ul>
-          
+              <h1 className="flex gap-2 pb-2 text-sm font-bold">
+                <Image src={doctor_assistant_icon} alt="doctor assistant " />
+                {t("doctor_assistant")}
+              </h1>
+              <ul className="flex flex-col gap-3 mt-3 text-[#706f6f] list-disc pr-10 marker:text-[#06B1FD]">
+                <Link href={"/product/doctor-assistant/hospital"}>
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("hospital")}
+                  </li>
+                </Link>
+                <Link href={"/product/doctor-assistant/clinic"}>
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("clinic")}
+                  </li>
+                </Link>
+                <Link href={"/product/doctor-assistant/pharmacy"}>
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("pharmacy")}
+                  </li>
+                </Link>
+                <Link href={"/product/doctor-assistant/laborator"}>
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("laborator")}
+                  </li>
+                </Link>
+                <Link href={"/product/doctor-assistant/operation"}>
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("operation")}
+                  </li>
+                </Link>
+              </ul>
+            </div>
+            {/* business assistant */}
+
+            <div>
+              <h1 className="flex gap-2 pb-2 text-sm font-bold">
+                <Image
+                  src={business_assistant_logo}
+                  alt="business assistant "
+                  width={25}
+                />
+                {t("business_assistant")}
+              </h1>
+              <ul className="flex flex-col gap-3 mt-3 mr-4 text-[#706f6f] list-disc pr-5 marker:text-[#06B1FD]">
+                <Link
+                  href={
+                    "/product/business-assistant/business_assistant_standerd"
+                  }
+                >
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("business_assistant_standard")}
+                  </li>
+                </Link>
+                <Link
+                  href={
+                    "/product/business-assistant/business_assistant_proffessional"
+                  }
+                >
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("business_assistant_proffessional")}
+                  </li>
+                </Link>
+                <Link
+                  href={
+                    "/product/business-assistant/business_assistant_multi_profile"
+                  }
+                >
+                  {" "}
+                  <li className="cursor-pointer hover:text-[#06B1FD]">
+                    {t("business_assistant_multi_profile")}
+                  </li>
+                </Link>
+              </ul>
+            </div>
           </div>
-        </div>
-        )} 
+        )}
       </header>
+
+      <LoginModal open={openLogin} onClose={() => setOpenLogin(false)} />
     </>
   );
 }

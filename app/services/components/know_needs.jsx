@@ -18,7 +18,7 @@ export default function KnowNeeds() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-2"
+            className="absolute right-0 h-full top-2 z-[-1]"
           />
         </h2>
         <p className="text-right text-[#1E1E2B99]">

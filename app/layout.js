@@ -6,7 +6,6 @@ import { LoadingProvider } from "./provider/LoadingProvider";
 import localFont from "next/font/local";
 import Footer from "./components/Footer.jsx";
 import Image from "next/image";
-
 import whatsapp from "@/public/icons/home/whatsapp_green.svg";
 // ایمپورت فونت محلی Yekan Bakh
 const yekanBakh = localFont({
@@ -43,6 +42,7 @@ export default function RootLayout({ children }) {
           <LoadingProvider>
             
           <Header />
+          
           <main className="grow">{children}</main>
            <Image
             src={whatsapp}

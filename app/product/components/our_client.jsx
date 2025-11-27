@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
 

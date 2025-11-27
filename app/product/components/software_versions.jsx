@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import softwareversion1 from "@/public/icons/products/box1.png";
 import softwareversion2 from "@/public/icons/products/box2.png";
 import softwareversion3 from "@/public/icons/products/box3.png";

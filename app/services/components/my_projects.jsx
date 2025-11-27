@@ -66,7 +66,7 @@ export default function MyProject() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3"
+            className="absolute right-0 h-full top-3 z-[-1]"
           />
         </h1>
         <p className="text-right text-[16px] text-[#1E1E2B99] mt-1">

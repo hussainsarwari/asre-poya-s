@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 
 import programming_img from "@/public/icons/img_programming.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
@@ -21,7 +21,7 @@ export default function client_opinion({
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3"
+            className="absolute right-0 h-full top-3 z-[-1]"
           />
         </h1>
         <p className="text-right text-[14px] text-[#1E1E2B99] mt-1">

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Rectangle from "@/public/icons/products/Rectangle.svg";

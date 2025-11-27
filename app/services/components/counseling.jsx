@@ -51,7 +51,7 @@ export default function FreeConsultation() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3"
+            className="absolute right-0 h-full top-3 z-[-1]"
           />
         </h2>
         <p className="mb-6 text-[#1E1E2B99] text-[16px]">

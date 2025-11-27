@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import arr_left from "@/public/icons/home/arrow-left2.svg";
 import calendar from "@/public/icons/products/calendar.png";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
@@ -24,12 +24,12 @@ export default function Price_plane({
     <div className="w-[380px] md:w-[616px] lg:w-[1056px] m-auto mt-20">
       <div className="flex flex-col items-end w-full">
         <h1 className="relative w-full text-right text-[#1E1E2B] lg:text-[32px] font-bold">
-          {t("product_price_plane_title")}
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3"
+            className="absolute right-0 h-full top-3 z-[-1]"
           />
+          {t("product_price_plane_title")}
         </h1>
         <p className="text-[14px] text-[#1E1E2B99] mt-2">
           {t("product_price_plane_paragraph")}
@@ -91,9 +91,9 @@ export default function Price_plane({
         </ul>
       </div>
 
-   <div className="flex flex-col gap-6 -mt-10 md:flex-row">
+   <div className="flex flex-col gap-6 -mt-10 lg:flex-row">
 {/* PLANS */}
-<div className="flex flex-col gap-6 my-25 md:flex-row">
+<div className="flex flex-col items-center gap-6 my-25 lg:flex-row">
   <AnimatePresence mode="sync">
     {plans[selectedSoft].map((p, index) => (
       <motion.div
