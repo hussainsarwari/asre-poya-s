@@ -19,16 +19,18 @@ const LoadingContext = createContext();
 export function LoadingProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
-  // فعال کردن لودینگ
-  const showLoading = useCallback(() => {
-    setLoading(true);
-  }, []);
-
-  // غیر فعال کردن لودینگ
   const hideLoading = useCallback(() => {
     setLoading(false);
   }, []);
+  // فعال کردن لودینگ
+  const showLoading = useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+      hideLoading();
+    }, 2000);
+  }, []);
 
+ 
   return (
     <LoadingContext.Provider value={{ loading, showLoading, hideLoading }}>
       {children}
