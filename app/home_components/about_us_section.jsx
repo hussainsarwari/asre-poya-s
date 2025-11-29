@@ -29,7 +29,7 @@ export default function Section5() {
   const { showLoading } = useLoading();
 
   return (
-    <div className="lg:relative overflow-hidden mt-15 h-[1200px] lg:h-[870px] relative">
+    <div  className="lg:relative overflow-hidden mt-15 h-[1200px] lg:h-[870px] relative ">
       {/* blue background section */}
       <div className="lg:w-[50%] h-[285px] absolute hidden lg:block lg:top-[120px] md:w-[1700px] top-[500px] md:right-[10%] z-0 rounded-tr-[32px] rounded-br-[32px] bg-[#06B1FD] lg:left-0"></div>
 
@@ -41,7 +41,7 @@ export default function Section5() {
         {/* three white boxes */}
         <div className="flex flex-col gap-[16px] z-40 left-[0px] lg:top-25 md:top-120 top-115 absolute">
           <div className="lg:w-[516px] lg:h-[95px] rounded-xl bg-white border border-[#1E1E2B1A] p-3 shadow-lg shadow-[#00000026]">
-            <h1 className="flex flex-row text-[12px] lg:text-[16px] text-[#1E1E2B] font-semibold gap-1 justify-end">
+            <h1 className="flex flex-row text-[12px] lg:text-[16px] text-[#1E1E2B] font-semibold gap-1 justify-end ">
               {t("home_page_section5_about_us_exprience_title1")}
               <span>
                 <Image src={calendar} alt="calculator tick" />
@@ -78,7 +78,7 @@ export default function Section5() {
         </div>
 
         {/* top title */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <Link
             className="text-[#06B1FD] text-[14px] font-semibold"
             href="/about-us"
@@ -91,7 +91,7 @@ export default function Section5() {
           </Link>
 
           <div className="flex flex-col justify-end">
-            <h1 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B]">
+            <h1 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B] text-right">
               {t("aboutus")}
             </h1>
             <p className="text-[#1E1E2B99] text-right text-[8px] lg:text-[14px]">

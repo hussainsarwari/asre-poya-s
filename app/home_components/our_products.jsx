@@ -11,7 +11,6 @@ import img2 from "@/public/icons/home/bg_img2.svg";
 import img3 from "@/public/icons/home/bg_img3.svg";
 import img4 from "@/public/icons/home/bg_img2.svg";
 import img5 from "@/public/icons/home/bg_img2.svg";
-import border_top from "@/public//icons/home/border_top.svg"
 import arrow from "@/public/icons/home/arrow.svg";
 import left_arrow from "@/public/icons/home/arrow-left2.svg";
 
@@ -54,15 +53,16 @@ export default function Section3() {
   const [active, setActive] = useState(products[0]);
 
   return (
-    <div className="lg:w-full md:w-[616px]  m-auto relative  mt-10">
+    <div className="lg:w-full md:w-[616px]  m-auto relative  mt-10 ">
 
 
 
       <div className="block mb-10 lg:hidden">
           {/* عنوان بالا */}
           <h1 className="text-[32px] text-right text-[#1E1E2B]">
-            {t("homePagesection3Title")}
+            {t("homePagesection3Title" )} 
           </h1>
+           
           <p className="text-[14px] text-right text-[#1E1E2B99] mt-1">
             {t("homePageSection3paragraph")}
           </p>

@@ -5,7 +5,7 @@ import { useLoading } from "@/app/provider/LoadingProvider";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import LoginModal from "./login";
+import LoginModal from "./login&register";
 import UserIcon from "@/public/icons/user.svg";
 import worldIcon from "@/public/icons/world.svg";
 import asrepoya from "@/public/icons/AsrePoyaLogoAndName.svg";
@@ -13,6 +13,7 @@ import mobileMenuIcon from "@/public/icons/menuIcon.svg";
 import user2 from "@/public/icons/user2.svg";
 import doctor_assistant_icon from "@/public/icons/home/doctor_assistant.svg";
 import business_assistant_logo from "@/public/icons/BUSINESS_ASSISTANT_LOGO.png";
+import asrepoya_english from "@/public/icons/asrepoya_english.svg";
 export default function Header() {
   const { showLoading } = useLoading();
   const { t, lang, setLang, dir } = useLanguage();
@@ -54,41 +55,41 @@ export default function Header() {
 
   return (
     <>
-     {/* موبایل */}
-<header
-  className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
-    isScrolled
-      ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
-      : "relative top-10 md:top-14"
-  }`}
->
-  <div className="w-[372px] md:w-[616px] mx-auto flex items-center justify-between">
-    <Image
-      src={user2}
-      alt="user icon"
-      className="w-6 md:w-[37px] h-6 md:h-[37px]"
-    />
-    <Link href="/">
-      <Image
-        src={asrepoya}
-        alt="Asre Poya Logo"
-        width={130}
-        height={37}
-      />
-    </Link>
-    <Image
-      src={mobileMenuIcon}
-      alt="menu icon"
-      className="cursor-pointer w-6 md:w-[37px] h-6 md:h-[37px]"
-      onClick={() => setSidebarOpen(true)}
-    />
-  </div>
-</header>
+      {/* موبایل */}
+      <header dir={sidebarDir=="rtl"? "ltr":"rtl"}
+        className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
+          isScrolled
+            ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
+            : "relative top-10 md:top-14"
+        }`}
+      >
+        <div className="w-[350px] md:w-[616px] mx-auto flex items-center justify-between">
+          <Image
+            src={user2}
+            alt="user icon"
+            className="w-6 md:w-[37px] h-6 md:h-[37px]"
+          />
+          <Link href="/">
+            <Image
+              src={asrepoya}
+              alt="Asre Poya Logo"
+              width={130}
+              height={37}
+            />
+          </Link>
+          <Image
+            src={mobileMenuIcon}
+            alt="menu icon"
+            className="cursor-pointer w-6 md:w-[37px] h-6 md:h-[37px]"
+            onClick={() => setSidebarOpen(true)}
+          />
+        </div>
+      </header>
 
       {/* Overlay موبایل */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-100 bg-white/30 backdrop-blur-sm"
+          className="fixed inset-0 z-100 bg-white/30 backdrop-blur-sm lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -96,7 +97,7 @@ export default function Header() {
       {/* سایدبار موبایل */}
       <div
         dir={sidebarDir}
-        className={`fixed top-0 z-500 h-full transform transition-transform duration-300
+        className={`fixed top-0 z-500 h-full transform transition-transform duration-300  block lg:hidden
           ${sidebarDir === "rtl" ? "right-0" : "left-0"} 
           ${
             sidebarOpen
@@ -140,9 +141,10 @@ export default function Header() {
 
                 {/* Product Submenu */}
                 {productOpenMobile && (
-                  <div className="flex flex-col gap-4 pr-6 mt-3 text-sm animate-fadeIn">
+                  <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
                     {/* Doctor Assistant Section */}
-                    <h4 className="font-semibold text-gray-800">
+                    <h4 className="flex gap-2 font-semibold text-gray-800">
+                       <Image src={doctor_assistant_icon} alt="doctor assistant " />
                       {t("doctor_assistant")}
                     </h4>
                     <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
@@ -222,7 +224,12 @@ export default function Header() {
                     </ul>
 
                     {/* Business Assistant Section */}
-                    <h4 className="mt-4 font-semibold text-gray-800">
+                    <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
+                       <Image
+                  src={business_assistant_logo}
+                  alt="business assistant "
+                  width={25}
+                />
                       {t("business_assistant")}
                     </h4>
                     <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
@@ -361,10 +368,10 @@ export default function Header() {
           }`}
         >
           <button
-           onClick={() =>{ 
-            setSidebarOpen(false)
-             setOpenLogin(true)
-           }}
+            onClick={() => {
+              setSidebarOpen(false);
+              setOpenLogin(true);
+            }}
             className="text-white text-[14px] flex items-center gap-2 justify-center"
           >
             {t("LoginBtn")}
@@ -375,22 +382,24 @@ export default function Header() {
 
       {/* دسکتاپ */}
       <header
+        dir={sidebarDir == "rtl" ? "ltr" : "rtl"}
         onMouseLeave={() => setProductOpenDesktop(false)}
         className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
             ? productOpenDesktop
-            ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90  backdrop-blur-sm shadow-sm"
-            : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
+              ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90  backdrop-blur-sm shadow-sm"
+              : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
             : productOpenDesktop
             ? "absolute h-82 top-12 z-900 bg-white shadow-sm"
-            : "absolute h-17 top-12 z-90 bg-white "
+            : "absolute h-16 top-10 z-90 bg-white "
         }`}
       >
         <div className="flex items-center justify-between lg:w-[1056px] md:w-[616px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
           <div className="relative flex items-center gap-4">
             <button
               onClick={() => setOpenLogin(true)}
-              className="bg-[#06B1FD] cursor-pointer rounded-xl text-white px-6 py-3 shadow shadow-[#06B1FD33] w-[166px] h-[46px] flex items-center gap-2"
+              className={`bg-[#06B1FD] cursor-pointer rounded-xl text-white flex justify-center
+               py-3 shadow shadow-[#06B1FD33] w-[166px] h-[46px] flex items-center gap-2`}
             >
               <Image src={UserIcon} alt="login icon" width={22} height={22} />
               <span className="flex items-center font-semibold text-[13px] my-auto">
@@ -407,14 +416,18 @@ export default function Header() {
                 className="cursor-pointer"
                 onClick={() => setLangBox(!langBox)}
               />
+              {/* language box */}
               <div
-                className={`absolute top-12 left-[-1.5em] mt-2 flex flex-col gap-2 bg-white shadow-2xl w-34 h-28 rounded-md transition-all ${
+                className={`absolute top-12 left-[-2.5em] mt-2 flex flex-col gap-2 bg-white shadow-2xl w-34 h-28 rounded-md transition-all z-[100000] ${
                   langBox ? "flex items-center justify-center" : "hidden"
                 }`}
               >
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("fa")}
+                  onClick={() => {
+                    setLang("fa");
+                    setLangBox(!langBox);
+                  }}
                 >
                   <img
                     src="/flags/af.png"
@@ -426,7 +439,10 @@ export default function Header() {
 
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("ps")}
+                    onClick={() => {
+                    setLang("ps");
+                    setLangBox(!langBox);
+                  }}
                 >
                   <img
                     src="/flags/af.png"
@@ -438,7 +454,10 @@ export default function Header() {
 
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                  onClick={() => setLang("en")}
+                   onClick={() => {
+                    setLang("en");
+                    setLangBox(!langBox);
+                  }}
                 >
                   <img
                     src="/flags/us.png"
@@ -452,7 +471,10 @@ export default function Header() {
           </div>
 
           {/* منو دسکتاپ */}
-          <div className="bg-[#faf9f9] w-[410px] h-[43.5px] flex items-center justify-center rounded-lg opacity-100">
+          <div
+            dir={sidebarDir == "rtl" ? "ltr" : "rtl"}
+            className="bg-[#faf9f9] w-[410px] h-[43.5px] flex items-center justify-center rounded-lg opacity-100"
+          >
             <ul className="flex flex-row-reverse justify-around gap-4">
               {menuItems.map((item) =>
                 item.id === "product" ? (
@@ -518,12 +540,21 @@ export default function Header() {
 
           <div>
             <Link href="/">
-              <Image
-                src={asrepoya}
-                alt="Asre Poya Logo"
-                width={140}
-                height={37}
-              />
+              {dir === "rtl" ? (
+                <Image
+                  src={asrepoya}
+                  alt="Asre Poya Logo"
+                  width={140}
+                  height={37}
+                />
+              ) : (
+                <Image
+                  src={asrepoya_english}
+                  alt="Asre Poya Logo"
+                  width={140}
+                  height={37}
+                />
+              )}
             </Link>
           </div>
           {/* submenu desktop */}
@@ -531,7 +562,7 @@ export default function Header() {
 
         {productOpenDesktop && (
           <div
-            dir="rtl"
+            dir={sidebarDir}
             className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
             {/* doctor assistant */}
@@ -542,31 +573,26 @@ export default function Header() {
               </h1>
               <ul className="flex flex-col gap-3 mt-3 text-[#706f6f] list-disc pr-10 marker:text-[#06B1FD]">
                 <Link href={"/product/doctor-assistant/hospital"}>
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("hospital")}
                   </li>
                 </Link>
                 <Link href={"/product/doctor-assistant/clinic"}>
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("clinic")}
                   </li>
                 </Link>
                 <Link href={"/product/doctor-assistant/pharmacy"}>
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("pharmacy")}
                   </li>
                 </Link>
                 <Link href={"/product/doctor-assistant/laborator"}>
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("laborator")}
                   </li>
                 </Link>
                 <Link href={"/product/doctor-assistant/operation"}>
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("operation")}
                   </li>
@@ -590,7 +616,6 @@ export default function Header() {
                     "/product/business-assistant/business_assistant_standerd"
                   }
                 >
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("business_assistant_standard")}
                   </li>
@@ -600,7 +625,6 @@ export default function Header() {
                     "/product/business-assistant/business_assistant_proffessional"
                   }
                 >
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("business_assistant_proffessional")}
                   </li>
@@ -610,7 +634,6 @@ export default function Header() {
                     "/product/business-assistant/business_assistant_multi_profile"
                   }
                 >
-                  {" "}
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("business_assistant_multi_profile")}
                   </li>

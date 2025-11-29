@@ -1,10 +1,10 @@
 
 
 import Section1 from "./home_components/section1.jsx";
-import Section2 from "./home_components/section2.jsx";
-import Section3 from "./home_components/section3.jsx";
-import Section4 from "./home_components/section4.jsx";
-import Section5 from "./home_components/section5.jsx";
+import Section2 from "./home_components/advantage_asrePoya.jsx";
+import Section3 from "./home_components/our_products.jsx";
+import Section4 from "./home_components/client_opinion.jsx";
+import Section5 from "./home_components/about_us_section.jsx";
 import Loaded from '@/app/components/loading.jsx'
 
 export default function Home() {
