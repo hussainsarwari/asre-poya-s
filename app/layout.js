@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
            <Image
             src={whatsapp}
             alt="whatsapp"
-            className="fixed z-30 w-12 h-12 cursor-pointer bottom-3 right-3 sm:w-14 sm:h-14 md:w-16 md:h-16"
+            className="fixed w-12 h-12 cursor-pointer z-300 bottom-3 right-3 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
           <Footer />
           </LoadingProvider>

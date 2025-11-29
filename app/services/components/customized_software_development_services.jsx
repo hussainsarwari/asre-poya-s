@@ -9,7 +9,7 @@ export default function client_opinion() {
   const { t } = useLanguage();
 
   return (
-    <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-20">
+    <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-30">
       <div className="flex flex-col items-end">
         <h1 className="lg:text-[32px] text-[22px] text-[#1E1E2B] font-bold my-2">
           {t("service_section1_title")}

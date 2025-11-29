@@ -36,7 +36,7 @@ export default function Section4() {
   ];
 
   return (
-    <div className=" lg:w-[1056px] h-[314px] mx-auto my-30 w-[3۵0px] md:w-[616px] relative " >
+    <div className=" lg:w-[1056px] h-[314px] mx-auto my-30 w-[3۵0px] md:w-[616px] relative  " >
       {/* بالای بخش */}
       <div className="flex flex-row-reverse justify-between md:w-[616px] m-auto lg:w-[1056px] w-[360px]">
         <div className="flex flex-col items-end">
