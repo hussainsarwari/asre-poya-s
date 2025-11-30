@@ -56,7 +56,7 @@ export default function Header() {
   return (
     <>
       {/* موبایل */}
-      <header dir={sidebarDir=="rtl"? "ltr":"rtl"}
+      <header dir={sidebarDir}
         className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
           isScrolled
             ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
@@ -382,7 +382,7 @@ export default function Header() {
 
       {/* دسکتاپ */}
       <header
-        dir={sidebarDir == "rtl" ? "ltr" : "rtl"}
+        dir={sidebarDir}
         onMouseLeave={() => setProductOpenDesktop(false)}
         className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
@@ -472,7 +472,7 @@ export default function Header() {
 
           {/* منو دسکتاپ */}
           <div
-            dir={sidebarDir == "rtl" ? "ltr" : "rtl"}
+            dir={sidebarDir}
             className="bg-[#faf9f9] w-[410px] h-[43.5px] flex items-center justify-center rounded-lg opacity-100"
           >
             <ul className="flex flex-row-reverse justify-around gap-4">
@@ -540,7 +540,7 @@ export default function Header() {
 
           <div>
             <Link href="/">
-              {dir === "rtl" ? (
+              {dir === "ltr" ? (
                 <Image
                   src={asrepoya}
                   alt="Asre Poya Logo"
