@@ -14,8 +14,8 @@ import start from "@/public/icons/home/Star.svg";
 import start2 from "@/public/icons/home/Star_2.svg";
 import start_fill from "@/public/icons/home/Star_fill.svg";
 
-export default function Section4() {
-  const { t } = useLanguage();
+export default function client_opinio() {
+  const { t,dir } = useLanguage();
   const [index, setIndex] = useState(0);
 
   const feedbacks = [
@@ -36,9 +36,9 @@ export default function Section4() {
   ];
 
   return (
-    <div className=" lg:w-[1056px] h-[314px] mx-auto my-30 w-[3۵0px] md:w-[616px] relative  " >
+    <div dir = {dir==="ltr" ? "ltr" : "rtl"} className=" lg:w-[1056px] h-[314px] mx-auto my-30 w-[350px] md:w-[616px] relative  " >
       {/* بالای بخش */}
-      <div className="flex flex-row-reverse justify-between md:w-[616px] m-auto lg:w-[1056px] w-[360px]">
+      <div className="flex flex-row-reverse justify-between md:w-[616px] m-auto lg:w-[1056px] w-[350px]">
         <div className="flex flex-col items-end">
           <h1 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B]">
             {t("feadback")}
@@ -47,7 +47,7 @@ export default function Section4() {
             {t("feadbackparagraph")}
           </p>
         </div>
-        <div className="flex">
+        <div  className={`flex ${dir==="rtl" && "flex-row-reverse" }`}>
           <Image
             className="transition-transform cursor-pointer hover:scale-110"
             onClick={prev}
@@ -64,7 +64,7 @@ export default function Section4() {
       </div>
 
       {/* باکس‌ها */}
-      <div className="flex mt-10 justify-center absolute w-[1056px] h-[340px]  right-0   overflow-hidden ">
+      <div  className="flex mt-10 justify-center absolute w-[1056px] h-[340px]  right-0   overflow-hidden ">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -76,7 +76,7 @@ export default function Section4() {
           >
             {visibleBoxes.map((fb, i) => (
               <div key={i} className="relative">
-                <Image src={fb.box} alt="box"  className="w-[376px] lg:w-full"/>
+                <Image src={fb.box} alt="box"  className={`w-[376px] lg:w-full ${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""}`}/>
                 <div className="absolute top-0 right-0 w-[344px] lg:w-lg lg:h-[272px] flex flex-col items-end p-6">
                   <div className="flex flex-row-reverse items-center gap-5">
                     <Image src={fb.user} alt="user image" className="lg:w-20 w-[46px]" />
@@ -89,7 +89,8 @@ export default function Section4() {
                         {t("client_name1")}
                       </h4>
                       <p
-                        className={`text-[12px]  ${
+                      
+                        className={`text-[12px]   ${
                           fb.dark ? "text-[#FFFFFFCC]" : "text-[#1E1E2B66]"
                         }`}
                       >
@@ -98,7 +99,8 @@ export default function Section4() {
                     </div>
                   </div>
                   <p
-                    className={`lg:text-[14px] text-[12px] mt-4 ${
+                  dir = {dir==="rtl" ? "ltr" : "rtl"}
+                    className={`lg:text-[14px]  text-[12px] mt-4 w-full  ${
                       fb.dark ? "text-white" : "text-[#1E1E2B66]"
                     }`}
                   >
@@ -106,7 +108,7 @@ export default function Section4() {
                   </p>
                   <div className="flex flex-row justify-between w-full mt-4 lg:mt-10">
                     <div
-                      className={`text-[12px] ${
+                      className={`text-[12px]  ${
                         fb.dark ? "text-[#FFFFFF99]" : "text-[#1E1E2B66]"
                       }`}
                     >
@@ -127,7 +129,7 @@ export default function Section4() {
         </AnimatePresence>
 
 {/* دات‌های پایین */}
-<div className="flex absolute right-0 gap-2 mt-75 lg:w-[1056px] items-center justify-center md:w-[616px] w-[370px]">
+<div className="flex absolute right-0 gap-2 mt-75 lg:w-[1056px] items-center justify-center md:w-[616px] w-[350px]">
   {Array.from({ length: Math.ceil(feedbacks.length / 2) }).map((_, i) => {
     const active = Math.floor(index / 2) === i;
     return (

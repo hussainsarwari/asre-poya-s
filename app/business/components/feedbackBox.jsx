@@ -7,28 +7,28 @@ import feedbackbox3 from "@/public/icons/box_mobile.svg"
 import img from "@/public/images/img5.svg"
 
 export default function Section2() {
-    const { t } = useLanguage();
+    const { t,dir } = useLanguage();
     return (
         <>
             <div className='z-0 -mt-14'>
                 {/* feedback box */}
                 {/*  Desktop box */}
-                <div className="relative hidden mx-auto lg:block w-fit">
+                <div   className="relative hidden mx-auto lg:block w-fit">
                     <Image src={feedbackbox} alt="feedback box desktop" />
 
 
-                    <div className="absolute w-[1056px] h-[232px] top-32.5 px-8 pt-11 pb-12">
-                        <h1 className='text-right text-white font-bold text-[24px]'>
-                            {t("feedbackboxTitle")}
-                            <span className="inline-block ml-2 align-middle">
+                    <div dir= {dir === "ltr" ? "rtl" : "ltr"}  className="absolute w-[1056px] h-[232px] top-32.5 px-8 pt-11 pb-12">
+                        <h1  className=' text-white font-bold text-[24px] flex-row-reverse'>
+                            <span className="inline-block px-2 ml-2">
                                 <Image
                                     src={img}
                                     alt="user icon"
                                     className="inline-block w-8 h-8 rounded-full"
-                                />
+                                    />
                             </span>
+                                    <span>{t("feedbackboxTitle")}</span>
                         </h1>
-                        <p className='text-[16px] text-white pt-4 text-right'>
+                        <p className='text-[16px] text-white pt-4 '>
                             {t("businessparagraph")}
                         </p>
                     </div>
@@ -38,18 +38,18 @@ export default function Section2() {
                 <div className="relative hidden mx-auto md:block lg:hidden w-fit">
                     <Image src={feedbackbox2} alt="feedback box tablet" />
                    
-                    <div className="absolute w-[617px] h-[236px]  top-34 px-8 pt-11 pb-12">
-                        <h1 className='text-right text-white font-bold text-[20px]'>
-                            {t("feedbackboxTitle")}
+                    <div dir= {dir === "ltr" ? "rtl" : "ltr"}  className="absolute w-[617px] h-[236px]  top-34 px-8 pt-11 pb-12">
+                        <h1 className=' text-white font-bold text-[20px] flex-row-reverse'>
                             <span className="inline-block ml-2 align-middle">
                                 <Image
                                     src={img}
                                     alt="user icon"
                                     className="inline-block w-8 h-8 rounded-full"
-                                />
+                                    />
                             </span>
+                                    {t("feedbackboxTitle")}
                         </h1>
-                        <p className='text-[14px] text-white pt-4 text-right'>
+                        <p dir= {dir === "rtl" ? "rtl" : "ltr"} className='text-[14px] text-white pt-4 '>
                             {t("businessparagraph")}
                         </p>
                     </div>

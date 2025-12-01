@@ -96,15 +96,11 @@ export default function Header() {
 
       {/* سایدبار موبایل */}
       <div
-        dir={sidebarDir}
+        dir={sidebarDir === "rtl" ? "ltr" : "rtl"}
         className={`fixed top-0 z-500 h-full transform transition-transform duration-300  block lg:hidden
-          ${sidebarDir === "rtl" ? "right-0" : "left-0"} 
+           
           ${
-            sidebarOpen
-              ? "translate-x-0"
-              : sidebarDir === "rtl"
-              ? "translate-x-full"
-              : "-translate-x-full"
+            sidebarOpen? "translate-x-0": (sidebarDir === "rtl"? "translate-x-[3000px]" : "-translate-x-[900px]")
           }
           w-full sm:w-[375px] bg-white shadow-lg
         `}
@@ -141,7 +137,7 @@ export default function Header() {
 
                 {/* Product Submenu */}
                 {productOpenMobile && (
-                  <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
+                  <div className={`flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn ${!productOpenMobile&& "hidden"}`}>
                     {/* Doctor Assistant Section */}
                     <h4 className="flex gap-2 font-semibold text-gray-800">
                        <Image src={doctor_assistant_icon} alt="doctor assistant " />
@@ -313,20 +309,22 @@ export default function Header() {
             width={48}
             height={48}
             className={`absolute cursor-pointer ${
-              dir === "rtl" ? "right-6" : "left-[1.5em]"
+              dir === "rtl" ? "left-6" : "right-[1.5em]"
             }`}
             onClick={() => setLangBox(!langBox)}
           />
           <div
             className={`absolute top-12 ${
-              dir === "rtl" ? "right-[1.5em]" : "left-[1.5em]"
+              dir === "ltr" ? "right-[1.5em]" : "left-[1.5em]"
             } mt-2 flex flex-col gap-3 bg-white shadow-2xl w-34 h-28 rounded-md transition-all ${
               langBox ? "flex" : "hidden"
             }`}
           >
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() => setLang("fa")}
+              onClick={() =>{ setLang("fa")
+                setLangBox(!langBox);
+              }}
             >
               <img
                 src="/flags/af.png"
@@ -338,7 +336,9 @@ export default function Header() {
 
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() => setLang("ps")}
+              onClick={() =>{ setLang("ps")
+                setLangBox(!langBox);
+              }}
             >
               <img
                 src="/flags/af.png"
@@ -350,7 +350,9 @@ export default function Header() {
 
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() => setLang("en")}
+              onClick={() =>{ setLang("en")
+                setLangBox(!langBox);
+              }}
             >
               <img
                 src="/flags/us.png"
@@ -562,7 +564,7 @@ export default function Header() {
 
         {productOpenDesktop && (
           <div
-            dir={sidebarDir}
+            dir = {dir==="rtl" ? "ltr" : "rtl"}
             className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
             {/* doctor assistant */}

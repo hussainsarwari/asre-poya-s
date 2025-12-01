@@ -511,11 +511,12 @@ description5:
   "Build cross-platform reward programs to retain your customers.",
 description6: "Set appropriate prices for each customer.",
 
-
+asrepoya:"AsrePoya",
   },
 
 
 ps:{
+  asrepoya:"عصر پویا",
   footer_end_paragraph: "زموږ مجموعه د تجربې او تخصص په کارولو سره، د سوداګرۍ د فعالیت ښه کولو لپاره عملي وسایل او خدمات وړاندې کوي او د ټیمونو او ډیزاینرانو مهارتونو وده کې مرسته کوي.",
 
   left_side_paragraph1: "موږ د مشتریانو اړتیاوې په دقیق ډول تحلیل کوو او د پروژې مدیریت او فعالیت ښه کولو لپاره غوره سافټویر حلونه او وسایل وړاندې کوو.",
@@ -954,6 +955,7 @@ ps:{
 
 
   fa: {
+    asrepoya:"عصر پویا",
     business_section3_1: "راهکارهای نوآورانه برای رشد کسب‌وکار",
     business_section3_2: "راه‌حل‌های تخصصی برای توسعه شرکت‌ها",
     business_section3_3: "تجربه و مهارت ما، موفقیت شما را تضمین می‌کند",

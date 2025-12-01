@@ -14,10 +14,10 @@ import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
 
 export default function Section2() {
-  const { t } = useLanguage();
+  const { t ,dir} = useLanguage();
   const [index, setIndex] = useState(0);
   const [screenSize, setScreenSize] = useState("desktop"); // mobile | tablet | desktop
-
+  const sidebardir=dir
   // Detect screen size
   useEffect(() => {
     const handleResize = () => {
@@ -87,9 +87,9 @@ export default function Section2() {
         });
 
   return (
-    <div>
+    <div dir={sidebardir}>
       {/* Title and arrows */}
-      <div className="flex flex-row-reverse items-start justify-between m-auto w-[376px] md:w-[616px] lg:w-[1056px] mt-40">
+      <div className="flex flex-row-reverse items-start justify-between m-auto w-[350px] md:w-[616px] lg:w-[1056px] mt-40">
         <div className="flex flex-col items-end">
           <h2 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B]">
             {t("advantage_asrePoya")}
@@ -100,8 +100,9 @@ export default function Section2() {
         </div>
 
         {screenSize !== "desktop" && (
-          <div className="flex gap-2">
+          <div   className={`flex gap-2   ${dir === "rtl" ? "flex-row-reverse" : ""}`}>
             <Image
+            
               className="transition-transform cursor-pointer hover:scale-110"
               onClick={prev}
               alt="arrow left"
@@ -119,22 +120,23 @@ export default function Section2() {
         )}
       </div>
 
-      <div className="relative lg:w-[1056px] mx-auto pt-2">
+      <div dir={sidebardir} className="relative lg:w-[1056px] mx-auto pt-2">
         <div className="flex justify-center mt-10 relative h-[260px] overflow-hidden">
           {screenSize === "desktop" ? (
             // Desktop (4 boxes, no animation)
             <div className="flex gap-6">
               {cards.map((card, i) => (
-                <div key={i} className="relative w-[246px]  h-[220px] flex-none">
+                <div dir={dir=="rtl"?"ltr":"rtl"} key={i} className="relative w-[246px]  h-[220px] flex-none">
                   <Image
+                  dir={sidebardir}
                     src={card.box}
                     alt="box"
-                    // fill
-                    className={`object-contain max-w-[180%]  ${card.dark?"w-[256px]":"w-full"}`}
+                    fill
+                    className={`object-contain   ${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""} ${card.dark?"scale-106 mt-1":"w-full scale-100"}`}
                   />
                   <div
-                    className="absolute top-0 right-0 flex flex-col pt-[28px] pr-6" 
-                    dir="rtl"
+                    className="absolute top-0 right-0 flex flex-col pt-[28px] pr-6 pl-4" 
+                    // dir={sidebardir }
                   >
                     <Image
                       src={card.icon}
@@ -157,7 +159,7 @@ export default function Section2() {
                       {card.text}
                     </p>
                     <span
-                      className={`w-12 border-3 block rounded-full mt-6 ${
+                      className={`w-12 border-3 block rounded-full absolute top-45 ${
                         card.dark ? "border-white" : "border-[#06B1FD]"
                       }`}
                     ></span>
@@ -179,17 +181,18 @@ export default function Section2() {
                 {visibleCards.map((card, i) => (
                   <div
                     key={i}
+                  
                     className="relative w-[170px] sm:w-[200px] h-[180px] sm:h-[200px] flex-none"
                   >
                     <Image
                       src={card.box}
                       alt="box"
                       // fill
-                      className={`object-contain ${card.dark?"w-[210px] max-w-[150%]":"w-full"}`}
+                      className={`object-contain ${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""} ${card.dark?"w-[210px] max-w-[105%]":"w-full"}`}
                     />
                     <div
-                      className="absolute top-0 right-0 flex flex-col pt-[35px] pl-2 pr-4"
-                      dir="rtl"
+                      className="absolute top-0 right-0 flex flex-col pt-[20px] pl-2 pr-4"
+                        dir={dir=="rtl"?"ltr":"rtl"}
                     >
                       <Image
                         src={card.icon}
@@ -212,7 +215,7 @@ export default function Section2() {
                         {card.text}
                       </p>
                       <span
-                        className={`w-8 border-1 md:border-2 block rounded-full -mt-4  md:mt-4 ${
+                        className={`w-8 border-1 md:border-2 block rounded-full absolute md:top-37 top-32 ${
                           card.dark ? "border-white" : "border-[#06B1FD]"
                         }`}
                       ></span>
