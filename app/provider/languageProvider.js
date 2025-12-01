@@ -13,7 +13,7 @@ const LanguageContext = createContext({
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState("fa");
 
-  const dir = lang === "fa" || lang === "ps" ? "rtl" : "ltr";
+  const dir = lang === "fa" || lang === "ps" ? "ltr" : "rtl";
 
   const setLang = (newLang) => setLangState(newLang);
 

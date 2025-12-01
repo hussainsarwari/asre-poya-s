@@ -20,7 +20,7 @@ export default function our_client({
   SectionName,
 })  {
   const [index, setIndex] = useState(0);
-  const { t } = useLanguage();
+  const { t,dir } = useLanguage();
   const clients = [
     our_client1,
     our_client2,
@@ -52,10 +52,10 @@ export default function our_client({
   return (
     <>
       {/* clients section */}
-      <div className={`relative right-0 top-20 lg:top-10 lg:w-[1056px] md:w-[616px] w-[360px]`}>
+      <div dir = {dir==="ltr" ? "ltr" : "rtl"} className={`relative right-0 top-20 lg:top-10 lg:w-[1056px] md:w-[616px] w-[350px]`}>
         <div className="flex items-center justify-between mb-5">
           <div className="flex gap-3 items-center md:w-[116px]">
-            <div className="flex lg:hidden">
+            <div dir = {dir==="rtl" ? "ltr" : "ltr"} className="flex lg:hidden">
               <Image
                 className="transition-transform cursor-pointer hover:scale-110"
                 onClick={prev}
@@ -71,11 +71,11 @@ export default function our_client({
             </div>
           </div>
 
-          <div>
-            <h1 className="text-[24px] font-bold text-[#1E1E2B] text-right">
+          <div  dir = {dir==="rtl" ? "ltr" : "rtl"}>
+            <h1 className="text-[24px] font-bold text-[#1E1E2B] ">
               {t("our_client")}
             </h1>
-            <p className="text-[#1E1E2B99] text-[14px] text-right">
+            <p className="text-[#1E1E2B99] text-[14px] ">
               {t("our_client_paragraph")}
             </p>
           </div>

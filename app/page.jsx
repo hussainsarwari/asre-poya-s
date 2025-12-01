@@ -1,10 +1,10 @@
 
 
 import Section1 from "./home_components/section1.jsx";
-import Section2 from "./home_components/advantage_asrePoya.jsx";
-import Section3 from "./home_components/our_products.jsx";
-import Section4 from "./home_components/client_opinion.jsx";
-import Section5 from "./home_components/about_us_section.jsx";
+import Advantage_asrePoya from "./home_components/advantage_asrePoya.jsx";
+import Our_product from "./home_components/our_products.jsx";
+import Client_opinion from "./home_components/client_opinion.jsx";
+import About_us_section from "./home_components/about_us_section.jsx";
 import Loaded from '@/app/components/loading.jsx'
 
 export default function Home() {
@@ -15,10 +15,10 @@ export default function Home() {
       <Loaded />
     
           <Section1 />
-          <Section2 />
-          <Section3 />
-          <Section4 />
-          <Section5 />
+          <Advantage_asrePoya />
+          <Our_product />
+          <Client_opinion />
+          <About_us_section />
          
        
     </div>

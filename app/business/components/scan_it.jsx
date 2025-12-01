@@ -5,10 +5,10 @@ import barcodeImg from "@/public/icons/barcode.svg"
 import clipboard from "@/public/icons/clipboard-white.svg"
 import programmingImg from "@/public/icons/img_programming.svg"
 export default function Section3() {
-    const { t } = useLanguage();
+    const { t,dir } = useLanguage();
     return (
         <>
-            <div dir='rtl' className='lg:-mt-[118px] md:-my-18 mx-auto lg:w-[1056px] w-[302px] md:w-[616px]'>
+            <div dir= {dir === "ltr" ? "rtl" : "ltr"} className='lg:-mt-[118px] md:-my-18 mx-auto lg:w-[1056px] w-[302px] md:w-[616px]'>
 
                 <div className='hidden lg:block'>
 

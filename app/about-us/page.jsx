@@ -6,7 +6,7 @@ import Section1 from "./component/section1.jsx";
 import Loaded from "@/app/components/loading.jsx";
 export default function AboutUs() {
   return (
-    <div className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto mt-[56px] mb-[7px]">
+    <div  className="w-[300px] md:w-[616px] lg:w-[1056px] mx-auto mt-[126px] mb-[7px]">
       <Loaded />
       <Section1 />
       <Gallery />

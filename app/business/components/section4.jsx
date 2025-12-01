@@ -5,10 +5,10 @@ import activeuserman from "@/public/icons/user_man.svg"
 import activeusergirl from "@/public/icons/user_girl.svg"
 
 export default function Section4() {
-    const { t } = useLanguage()
+    const { t,dir } = useLanguage()
     return (
 
-        <div dir='rtl' className='mt-10 md:mt-24'>
+        <div dir= {dir === "ltr" ? "rtl" : "ltr"} className='mt-10 md:mt-24'>
             <h3 className='lg:text-[24px] text-[20px] font-semibold mb-[20px]  mx-auto w-[302px] lg:w-[1056px] md:w-[616px]'>
                 {t("business_page_section4")}
             </h3>

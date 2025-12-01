@@ -13,7 +13,7 @@ export default function Footer() {
   const sidebarDir = dir;
   return (
     
-    <footer dir={sidebarDir=='rtl'? "ltr":"rtl"} className="bg-[#1E1E2B] w-full   mt-20 py-10 h-[591px] md:h-[587px] lg:h-[430px]  relative overflow-y-hidden">
+    <footer dir={sidebarDir=='ltr'? "ltr":"rtl"} className="bg-[#1E1E2B] w-full   mt-20 py-10 h-[591px] md:h-[587px] lg:h-[430px]  relative overflow-y-hidden">
       {/* it should be cetner */}
       <div className="flex flex-col items-center gap-5 justify-evenly w-[360px] md:w-[616px] lg:w-[1056px] absolute left-1/2 -translate-x-1/2 ">
         
@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="w-full lg:w-[70%]">
           <p
             className={`text-[#FFFFFFCC] text-sm sm:text-md ${
-              dir === "rtl"
+              dir === "ltr"
                 ? "flex-row-reverse text-right"
                 : "flex-row text-left"
             }`}
@@ -45,44 +45,44 @@ export default function Footer() {
         <h2 className=" text-end text-white lg:w-100 text-[20px] lg:text-[24px]">
           {t("contact_info")}
         </h2>
-        <div className={`grid w-full grid-cols-2  grid-rows-2 gap-4  text-sm text-white lg:gap-8 lg:grid-cols-4 lg:grid-rows-1 `}>
-          <div className={`w-full text-sm h-30 lg:h-15  ${dir=='ltr'&&"border-[#06B1FD33] border-l pl-8"}`}>
+        <div className={`grid w-full grid-cols-2  grid-rows-2 gap-4  text-sm text-white lg:gap-1 lg:grid-cols-4 lg:grid-rows-1 `}>
+          <div className={`w-full text-sm h-30 lg:h-15  ${dir=='rtl'&&"border-[#06B1FD33] border-l pl-2"}`}>
             <h3  className="flex items-center justify-end pb-4">
               {t("job")}
                 <Image src={sms} alt="jobs" width={20} />
             </h3>
               <Link href={"/jobs_page"}>
-            <p className="text-[#FFFFFF99] " dir={sidebarDir}>{t("jobList")}</p>
+            <p className="text-[#FFFFFF99] px-2" dir = {dir==="rtl" ? "ltr" : "rtl"}>{t("jobList")}</p>
               </Link>
           </div>
           {/* <div className="border-l h-30 lg:h-15 w-full text-sm border-[#06B1FD33]"> */}
-        <div  className={`w-full text-sm h-30 lg:h-15  ${dir=='ltr'?"border-[#06B1FD33] lg:border-l lg:pl-8":"border-[#06B1FD33] border-l "}`}>
+        <div  className={`w-full text-sm h-30 lg:h-15  ${dir=='rtl'?"border-[#06B1FD33] lg:border-l lg:pl-8":"border-[#06B1FD33] border-l "}`}>
             <h3 className="flex items-center justify-end gap-1 pb-4">
               {t("email")}
               <span>
                 <Image src={sms} alt="email" width={20} />
               </span>
             </h3>
-            <p className="text-[#FFFFFF99] " dir={sidebarDir}>email@asrepoya.com</p>
+            <p className="text-[#FFFFFF99] " dir = {dir==="rtl" ? "ltr" : "rtl"}>email@asrepoya.com</p>
           </div>
-         <div  className={`w-full text-sm h-30 lg:h-15  ${dir=='ltr'?"border-[#06B1FD33] border-l pl-8":"lg:border-[#06B1FD33] lg:border-l "}`}>
+         <div  className={`w-full text-sm h-30 lg:h-15  ${dir=='rtl'?"border-[#06B1FD33] border-l pl-8":"lg:border-[#06B1FD33] lg:border-l "}`}>
            <h3 className="flex items-center justify-end gap-1 pb-4">
               {t("call")}
               <span>
                 <Image src={call} alt="phone_number" width={20} />
               </span>
             </h3>
-            <p className="text-[#FFFFFF99] " dir={sidebarDir}>+9377777777777</p>
+            <p className="text-[#FFFFFF99] " dir = {dir==="rtl" ? "ltr" : "rtl"}>+9377777777777</p>
           </div>
-         <div  className={`w-full text-sm h-30 lg:h-15  ${dir=='ltr'?"":"border-[#06B1FD33] border-l "}`}>
+         <div  className={`w-full  text-sm h-30 lg:h-15  ${dir=='rtl'?"":"border-[#06B1FD33] border-l "}`}>
            <h3 className="flex justify-end gap-1 pb-4">
               {t("location")}
               <span>
                 <Image src={location} alt="location" width={20} />
               </span>
             </h3>
-            <p className="text-[#FFFFFF99] " dir={sidebarDir}>{t("addressmazar")}</p>
-            <p className="text-[#FFFFFF99] " dir={sidebarDir}>{t("addresskabul")}</p>
+            <p className="text-[#FFFFFF99] " dir = {dir==="rtl" ? "ltr" : "rtl"}>{t("addressmazar")}</p>
+            <p className="text-[#FFFFFF99] " dir = {dir==="rtl" ? "ltr" : "rtl"}>{t("addresskabul")}</p>
           </div>
         </div>
       </div>

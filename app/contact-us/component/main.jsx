@@ -9,7 +9,7 @@ import call from "@/public/icons/footer/call.svg";
 import location from "@/public/icons/footer/location.svg";
 
 export default function main() {
-  const { t } = useLanguage();
+  const { t ,dir } = useLanguage();
 
 
    const { isLoading, showLoading, hideLoading } = useLoading();
@@ -30,7 +30,7 @@ export default function main() {
 
 
   return (
-    <div className="flex flex-col gap-0 lg:gap-8    mx-auto    mt-[89px]  lg:mt-[142px] w-[300px] md:w-[616px]  lg:w-[1056px]" dir="rtl">
+    <div dir = {dir==="rtl" ? "ltr" : "rtl"} className="flex flex-col gap-0 lg:gap-8    mx-auto    mt-[89px]  lg:mt-[142px] w-[300px] md:w-[616px]  lg:w-[1056px]" >
       {/* عنوان */}
  
       <h2 className="text-[20px] lg:text-[32px] font-bold text-[#1E1E2B]">{t("contactus")}</h2>

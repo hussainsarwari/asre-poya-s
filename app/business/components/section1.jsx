@@ -5,14 +5,14 @@ import playerIcon from "@/public/icons/player_icon.svg"
 import Clipboardblack from "@/public/icons/clipboard-black.svg"
 
 export default function Section1() {
-    const { t } = useLanguage();
+    const { t ,dir} = useLanguage();
 
     return (
         <>
-            <div className='flex flex-col-reverse md:flex-row w-[340px] mx-auto lg:justify-between z-90 md:w-[744px] lg:w-[1056px]'>
+            <div dir= {dir === "rtl" ? "rtl" : "ltr"}  className='flex flex-col-reverse md:flex-row w-[340px] mx-auto lg:justify-between  md:w-[616px] lg:w-[1056px]'>
 
                 {/* video box */}
-                <div className="lg:w-[375px] lg:h-[359px] w-[300px] h-[285px] m-auto rounded-[80px] bg-[#1E1E2B0D] md:w-[335px] md:h-[349px]">
+                <div className="lg:w-[375px] lg:h-[359px] w-[300px] h-[285px] m-auto rounded-[80px] bg-[#1E1E2B0D] md:w-[300px] md:h-[300px]">
 
                     {/* player icon */}
                     <div className='flex flex-col items-center justify-center h-full '>
@@ -21,10 +21,10 @@ export default function Section1() {
                     </div>
                       {/* buttons */}
                     <div className='flex flex-row-reverse mt-10 md:hidden'>
-                        <button className=' duration-300     bg-[#06B1FD] py-3 px-0  rounded-xl w-[290px] text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border h-[46px] hover:text-[#06B1FD]'>
+                        <button className=' duration-300     bg-[#06B1FD] py-3 px-1  rounded-xl w-fit text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border h-[46px] hover:text-[#06B1FD]'>
                             {t("businesspageSartnowBtn")}
                         </button>
-                        <button className=' duration-300     border mx-[14.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-0 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white w-[290px] h-[46px]'>
+                        <button className=' duration-300     border mx-[14.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-3 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white w-fit h-[46px]'>
                             {t("FreeOnlineConsultation")}
 
                         </button>
@@ -36,7 +36,7 @@ export default function Section1() {
 
 
                 {/* text */}
-                <div className='lg:w-[601px] w-[302px]  md:w-[341px] my-4 md:my-0' dir='rtl'>
+                <div className='lg:w-[601px] w-[302px]  md:w-[301px] my-4 md:my-0' dir= {dir === "ltr" ? "rtl" : "ltr"}  >
                     <h1 className='lg:text-[14px] md:text-[10px]  text-[#06B1FD] h-[22px] text-[#1E1E2B]'>
                         {t("businessPageTitle")}
 
@@ -55,11 +55,11 @@ export default function Section1() {
                         {t("businesspageparagraph2")}
                     </p>
                     {/* buttons */}
-                    <div className='hidden mt-10 md:block'>
-                        <button className=' duration-300     bg-[#06B1FD] py-3 px-4 lg:px-6 rounded-xl lg:w-[137px] lg:h-[46px] text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border hover:text-[#06B1FD]'>
+                    <div className='hidden mt-10 md:flex'>
+                        <button className=' duration-300     bg-[#06B1FD] py-3 px-1 lg:px-6 rounded-xl lg:w-[137px] lg:h-[46px] text-white text-[14px] cursor-pointer hover:bg-white hover:border-[#06B1FD] border hover:text-[#06B1FD]'>
                             {t("businesspageSartnowBtn")}
                         </button>
-                        <button className=' duration-300     border mx-[24.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-6 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white lg:w-[178.5px] lg:h-[46px]'>
+                        <button className=' duration-300     border mx-[24.5px] border-[#06B1FD] text-[#06B1FD] py-3 px-2 rounded-xl text-[14px] cursor-pointer hover:bg-[#06B1FD] hover:text-white lg:w-fit lg:h-[46px]'>
                             {t("FreeOnlineConsultation")}
 
                         </button>

@@ -8,8 +8,11 @@ import img3 from "@/public/images/img3.svg";
 import img4 from "@/public/images/img4.svg";
 import img5 from "@/public/images/img5.svg";
 import ArrowKey from "@/public/icons/arrow.svg";
+import { useLanguage } from "../../provider/languageProvider";
 
 export default function Gallery() {
+    const { dir } = useLanguage();
+
   const [images, setImages] = useState([img1, img2, img3, img4, img5]);
   const [loadedImages, setLoadedImages] = useState(
     [0, 1, 2, 3, 4].reduce((acc, i) => ({ ...acc, [`img${i + 1}`]: false }), {})
