@@ -393,7 +393,7 @@ export default function Header() {
               : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
             : productOpenDesktop
             ? "absolute h-82 top-12 z-900 bg-white shadow-sm"
-            : "absolute h-16 top-10 z-90 bg-white "
+            : "absolute h-16 top-12 z-90 bg-white "
         }`}
       >
         <div className="flex items-center justify-between lg:w-[1056px] md:w-[616px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
@@ -574,27 +574,27 @@ export default function Header() {
                 {t("doctor_assistant")}
               </h1>
               <ul className="flex flex-col gap-3 mt-3 text-[#706f6f] list-disc pr-10 marker:text-[#06B1FD]">
-                <Link href={"/product/doctor-assistant/hospital"}>
+                <Link onClick={setActive("product")} href={"/product/doctor-assistant/hospital"}>
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("hospital")}
                   </li>
                 </Link>
-                <Link href={"/product/doctor-assistant/clinic"}>
+                <Link onClick={setActive("product")} href={"/product/doctor-assistant/clinic"}>
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("clinic")}
                   </li>
                 </Link>
-                <Link href={"/product/doctor-assistant/pharmacy"}>
+                <Link onClick={setActive("product")} href={"/product/doctor-assistant/pharmacy"}>
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("pharmacy")}
                   </li>
                 </Link>
-                <Link href={"/product/doctor-assistant/laborator"}>
+                <Link onClick={setActive("product")} href={"/product/doctor-assistant/laborator"}>
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("laborator")}
                   </li>
                 </Link>
-                <Link href={"/product/doctor-assistant/operation"}>
+                <Link onClick={setActive("product")} href={"/product/doctor-assistant/operation"}>
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("operation")}
                   </li>
@@ -613,7 +613,7 @@ export default function Header() {
                 {t("business_assistant")}
               </h1>
               <ul className="flex flex-col gap-3 mt-3 mr-4 text-[#706f6f] list-disc pr-5 marker:text-[#06B1FD]">
-                <Link
+                <Link onClick={setActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_standerd"
                   }
@@ -622,7 +622,7 @@ export default function Header() {
                     {t("business_assistant_standard")}
                   </li>
                 </Link>
-                <Link
+                <Link onClick={setActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_proffessional"
                   }
@@ -631,7 +631,7 @@ export default function Header() {
                     {t("business_assistant_proffessional")}
                   </li>
                 </Link>
-                <Link
+                <Link onClick={setActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_multi_profile"
                   }

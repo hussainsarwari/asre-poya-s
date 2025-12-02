@@ -19,13 +19,13 @@ export default function Product(){
 
 
 
-{/* <Customized_software_development_services />
+<Customized_software_development_services />
 <Know_needs />
  <Specializing_in_custom_software />
  <Software_development_lifecycle />
 <Ask_project_price />
 <My_project />
-<Client_opinion />*/}
+<Client_opinion />
  <Faq /> 
 <Counseling /> 
 

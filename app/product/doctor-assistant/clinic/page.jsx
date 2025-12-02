@@ -11,7 +11,7 @@ export default function clinic() {
     <>
     <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto flex flex-col">
         <Loading />
-      <Section1 SectionName='clinic'/>
+      <Section1 SectionName='doctor_assistant'/>
       <Main_feature_software SectionName='clinic'/>
       <Why_choose_us SectionName='clinic'/>     
       <Software_versions SectionName='clinic'/>

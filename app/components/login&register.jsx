@@ -5,7 +5,7 @@ import { useLanguage } from "../provider/languageProvider";
 import arrow from "@/public/icons/products/arrow-left_black.svg"
 import Image from "next/image";
 export default function LoginModal({ open, onClose }) {
-  const { t, lang, setLang, dir } = useLanguage();
+  const { t,  dir } = useLanguage();
   const [flag, setFlag] = useState(false);
   useEffect(() => {
     // جلوگیری از اسکرول هنگام باز بودن مودال
