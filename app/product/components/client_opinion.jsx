@@ -11,26 +11,26 @@ import arr from "@/public/icons/products/arrow-circle-right.svg";
 export default function client_opinion({
   SectionName,
 }) {
-  const { t } = useLanguage();
+  const { t ,dir} = useLanguage();
 
   return (
-    <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-20">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto my-20">
       <div className="flex flex-col items-end">
         <h1 className="relative text-[20px] font-bold lg:text-[32px] text-[#1E1E2B]">
           {t("client_opinion_title")}
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3 z-[-1]"
+            className={`absolute  h-full top-3 z-[-1] ${dir === "rtl" ? "[transform:rotateY(180deg)] left-0":"right-0" }`}
           />
         </h1>
-        <p className="text-right text-[14px] text-[#1E1E2B99] mt-1">
+        <p  dir={dir=="ltr"?"rtl":"ltr"} className=" text-[14px] text-[#1E1E2B99] mt-1">
           {t("client_opinion_pargraph")}
         </p>
       </div>
       <div className="flex flex-col-reverse justify-between mt-10 md:flex-row">
         {/* image */}
-        <div className="md:w-[298px] lg:w-[663px] h-[305px]  relative overflow-hidden  rounded-[16px]">
+        <div className="md:w-[298px] lg:w-[663px] h-[305px]  relative overflow-hidden   rounded-[16px]">
           <Image
             src={programming_img}
             alt="programming image"
@@ -43,7 +43,7 @@ export default function client_opinion({
         </div>
 
         {/* text */}
-        <div className="lg:w-[305px] w-[298px] flex flex-col items-end justify-around">
+        <div className="lg:w-[305px] md:w-[298px] w-full flex flex-col  items-end  justify-around">
           <h4 className="flex  text-[#06B1FD] text-[16px] items-center gap-3">
             {t("doctor_assistant")}
             <Image src={arr} alt="arr" />

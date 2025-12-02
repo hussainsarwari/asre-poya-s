@@ -38,7 +38,7 @@ const projects = [
 ];
 
 export default function MyProject() {
-  const { t } = useLanguage();
+  const { t,dir} = useLanguage();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function MyProject() {
   };
 
   return (
-    <div className="w-[360px] md:w-[616px] lg:w-[1056px] m-auto my-20 transition-all duration-500 ease-in-out">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto my-20 transition-all duration-500 ease-in-out">
 
       {/* header */}
       <div className="flex flex-col items-end">
@@ -66,8 +66,8 @@ export default function MyProject() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3 z-[-1]"
-          />
+             className={`absolute  h-full ${dir === "rtl" && "[transform:rotateY(180deg)]" } top-3 ${dir=="ltr"?"right-0":"left-0"}`}
+        />
         </h1>
         <p className="text-right text-[16px] text-[#1E1E2B99] mt-1">
           {t("my_project_paragraph")}
@@ -129,7 +129,7 @@ export default function MyProject() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.6 }}
-              className="text-right text-[14px] mt-[14px] text-[#1E1E2BCC]"
+              className={` text-[14px] mt-[14px] text-[#1E1E2BCC] ${dir=="ltr"?"text-right":"text-left"}`}
             >
               {t(current.textKey)}
             </motion.p>
@@ -142,8 +142,8 @@ export default function MyProject() {
               className="flex justify-start gap-3 items-center flex-row-reverse w-[255px]"
             >
               <Image src={current.icon} alt="client icon" className="w-12" />
-              <h6 className="text-[#1E1E2BCC] text-[20px]">
-                {t("services_page_my_project_safarish")}{" "}
+              <h6 className={`text-[#1E1E2BCC] text-[20px]  ${dir=="ltr"?"text-right":"text-left"}`}>
+                 {t("services_page_my_project_safarish")}
                 <span className="font-bold">{t(current.clientKey)}</span>
               </h6>
             </motion.div>
