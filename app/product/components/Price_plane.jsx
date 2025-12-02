@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Price_plane({
   SectionName,
 }) {
-  const { t } = useLanguage();
+  const { t ,dir} = useLanguage();
   const [selectedSoft, setSelectedSoft] = useState("doctor");
 
   // دیتای داینامیک — فقط لازم برای سوییچ
@@ -21,46 +21,47 @@ export default function Price_plane({
   };
 
   return (
-    <div className="w-[380px] md:w-[616px] lg:w-[1056px] m-auto mt-20">
+    <div dir={dir=="ltr"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto mt-20 overflow-hidden">
       <div className="flex flex-col items-end w-full">
-        <h1 className="relative w-full text-right text-[#1E1E2B] lg:text-[32px] font-bold">
+        <h1 className="relative w-full  text-[#1E1E2B] lg:text-[32px] font-bold">
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3 z-[-1]"
-          />
+                className={`absolute h-full top-3 ${dir === "rtl" ? "[transform:rotateY(180deg)] left-0":"right-0" }`}
+                     />
           {t("product_price_plane_title")}
         </h1>
-        <p className="text-[14px] text-[#1E1E2B99] mt-2">
+        <p className={`text-[14px] text-[#1E1E2B99] mt-2   w-full ${dir=="ltr"?"text-right":"text-left"}  `}>
           {t("product_price_plane_paragraph")}
         </p>
       </div>
 
       {/* SOFTWARE BUTTONS */}
-      <div className="relative my-11">
-        <ul className="w-[580px] flex gap-3 items-end justify-end absolute right-0 ">
+      <div className="relative my-11 ">
+        <ul className={`w-[580px] flex gap-3 items-end  absolute  ${dir=="ltr"? "right-0 text-left":"left-0"}`}>
 
           {/* doctor */}
           <li
             onClick={() => setSelectedSoft("doctor")}
-            className={`cursor-pointer flex flex-row-reverse gap-1 w-[146px] h-10 rounded-2xl items-center justify-center 
+            className={`cursor-pointer flex  gap-1 ${dir=="rtl"? "flex-row":"flex-row"} w-[146px] h-10 rounded-2xl items-center justify-center 
             ${
               selectedSoft === "doctor"
                 ? "bg-[#06B1FD] text-white"
                 : "bg-[#1E1E2B0D] text-[#1E1E2BCC]"
             }`}
           >
+          
             {t("doctor_assistant")}
               {selectedSoft === "doctor" &&
-            <Image src={arr_left} alt="arrow left" className="rotate-180" />
+            <Image src={arr_left} alt="arrow left" className={`${dir=="ltr"&&"rotate-180"}`} />
 }
           </li>
 
           {/* pharmacy */}
           <li
             onClick={() => setSelectedSoft("pharmacy")}
-            className={`cursor-pointer flex flex-row-reverse gap-1 w-[146px] h-10 rounded-2xl items-center justify-center 
-            ${
+            className={`cursor-pointer flex  gap-1 ${dir=="rtl"? "flex-row":"flex-row"} w-[146px] h-10 rounded-2xl items-center justify-center 
+             ${
               selectedSoft === "pharmacy"
                 ? "bg-[#06B1FD] text-white"
                 : "bg-[#1E1E2B0D] text-[#1E1E2BCC]"
@@ -68,15 +69,15 @@ export default function Price_plane({
           >
             {t("doctor_assistant")}
             {selectedSoft === "pharmacy" &&
-            <Image src={arr_left} alt="arrow left" className="rotate-180" />
+            <Image src={arr_left} alt="arrow left" className={`${dir=="ltr"&&"rotate-180"}`} />
             }
           </li>
 
           {/* lab */}
           <li
             onClick={() => setSelectedSoft("lab")}
-            className={`cursor-pointer flex flex-row-reverse gap-1 w-[146px] h-10 rounded-2xl items-center justify-center 
-            ${
+           className={`cursor-pointer flex  gap-1 ${dir=="rtl"? "flex-row":"flex-row"} w-[146px] h-10 rounded-2xl items-center justify-center 
+             ${
               selectedSoft === "lab"
                 ? "bg-[#06B1FD] text-white"
                 : "bg-[#1E1E2B0D] text-[#1E1E2BCC]"
@@ -84,7 +85,7 @@ export default function Price_plane({
           >
             {t("doctor_assistant")}
               {selectedSoft === "lab" &&
-            <Image src={arr_left} alt="arrow left" className="rotate-180" />
+            <Image src={arr_left} alt="arrow left" className={`${dir=="ltr"&&"rotate-180"}`} />
 }
           </li>
 
@@ -93,7 +94,7 @@ export default function Price_plane({
 
    <div className="flex flex-col gap-6 -mt-10 lg:flex-row">
 {/* PLANS */}
-<div className="flex flex-col items-center gap-6 my-25 lg:flex-row">
+<div  dir={dir=="rtl"?"rtl":"ltr"}  className="flex flex-col items-center gap-6 my-25 lg:flex-row">
   <AnimatePresence mode="sync">
     {plans[selectedSoft].map((p, index) => (
       <motion.div
@@ -117,7 +118,7 @@ export default function Price_plane({
           </span>
         </p>
 
-        <p className="text-[14px] text-[#1E1E2B99] text-right my-3">
+        <p className="text-[14px] text-[#1E1E2B99]  my-3">
           {t(`${p}_paragraph`)}
         </p>
 

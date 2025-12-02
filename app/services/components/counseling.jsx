@@ -16,7 +16,7 @@ import client9 from "@/public/icons/home/Frame9.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 
 export default function FreeConsultation() {
-  const { t } = useLanguage();
+  const { t ,dir} = useLanguage();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -43,7 +43,7 @@ export default function FreeConsultation() {
   const clients = [client1, client2, client3, client4, client5, client6,client7,client8,client9];
 
   return (
-    <div className="flex flex-col mx-auto w-[360px] md:w-[616px] lg:w-[1059px] md:flex md:gap-16 mt-20">
+    <div dir={dir=="ltr"?"ltr":"rtl"} className="flex flex-col mx-auto w-[350px] md:w-[616px] lg:w-[1059px] md:flex md:gap-16 mt-20">
       <div className="flex flex-col items-end">
         <h2 className="mb-4 text-2xl text-[#1E1E2B] relative font-bold">
           {t("free_counseling")}
@@ -51,8 +51,8 @@ export default function FreeConsultation() {
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 h-full top-3 z-[-1]"
-          />
+             className={`absolute  h-full ${dir === "rtl" && "[transform:rotateY(180deg)]" } top-3 ${dir=="ltr"?"right-0":"left-0"}`}
+        />
         </h2>
         <p className="mb-6 text-[#1E1E2B99] text-[16px]">
           {t("form_description")}
@@ -62,43 +62,48 @@ export default function FreeConsultation() {
       {/* Left: Form */}
       <div className="flex flex-col-reverse justify-between md:flex-row">
         <form
+        dir={dir=="ltr"?"ltr":"rtl"}
           onSubmit={handleSubmit}
           className="lg:w-[415px] md:w-[292px] w-full lg:h-[364px] bg-[#1E1E2B08] rounded-2xl lg:px-10 px-5 pb-5 my-10 md:my-0"
         >
           <input
+          dir={dir=="rtl"?"ltr":"rtl"}
             type="text"
             name="name"
             placeholder={t("placeholder_name")}
             value={form.name}
             onChange={handleChange}
-            className="border-b border-[#1E1E2B1A] w-full h-10 text-right mt-5 focus:outline-0"
-            dir="rtl"
+            className="border-b border-[#1E1E2B1A] w-full h-10  mt-5 focus:outline-0"
+           
           />
           <input
+          dir={dir=="rtl"?"ltr":"rtl"}
             type="email"
             name="email"
             placeholder={t("placeholder_email")}
             value={form.email}
             onChange={handleChange}
-            className="border-b border-[#1E1E2B1A] w-full h-10 text-right mt-5 focus:outline-0"
-            dir="rtl"
+            className="border-b border-[#1E1E2B1A] w-full h-10  mt-5 focus:outline-0"
+           
           />
           <input
+          dir={dir=="rtl"?"ltr":"rtl"}
             type="text"
             name="phone"
             placeholder={t("placeholder_phone")}
             value={form.phone}
             onChange={handleChange}
-            className="border-b border-[#1E1E2B1A] w-full h-10 text-right mt-5 focus:outline-0"
-            dir="rtl"
+            className="border-b border-[#1E1E2B1A] w-full h-10  mt-5 focus:outline-0"
+           
           />
           <textarea
+          dir={dir=="rtl"?"ltr":"rtl"}
             name="message"
             placeholder={t("placeholder_message")}
             value={form.message}
             onChange={handleChange}
-            className="border-b border-[#1E1E2B1A] w-full h-8 text-right mt-5 focus:outline-0"
-            dir="rtl"
+            className="border-b border-[#1E1E2B1A] w-full h-8  mt-5 focus:outline-0"
+           
           />
 
           <button
@@ -110,7 +115,7 @@ export default function FreeConsultation() {
         </form>
 
         {/* Right: Steps + Clients */}
-        <div className="flex flex-col justify-between  lg:h-[354px]  md:w-[292px] lg:w-[587px]" dir="rtl">
+        <div dir={dir=="rtl"?"ltr":"rtl"} className="flex flex-col justify-between  lg:h-[354px]  md:w-[292px] lg:w-[587px]">
           <div className="flex flex-col gap-6">
             {steps.map((step, idx) => (
               <div

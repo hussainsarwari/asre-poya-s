@@ -8,7 +8,7 @@ import arr_down from "@/public/icons/products/arrow-down.svg";
 import arrow_black from "@/public/icons/products/arrow-left_black.svg";
 
 export default function FAQSection() {
-  const { t, lang } = useLanguage();
+  const { t, dir } = useLanguage();
 
   const faqs1 = [
     { question: t("faq_q1"), answer: t("faq_a1") },
@@ -30,16 +30,16 @@ export default function FAQSection() {
 
   return (
     <div
-      className={`lg:w-[1056px] md:w-[616px] w-[380px] mx-auto py-0 px-4 ${
-        lang === "fa" ? "text-right" : "text-left"
+      className={`lg:w-[1056px] md:w-[616px] w-[350px] mx-auto py-0 px-4 ${
+        dir === "ltr" ? "text-right" : "text-left"
       }`}
     >
-      <h2 className="relative mb-6 text-2xl font-bold text-[#1E1E2B] text-[24px]">
+      <h2 className="relative mb-6  font-bold text-[#1E1E2B] lg:text-[24px] text-24">
         {t("specializing_title")}
         <Image
           src={Rectangle}
           alt="Rectangle"
-          className="absolute right-0 h-full top-3"
+          className={`absolute  h-full ${dir === "rtl" && "[transform:rotateY(180deg)]" } top-3 ${dir=="ltr"?"right-0":"left-0"}`}
         />
       </h2>
 
@@ -63,11 +63,11 @@ export default function FAQSection() {
                     openIndex === unifiedIndex
                       ? "bg-[#06B1FD0D]"
                       : "bg-[#1E1E2B0D]"
-                  } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold text-right px-4 lg:text-[18px] ${
+                  } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold px-4 lg:text-[18px] ${
                     openIndex === unifiedIndex ? "text-[#06B1FD]" : "text-[#1E1E2B]"
-                  } ${lang !== "fa" ? "flex-row" : "flex-row-reverse"}`}
+                  } ${dir == "rtl" ? "flex-row" : "flex-row-reverse"}`}
                 >
-                  <span>{faq.question}</span>
+                  <span className={`${dir=="ltr"?"text-right":"text-left"} w-110`}>{faq.question}</span>
                   <span
                     className={`transition-transform duration-200 ${
                       openIndex === unifiedIndex ? "rotate-180" : "rotate-0"
@@ -76,7 +76,7 @@ export default function FAQSection() {
                     {openIndex === unifiedIndex ? (
                       <Image src={arr_down} alt="arrow" className="rotate-180" />
                     ) : (
-                      <Image src={arrow_black} alt="arrow" />
+                      <Image src={arrow_black} alt="arrow" width={22} className={`${dir=="rtl"&&"rotate-180"}`} />
                     )}
                   </span>
                 </button>
@@ -91,7 +91,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A] text-right rounded-[12px] mt-4">
+                      <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A]  rounded-[12px] mt-4">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -116,11 +116,11 @@ export default function FAQSection() {
                     openIndex === unifiedIndex
                       ? "bg-[#06B1FD0D]"
                       : "bg-[#1E1E2B0D]"
-                  } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold text-right px-4 lg:text-[18px] ${
+                  } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold  px-4 lg:text-[18px] ${
                     openIndex === unifiedIndex ? "text-[#06B1FD]" : "text-[#1E1E2B]"
-                  } ${lang !== "fa" ? "flex-row" : "flex-row-reverse"}`}
+                  } ${dir == "rtl" ? "flex-row" : "flex-row-reverse"}`}
                 >
-                  <span>{faq.question}</span>
+                  <span className={`${dir=="ltr"?"text-right":"text-left"} w-110`}>{faq.question}</span>
                   <span
                     className={`transition-transform duration-200 ${
                       openIndex === unifiedIndex ? "rotate-180" : "rotate-0"
@@ -129,7 +129,7 @@ export default function FAQSection() {
                     {openIndex === unifiedIndex ? (
                       <Image src={arr_down} alt="arrow" className="rotate-180" />
                     ) : (
-                      <Image src={arrow_black} alt="arrow" />
+                        <Image src={arrow_black} alt="arrow" width={22} className={`${dir=="rtl"&&"rotate-180"}`} />
                     )}
                   </span>
                 </button>
@@ -144,7 +144,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A] text-right rounded-[12px] mt-4">
+                      <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A]  rounded-[12px] mt-4">
                         {faq.answer}
                       </div>
                     </motion.div>

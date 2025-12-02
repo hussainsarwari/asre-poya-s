@@ -11,20 +11,20 @@ import Rectangle from "@/public/icons/products/Rectangle.svg";
 export default function main_feature_software({
   SectionName,
 })  {
-  const { t } = useLanguage();
+  const { t,dir } = useLanguage();
 
   return (
-    <div className="lg:w-[1056px] md:w-[616px] w-[350px]  m-auto  md:mt-50 mt-30 ">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="lg:w-[1056px] md:w-[616px] w-[350px]  m-auto  md:mt-50 mt-30 ">
       <div className="flex flex-col items-end ">
-        <h1 className="text-[#1E1E2B] lg:text-[32px] text-[20px]  relative font-bold">
+        <h1 dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B] lg:text-[32px] text-[16px]  relative font-bold">
             {SectionName}  {t("product_section3_title")} 
           <Image
             src={Rectangle}
             alt="Rectangle"
-            className="absolute right-0 top-3 lg:top-7 md:top-3 z-[-1]"
+           className={`absolute  h-full top-1 lg:top-3 ${dir === "rtl" ? "[transform:rotateY(180deg)] left-0":"right-0" }`}
           />
         </h1>
-        <p className="text-[14px] text-[#1E1E2B99] text-right my-2">
+        <p className="text-[14px] text-[#1E1E2B99]  my-2">
           {t("product_section3_paragraph")}
       
         </p>
@@ -32,12 +32,12 @@ export default function main_feature_software({
       <div className="grid grid-cols-2 grid-rows-3 gap-2 md:gap-10 lg:grid-cols-3 lg:grid-rows-2 lg:mt-15 lg:gap-3">
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative ">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon1} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box1_title")}                                                                                                                    
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box1_paragraph")}
           </p>
           <span className="text-[#06B1FD]  text-[12px] lg:text-[14px] font-bold lg:mt-2">
@@ -47,12 +47,12 @@ export default function main_feature_software({
         </div>
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon2} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box2_title")}
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box2_paragraph")}
           </p>
           <span className="text-[#06B1FD] text-[12px] lg:text-[14px] font-bold lg:mt-2">
@@ -62,12 +62,12 @@ export default function main_feature_software({
         </div>
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon3} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box3_title")}
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box3_paragraph")}
           </p>
           <span className="text-[#06B1FD] text-[12px] lg:text-[14px] font-bold lg:mt-2">
@@ -77,12 +77,12 @@ export default function main_feature_software({
         </div>
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon4} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box4_title")}
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box4_paragraph")}
           </p>
           <span className="text-[#06B1FD] text-[12px] lg:text-[14px] font-bold lg:mt-2">
@@ -92,12 +92,12 @@ export default function main_feature_software({
         </div>
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon5} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box5_title")}
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box5_paragraph")}
           </p>
           <span className="text-[#06B1FD] text-[12px] lg:text-[14px] font-bold lg:mt-2">
@@ -107,12 +107,12 @@ export default function main_feature_software({
         </div>
         <div className="flex flex-col justify-center items-end lg:w-[344px] lg:p-6 relative">
           {/* right blue border */}
-          <span className="md:border border-[#06B1FD] h-40 absolute -mr-6 "></span>
+          <span className="md:border border-[#06B1FD] h-40 absolute -mx-6 "></span>
           <Image src={code_icon6} alt="code" />
           <h1 className="lg:text-[24px] font-semibold text-[16px] text-[#1E1E2B] lg:mt-5">
             {t("product_section3__box6_title")}
           </h1>
-          <p className="text-[#1E1E2B99] tex-[14px] lg:text-[16px] text-right lg:mt-2">
+          <p dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B99] tex-[14px] lg:text-[16px]  lg:mt-2">
             {t("product_section3__box6_paragraph")}
           </p>
           <span className="text-[#06B1FD] text-[12px] lg:text-[14px] font-bold lg:mt-2">

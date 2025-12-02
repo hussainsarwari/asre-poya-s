@@ -10,7 +10,7 @@ import arrow_black from "@/public/icons/products/arrow-left_black.svg";
 export default function FAQSection({
   SectionName,
 })  {
-  const { t, lang } = useLanguage();
+  const { t, dir } = useLanguage();
 
   const faqs = [
     { question: t("faq_q1"), answer: t("faq_a1") },
@@ -22,8 +22,8 @@ export default function FAQSection({
 
   return (
     <div
-      className={`lg:w-[1056px] md:w-[616px] w-[380px] mx-auto py-12 px-4 ${
-        lang === "fa" ? "text-right" : "text-left"
+      className={`lg:w-[1056px] md:w-[616px] w-[350px] mx-auto py-12 px-4 ${
+        dir === "ltr" ? "text-right" : "text-left"
       }`}
     >
       <h2 className="relative mb-6 text-2xl font-bold text-[#1E1E2B] text-[24px]">
@@ -31,7 +31,7 @@ export default function FAQSection({
         <Image
           src={Rectangle}
           alt="Rectangle"
-          className="absolute right-0 h-full top-3"
+          className={`absolute h-full top-3 ${dir === "rtl" ? "[transform:rotateY(180deg)] left-0":"right-0" }`}
         />
       </h2>
 
@@ -48,9 +48,9 @@ export default function FAQSection({
                 openIndex === index ? "bg-[#06B1FD0D]" : "bg-[#1E1E2B0D]"
               } justify-between h-16 text-[16px] py-5 cursor-pointer font-semibold text-right px-4 lg:text-[18px] ${
                 openIndex === index ? "text-[#06B1FD]" : "text-[#1E1E2B]"
-              } ${lang !== "fa" ? "flex-row" : "flex-row-reverse"}`}
+              } ${dir !== "ltr" ? "flex-row" : "flex-row-reverse"}`}
             >
-              <span>{faq.question}</span>
+              <span className={`w-[80%] text-sm md:text-lg lg:text-[18px] ${dir=="ltr"?"text-right":"text-left"}`}>{faq.question}</span>
               <span
                 className={`transition-transform duration-200 ${
                   openIndex === index ? "rotate-180" : "rotate-0"
@@ -59,7 +59,7 @@ export default function FAQSection({
                 {openIndex === index ? (
                   <Image src={arr_down} alt="arrow" className="rotate-180" />
                 ) : (
-                  <Image src={arrow_black} alt="arrow" />
+                  <Image src={arrow_black} alt="arrow" className={`${dir === "rtl" && "[transform:rotateY(180deg)] " }`}/>
                 )}
               </span>
             </button>
@@ -75,7 +75,7 @@ export default function FAQSection({
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A] text-right rounded-[12px] mt-4">
+                  <div className="px-4 py-5 text-gray-600 border border-[#1E1E2B1A]  rounded-[12px] mt-4">
                     {faq.answer}
                   </div>
                 </motion.div>
