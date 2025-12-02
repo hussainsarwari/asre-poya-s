@@ -18,7 +18,7 @@ export default function LoginModal({ open, onClose }) {
   return (
     // login box
     <>
-      <div
+      <div dir={dir=="rtl"?"ltr":"rtl"}
         className={`fixed inset-0 flex items-center justify-center z-100 ${
           !flag ? "fixed" : "hidden"
         }`}
@@ -28,12 +28,12 @@ export default function LoginModal({ open, onClose }) {
 
         {/* باکس اصلی */}
         <div
-          dir="rtl"
+         
           className="relative md:w-[500px] md:h-[431px] w-full h-full bg-white rounded-2xl  px-10 py-6 text-center flex  justify-center md:justify-start  animate-fadeIn z-110"
         >
           <Image src={arrow} alt="arrow back btn"  className="fixed left-5 md:hidden" onClick={onClose}/>
           <div
-            dir="rtl"
+           
             className="fixed -translate-y-1/2 w-[344px] md:w-full top-1/2 md:static md:top-auto md:translate-y-0 "
           >
             <h2 className="mb-4 text-2xl font-bold text-[#1E1E2B] ">
@@ -49,14 +49,14 @@ export default function LoginModal({ open, onClose }) {
             {/* فیلد ایمیل */}
             <input
               type="email"
-              placeholder="ایمیل :"
+              placeholder={t("email_input")}
               className="md:w-[420px] w-[344px] h-[48px] py-2 px-4 mb-4 text-[12px] border rounded-lg focus:outline-none border-[#06B1FDCC]"
             />
 
             {/* فیلد رمز */}
             <input
               type="password"
-              placeholder="رمز عبور :"
+              placeholder={t("Password_input")}
               className="md:w-[420px] w-[344px] h-[48px] py-2 px-4 mb-4 text-[12px] border rounded-lg focus:outline-none border-[#06B1FDCC]"
             />
 
@@ -72,7 +72,7 @@ export default function LoginModal({ open, onClose }) {
                 {t("agree_end")}
               </span>
             </label>
-            <h6 className="mb-5 text-sm text-right">
+            <h6 className={`my-3 mb-5 text-sm ${dir=='ltr'?"text-right":"text-left"}`}>
               {t("i_dont_have_account")}
               <button
                 className="text-[#06B1FD] cursor-pointer"
@@ -96,7 +96,7 @@ export default function LoginModal({ open, onClose }) {
       </div>
 
       {/* ===========================  reigster box ======================================*/}
-      <div  className={`fixed inset-0 flex items-center justify-center z-100 ${
+      <div dir={dir=="rtl"?"ltr":"rtl"} className={`fixed inset-0 flex items-center justify-center z-100 ${
           flag ? "fixed" : "hidden"
         }`}>
         {/* بک‌دراپ */}
@@ -104,13 +104,13 @@ export default function LoginModal({ open, onClose }) {
 
         {/* باکس اصلی */}
         <div
-          dir="rtl"
+         
           className="relative md:w-[500px] md:h-[431px] w-full h-full bg-white rounded-2xl  px-10 py-6 text-center flex  justify-center md:justify-start  animate-fadeIn z-110"
         >
            <Image src={arrow} alt="arrow back btn"  className="fixed left-5 md:hidden" onClick={onClose}/>
          
           <div
-            dir="rtl"
+           
             className="fixed -translate-y-1/2 w-[344px] md:w-full top-1/2 md:static md:top-auto md:translate-y-0 "
           >
             <h2 className="mb-4 text-2xl font-bold text-[#1E1E2B] ">
@@ -126,14 +126,14 @@ export default function LoginModal({ open, onClose }) {
             {/* فیلد ایمیل */}
             <input
               type="email"
-              placeholder="ایمیل :"
+              placeholder={t("email_input")}
               className="md:w-[420px] w-[344px] h-[48px] py-2 px-4 mb-4 text-[12px] border rounded-lg focus:outline-none border-[#06B1FDCC]"
             />
 
             {/* فیلد رمز */}
             <input
               type="password"
-              placeholder="رمز عبور :"
+              placeholder={t("Password_input")}
               className="md:w-[420px] w-[344px] h-[48px] py-2 px-4 mb-4 text-[12px] border rounded-lg focus:outline-none border-[#06B1FDCC]"
             />
 
@@ -149,16 +149,16 @@ export default function LoginModal({ open, onClose }) {
                 {t("agree_end")}
               </span>
             </label>
-            <h6 className="mb-5 text-sm text-right">
-              {t("i_dont_have_account")}
+            <h6 className={`my-3 mb-5 text-sm ${dir=='ltr'?"text-right":"text-left"}`}>
+              {t("i_have_account")}
                <button
-                className="text-[#06B1FD] cursor-pointer"
+                className="text-[#06B1FD] cursor-pointer px-1"
                 onClick={() => {
                   setFlag(false);
                 
                 }}
               >
-                {t("register")}
+                {t("login")}
               </button>
             </h6>
           </div>
@@ -167,7 +167,7 @@ export default function LoginModal({ open, onClose }) {
             className="md:w-[420px] w-[344px] fixed md:absolute bottom-10 left-1/2 -translate-x-1/2
  h-[48px] py-3 font-semibold text-white transition bg-[#06B1FD] rounded-lg hover:shadow-xl cursor-pointer"
           >
-            {t("login")}
+            {t("register_form")}
           </button>
         </div>
       </div>
