@@ -11,7 +11,7 @@ export default function clinic() {
     <>
         <Loading />
     <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto flex flex-col">
-      <Section1 SectionName='business_assistant_standard'/>
+          <Section1 SectionName='bussiness_assistant'/>
       <Main_feature_software SectionName='business_assistant_standard'/>
       <Why_choose_us SectionName='business_assistant_standard'/>     
       <Software_versions SectionName='business_assistant_standard'/>
