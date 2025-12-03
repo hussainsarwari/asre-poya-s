@@ -26,6 +26,8 @@ export default function Header() {
 
   const [productOpenMobile, setProductOpenMobile] = useState(false);
   const [productOpenDesktop, setProductOpenDesktop] = useState(false);
+  const [businessesOpenMobile, setbusinessesOpenMobile] = useState(false);
+  const [businessesOpen, setbusinessesOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("activeMenu");
@@ -44,6 +46,47 @@ export default function Header() {
 
   const sidebarDir = dir;
 
+// business submenu
+const categoriesData = [
+  {
+    id: 1,
+    title: "mobile_electronics",
+    items: [
+      { id: 1, label: "mobile_shops", href: "/business/mobile_shops" },
+      { id: 2, label: "computer_shops", href: "/business/computer_shops" },
+      { id: 3, label: "electrical_supplies", href: "/business/electrical_supplies" },
+    ],
+  },
+  {
+    id: 2,
+    title: "food_grocery",
+    items: [
+      { id: 1, label: "rice_flour_shops", href: "/business/rice_flour_shop" },
+      { id: 2, label: "supermarkets", href: "/business/supermarkets" },
+    ],
+  },
+  {
+    id: 3,
+    title: "home_services",
+    items: [
+      { id: 1, label: "furniture_stores", href: "/business/furniture_stores" },
+      { id: 2, label: "education_company", href: "/business/cleaning_services" },
+    ],
+  },
+  {
+    id: 4,
+    title: "بخش صحت", // سلامت و بیمارستان
+    items: [
+      { id: 1, label: "clinic", href: "/business/clinics" },
+      { id: 2, label: "hospital", href: "/business/hospitals" },
+      { id: 3, label: "pharmacy", href: "/business/pharmacies" },
+      { id: 4, label: "operation", href: "/business/pharmacies" },
+      { id: 5, label: "laborator", href: "/business/pharmacies" },
+    ],
+  },
+];
+
+
   const menuItems = [
     { id: "home", href: "/", label: t("home") },
     { id: "product", href: "/product", label: t("Product") },
@@ -56,7 +99,8 @@ export default function Header() {
   return (
     <>
       {/* موبایل */}
-      <header dir={sidebarDir}
+      <header
+        dir={sidebarDir}
         className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
           isScrolled
             ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
@@ -100,7 +144,11 @@ export default function Header() {
         className={`fixed top-0 z-500 h-full transform transition-transform duration-300  block lg:hidden
            
           ${
-            sidebarOpen? "translate-x-0": (sidebarDir === "rtl"? "translate-x-[3000px]" : "-translate-x-[900px]")
+            sidebarOpen
+              ? "translate-x-0"
+              : sidebarDir === "rtl"
+              ? "translate-x-[3000px]"
+              : "-translate-x-[900px]"
           }
           w-full sm:w-[375px] bg-white shadow-lg
         `}
@@ -137,10 +185,17 @@ export default function Header() {
 
                 {/* Product Submenu */}
                 {productOpenMobile && (
-                  <div className={`flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn ${!productOpenMobile&& "hidden"}`}>
+                  <div
+                    className={`flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn ${
+                      !productOpenMobile && "hidden"
+                    }`}
+                  >
                     {/* Doctor Assistant Section */}
                     <h4 className="flex gap-2 font-semibold text-gray-800">
-                       <Image src={doctor_assistant_icon} alt="doctor assistant " />
+                      <Image
+                        src={doctor_assistant_icon}
+                        alt="doctor assistant "
+                      />
                       {t("doctor_assistant")}
                     </h4>
                     <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
@@ -221,11 +276,11 @@ export default function Header() {
 
                     {/* Business Assistant Section */}
                     <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
-                       <Image
-                  src={business_assistant_logo}
-                  alt="business assistant "
-                  width={25}
-                />
+                      <Image
+                        src={business_assistant_logo}
+                        alt="business assistant "
+                        width={25}
+                      />
                       {t("business_assistant")}
                     </h4>
                     <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
@@ -322,7 +377,8 @@ export default function Header() {
           >
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() =>{ setLang("fa")
+              onClick={() => {
+                setLang("fa");
                 setLangBox(!langBox);
               }}
             >
@@ -336,7 +392,8 @@ export default function Header() {
 
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() =>{ setLang("ps")
+              onClick={() => {
+                setLang("ps");
                 setLangBox(!langBox);
               }}
             >
@@ -350,7 +407,8 @@ export default function Header() {
 
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-              onClick={() =>{ setLang("en")
+              onClick={() => {
+                setLang("en");
                 setLangBox(!langBox);
               }}
             >
@@ -385,13 +443,13 @@ export default function Header() {
       {/* دسکتاپ */}
       <header
         dir={sidebarDir}
-        onMouseLeave={() => setProductOpenDesktop(false)}
+        onMouseLeave={() =>{ setProductOpenDesktop(false),  setbusinessesOpen(false);}}
         className={`hidden lg:flex flex-col w-full m-auto z-90   ${
           isScrolled
-            ? productOpenDesktop
+            ? productOpenDesktop || businessesOpen
               ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90  backdrop-blur-sm shadow-sm"
               : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
-            : productOpenDesktop
+            : productOpenDesktop || businessesOpen
             ? "absolute h-82 top-12 z-900 bg-white shadow-sm"
             : "absolute h-16 top-12 z-90 bg-white "
         }`}
@@ -441,7 +499,7 @@ export default function Header() {
 
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                    onClick={() => {
+                  onClick={() => {
                     setLang("ps");
                     setLangBox(!langBox);
                   }}
@@ -456,7 +514,7 @@ export default function Header() {
 
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
-                   onClick={() => {
+                  onClick={() => {
                     setLang("en");
                     setLangBox(!langBox);
                   }}
@@ -479,24 +537,23 @@ export default function Header() {
           >
             <ul className="flex flex-row-reverse justify-around gap-4">
               {menuItems.map((item) =>
-                item.id === "product" ? (
+              // business
+                item.id === "business" ? (
                   <li
-                    key="product"
+                    key="business"
                     className="relative cursor-pointer group"
-                    onMouseEnter={() => setProductOpenDesktop(true)}
+                       onMouseEnter={() =>{setbusinessesOpen(true), setProductOpenDesktop(false)}}
+             
                   >
                     <button
-                      onClick={() => setActive("item")}
-                      className={`relative text-[12px] transition-colors duration-200 cursor-pointer ${
-                        active === item.id
-                          ? "text-black font-bold"
-                          : "text-[#1E1E2B66] hover:text-gray-600"
-                      }`}
+                      className={`relative text-[12px] transition-colors duration-200 cursor-pointer
+                       text-[#1E1E2B66] hover:text-gray-600
+                      `}
                     >
                       {item.label}
                       <span
-                        className={`absolute left-1/2 top-6 -translate-x-1/2 -bottom-0.5 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
-                          active.startsWith("product")
+                        className={`absolute left-1/2 top-6 -translate-x-1/2 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
+                          active.startsWith("item")
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
                         }`}
@@ -504,12 +561,37 @@ export default function Header() {
                       />
                     </button>
                   </li>
-                ) : (
+                ) :
+                // product section
+                item.id === "product" ? (
+                  <li
+                    key="product"
+                    className="relative group"
+                    onMouseEnter={() =>{setbusinessesOpen(false), setProductOpenDesktop(true)}}
+                  >
+                    <button
+                      className={`relative text-[12px] transition-colors duration-200 cursor-pointer text-[#1E1E2B66] hover:text-gray-600`}
+                    >
+                      {item.label}
+                      <span
+                          className={`absolute left-1/2 -translate-x-1/2 -bottom-3 h-1 bg-sky-500 rounded-full origin-center transition-transform duration-300 ${
+                           active.startsWith("item")
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }`}
+                        style={{ width: "26px" }}
+                      />
+                    </button>
+                  </li>
+                ) : 
+                // other items
+                (
                   <li
                     key={item.id}
                     className="relative group"
                     onMouseEnter={() => {
                       setProductOpenDesktop(false);
+                      setbusinessesOpen(false);
                     }}
                   >
                     <Link
@@ -531,7 +613,7 @@ export default function Header() {
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
                         }`}
-                        style={{ width: "26.02px" }}
+                        style={{ width: "26px" }}
                       />
                     </Link>
                   </li>
@@ -562,9 +644,11 @@ export default function Header() {
           {/* submenu desktop */}
         </div>
 
+        {/* product submenu section */}
+
         {productOpenDesktop && (
           <div
-            dir = {dir==="rtl" ? "ltr" : "rtl"}
+            dir={dir === "rtl" ? "ltr" : "rtl"}
             className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
             {/* doctor assistant */}
@@ -573,28 +657,43 @@ export default function Header() {
                 <Image src={doctor_assistant_icon} alt="doctor assistant " />
                 {t("doctor_assistant")}
               </h1>
-              <ul className="flex flex-col gap-3 mt-3 text-[#706f6f] list-disc pr-10 marker:text-[#06B1FD]">
-                <Link onClick={setActive("product")} href={"/product/doctor-assistant/hospital"}>
+              <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
+                <Link
+                  onClick={handleSetActive("product")}
+                  href={"/product/doctor-assistant/hospital"}
+                >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("hospital")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")} href={"/product/doctor-assistant/clinic"}>
+                <Link
+                  onClick={handleSetActive("product")}
+                  href={"/product/doctor-assistant/clinic"}
+                >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("clinic")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")} href={"/product/doctor-assistant/pharmacy"}>
+                <Link
+                  onClick={handleSetActive("product")}
+                  href={"/product/doctor-assistant/pharmacy"}
+                >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("pharmacy")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")} href={"/product/doctor-assistant/laborator"}>
+                <Link
+                  onClick={handleSetActive("product")}
+                  href={"/product/doctor-assistant/laborator"}
+                >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("laborator")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")} href={"/product/doctor-assistant/operation"}>
+                <Link
+                  onClick={handleSetActive("product")}
+                  href={"/product/doctor-assistant/operation"}
+                >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("operation")}
                   </li>
@@ -612,8 +711,9 @@ export default function Header() {
                 />
                 {t("business_assistant")}
               </h1>
-              <ul className="flex flex-col gap-3 mt-3 mr-4 text-[#706f6f] list-disc pr-5 marker:text-[#06B1FD]">
-                <Link onClick={setActive("product")}
+              <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
+                <Link
+                  onClick={handleSetActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_standerd"
                   }
@@ -622,7 +722,8 @@ export default function Header() {
                     {t("business_assistant_standard")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")}
+                <Link
+                  onClick={handleSetActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_proffessional"
                   }
@@ -631,7 +732,8 @@ export default function Header() {
                     {t("business_assistant_proffessional")}
                   </li>
                 </Link>
-                <Link onClick={setActive("product")}
+                <Link
+                  onClick={handleSetActive("product")}
                   href={
                     "/product/business-assistant/business_assistant_multi_profile"
                   }
@@ -644,6 +746,31 @@ export default function Header() {
             </div>
           </div>
         )}
+
+
+    {/* businesses submenu  */}
+{businessesOpen && (
+  <div
+    dir={dir === "rtl" ? "ltr" : "rtl"}
+    className="z-1000 flex items-start justify-start gap-20 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
+  >
+    {categoriesData.map((category) => (
+      <div key={category.id}>
+        <h1 className="flex gap-2 pb-2 text-sm font-bold">{t(category.title)}</h1>
+        <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
+          {category.items.map((item) => (
+            <Link key={item.id} onClick={() => setActive("business")} href={item.href}>
+              <li className="cursor-pointer hover:text-[#06B1FD]">{t(item.label)}</li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+)}
+
+
+
       </header>
 
       <LoginModal open={openLogin} onClose={() => setOpenLogin(false)} />
