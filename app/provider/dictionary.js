@@ -1,5 +1,16 @@
 export const translations = {
   en: {
+    mobile_electronics: "Mobile & Electronics",
+    mobile_shops: "Mobile Shops",
+    computer_shops: "Computer Shops",
+    electrical_supplies: "Electrical Supplies",
+    food_grocery: "Food & Grocery",
+    rice_flour_shops: "Rice & Flour Shops",
+    supermarkets: "Supermarkets",
+    home_services: "Home & Services",
+    furniture_stores: "Furniture Stores",
+    cleaning_services: "Cleaning Services",
+    education_company: "Education Company",
     business_page_section4: "All features have been implemented correctly",
 
     active_users: "With more than 15,000 active users",
@@ -555,7 +566,18 @@ With a proven record of innovating technical solutions that meet customer busine
   },
 
   ps: {
-    i_have_account:"زه حساب کار لرم",
+    mobile_electronics: "موبایل او الکترونیک",
+    mobile_shops: "د موبایل هټۍ",
+    computer_shops: "د کمپیوټر هټۍ",
+    electrical_supplies: "د برښنا وسایل",
+    food_grocery: "خواړه او خوراکي توکي",
+    rice_flour_shops: "د وريجو او اوړو هټۍ",
+    supermarkets: "سوپرمارکېټونه",
+    home_services: "کور او خدمات",
+    furniture_stores: "د کور سامان هټۍ",
+    cleaning_services: "د پاکوالي خدمات",
+    education_company: "ښوونیز شرکت",
+    i_have_account: "زه حساب کار لرم",
     Password_input: "رمز عبور:",
     email_input: "ایمیل:",
     asrepoya: "عصر پویا",
@@ -1595,5 +1617,16 @@ With a proven record of innovating technical solutions that meet customer busine
 
     client_opition_date: "24 سرطان",
     faq_title: "سوالات متداول",
+    mobile_electronics: "موبایل و تجهیزات الکترونیک",
+    mobile_shops: "موبایل فروشی",
+    computer_shops: "کامپیوتر فروشی",
+    electrical_supplies: "لوازم برق فروشی",
+    food_grocery: "غذا و مواد غذایی",
+    rice_flour_shops: "برنج و آرد فروشی",
+    supermarkets: "سوپرمارکت",
+    home_services: "خانه و خدمات",
+    furniture_stores: "فروشگاه لوازم خانگی",
+    cleaning_services: "خدمات نظافت",
+    education_company: "شرکت تحصیلی",
   },
 };

@@ -38,12 +38,18 @@ export default function Content() {
       remote_or_phisical: t("remote_or_phisical"),
       type: t("job_type_1"),
       summary: t("job_summary_1"),
+
+      
       asrepoya:t("asrepoya"),
       date: t("job_date_1"),
       percent: t("percent"),
+      
       job_title:t("job_title"),
       date_text:t("date_text"),
       fulltimeorparttime:t("fulltimeorparttime"),
+      remote_or_phisical_value:t("remote_or_phisical_value"),
+      percent_value:t("percent_value"),
+      
       
       code: t("job_code"),
       job_website: t("job_website"),
@@ -70,7 +76,7 @@ export default function Content() {
   }, []);
 
   return (
-    <div dir={dir} className="w-full mt-20">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="w-full mt-20">
       {/* HEADER IMAGE + SEARCH */}
       <div className={`md:w-[616px] lg:w-[1056px] w-[360px] h-[188px] relative overflow-hidden rounded-[16px] mt-10 mx-auto`}>
         <Image
@@ -97,7 +103,7 @@ export default function Content() {
 
       {/* MAIN BODY */}
       <div className="mt-10">
-        <h4 className="mb-6 text-2xl font-bold">{t("search_page_title")}</h4>
+        <h4 dir={dir=="ltr"?"rtl":"ltr"} className="mb-6 text-2xl font-bold">{t("search_page_title")}</h4>
         <div className="flex flex-row-reverse gap-6">
           {/* JOB LIST */}
           <div className="lg:w-[330px] w-full flex flex-col gap-4">
@@ -124,7 +130,7 @@ export default function Content() {
                     {job.type} <Image src={usersearch} alt={t("user_search_alt")} />
                   </p>
                 </div>
-                <p className="mt-4 text-xs text-[#1E1E2BCC]">{job.summary}</p>
+                <p dir={dir=="ltr"?"rtl":"ltr"} className="mt-4 text-xs text-[#1E1E2BCC]">{job.summary}</p>
                 <p className="mt-1 text-[12px] text-[#06B1FD] font-semibold">{t("continue")}</p>
               </div>
             ))}
@@ -139,7 +145,7 @@ export default function Content() {
                   <h5 className="text-gray-500">{t("no_job_selected")}</h5>
                 </div>
               ) : (
-                <JobDetails t={t} selectedJob={selectedJob} />
+                <JobDetails t={t} selectedJob={ selectedJob } dir={dir} />
               )}
             </div>
           )}
@@ -162,20 +168,20 @@ export default function Content() {
 }
 
 /* JOB DETAILS COMPONENT */
-function JobDetails({ t, selectedJob, mobile }) {
+function JobDetails({ t, selectedJob, mobile ,dir}) {
   if (!selectedJob) return null;
 
   return (
-    <div className="flex flex-col">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="flex flex-col">
       {/* HEADER */}
-      <div className={`${mobile ? "w-full" : "w-[582px]"} border-b border-[#1E1E2B1A] pb-12`}>
+      <div className={`${mobile ? "w-full" : "w-[612px]"} border-b border-[#1E1E2B1A] pb-12`}>
         <div className="flex items-end justify-between">
           <span className={`${mobile ? "text-[9px]" : "text-[10px]"} text-[#06B1FD] flex`}>
             {t("share")} <Image src={share} alt={t("share_alt")} />
           </span>
           <div>
-            <h3 className={`${mobile ? "text-lg" : "text-xl"} font-bold`}>{selectedJob.title}</h3>
-            <p className={`${mobile ? "text-[14px]" : "text-[16px]"} mt-4 text-[#1E1E2B99`}>{selectedJob.job_details}</p>
+            <h3 dir={dir=="ltr"?"rtl":"ltr"} className={`${mobile ? "text-lg" : "text-xl"}  font-bold`}>{selectedJob.title}</h3>
+            <p dir={dir=="ltr"?"rtl":"ltr"} className={`${mobile ? "text-[14px]" : "text-[16px]"} mt-4 text-[#1E1E2B99`}>{selectedJob.job_details}</p>
           </div>
         </div>
 
@@ -208,12 +214,12 @@ function JobDetails({ t, selectedJob, mobile }) {
           ) : (
             // desktop ۴ columns
             [
-              [selectedJob.date, selectedJob.job_website, selectedJob.role, selectedJob.location],
               ["۱۰ سرطان","asrepoya","graphic designer",selectedJob.address],
+              [selectedJob.date, selectedJob.job_website, selectedJob.role, selectedJob.location],
+              ["۸۴۹۴۳۹۴۸۳۹۹۲","50%","remote/phisical","فول تایم"],
               [selectedJob.code, selectedJob.percent, selectedJob.remote_or_phisical, selectedJob.time],
-              ["۸۴۹۴۳۹۴۸۳۹۹۲","50%","remote/phisical","فول تایم"]
             ].map((col, i) => (
-              <div key={i} className={`flex flex-col gap-5 justify-between ${i===0 || i===2 ? "text-[#1E1E2B99]" : "text-[#1E1E2B]"} text-[16px]`}>
+              <div dir={dir=="ltr"?"rtl":"ltr"} key={i} className={`  flex flex-col gap-5 justify-between ${i===1 || i===3 ? "text-[#1E1E2B99]" : "text-[#1E1E2B]"} text-[16px]`}>
                 {col.map((item, idx) => <p key={idx}>{item}</p>)}
               </div>
             ))
@@ -222,7 +228,7 @@ function JobDetails({ t, selectedJob, mobile }) {
       </div>
 
       {/* BODY */}
-      <div className={`mt-12 ${mobile ? "flex flex-col-reverse gap-10" : "flex justify-between"}`}>
+      <div  dir={dir=="ltr"?"rtl":"ltr"} className={`mt-12 ${mobile ? "flex flex-col-reverse gap-10" : "flex justify-between"}`}>
         {/* LEFT */}
         <div className={`lg:w-[227px] lg:h-[586px] w-full rounded-lg p-6 bg-[#1E1E2B08] flex flex-col justify-between`}>
           <h3 className="font-bold text-[#1E1E2B]">{t("left_side_title1")}</h3>
@@ -241,8 +247,9 @@ function JobDetails({ t, selectedJob, mobile }) {
 
       {/* FOOTER */}
       <span className="border-t-2 border-[#1E1E2B1A] mt-12 m-auto"></span>
-      <div>
-        <p className="text-[#1E1E2BCC] mt-12 mb-[32px]">{t("footer_paragraph")}</p>
+      <div  dir={dir=="ltr"?"rtl":"ltr"}>
+        
+        <p className="text-[#1E1E2BCC] mt-12 mb-[32px]">this text will come from database</p>
         <div className="grid grid-cols-2 gap-4 pr-10 border-b border-[#1E1E2B1A] pb-10">
           {Array.from({ length: 8 }).map((_, i) => (
             <h4 key={i} className="flex flex-row-reverse justify-end gap-2 text-[#1E1E2B]">
