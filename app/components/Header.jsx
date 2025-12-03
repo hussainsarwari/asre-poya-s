@@ -160,203 +160,169 @@ const categoriesData = [
           ×
         </button>
         <ul className="flex flex-col gap-4 p-4 max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-300 scrollbar-track-gray-100">
-          {menuItems.map((item) =>
-            item.id === "product" ? (
-              <li key="product" className="flex flex-col">
-                {/* Main Product Button */}
-                <button
-                  onClick={() => setProductOpenMobile(!productOpenMobile)}
-                  className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
+          {menuItems.map((item) => {
+  if (item.id === "product") {
+    return (
+      <li key="product" className="flex flex-col">
+        {/* Product Main Button */}
+        <button
+          onClick={() => setProductOpenMobile(!productOpenMobile)}
+          className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
             ${
               active.startsWith("product")
                 ? "bg-gray-50 text-black"
                 : "bg-gray-100 hover:bg-gray-200"
             }`}
-                >
-                  {item.label}
-                  <span
-                    className={`transform transition-transform duration-300 ${
-                      productOpenMobile ? "rotate-180" : ""
-                    }`}
-                  >
-                    ▼
-                  </span>
-                </button>
+        >
+          {item.label}
+          <span
+            className={`transform transition-transform duration-300 ${
+              productOpenMobile ? "rotate-180" : ""
+            }`}
+          >
+            ▼
+          </span>
+        </button>
 
-                {/* Product Submenu */}
-                {productOpenMobile && (
-                  <div
-                    className={`flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn ${
-                      !productOpenMobile && "hidden"
-                    }`}
+        {/* Product Submenu */}
+        {productOpenMobile && (
+          <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
+            {/* Doctor Assistant Section */}
+            <h4 className="flex gap-2 font-semibold text-gray-800">
+              <Image src={doctor_assistant_icon} alt="doctor assistant" />
+              {t("doctor_assistant")}
+            </h4>
+            <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+              {["hospital","clinic","pharmacy","laborator","operation"].map((sub) => (
+                <Link key={sub} href={`/product/doctor-assistant/${sub}`}>
+                  <li
+                    className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                    onClick={() => {
+                      setSidebarOpen(false);
+                      setProductOpenMobile(false);
+                      handleSetActive(`product/doctor-assistant/${sub}`);
+                      showLoading();
+                    }}
                   >
-                    {/* Doctor Assistant Section */}
-                    <h4 className="flex gap-2 font-semibold text-gray-800">
-                      <Image
-                        src={doctor_assistant_icon}
-                        alt="doctor assistant "
-                      />
-                      {t("doctor_assistant")}
-                    </h4>
-                    <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
-                      <Link href="/product/doctor-assistant/hospital">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/doctor-assistant/hospital"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("hospital")}
-                        </li>
-                      </Link>
-                      <Link href="/product/doctor-assistant/clinic">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive("product/doctor-assistant/clinic");
-                            showLoading();
-                          }}
-                        >
-                          {t("clinic")}
-                        </li>
-                      </Link>
-                      <Link href="/product/doctor-assistant/pharmacy">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/doctor-assistant/pharmacy"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("pharmacy")}
-                        </li>
-                      </Link>
-                      <Link href="/product/doctor-assistant/laborator">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/doctor-assistant/laborator"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("laborator")}
-                        </li>
-                      </Link>
-                      <Link href="/product/doctor-assistant/operation">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/doctor-assistant/operation"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("operation")}
-                        </li>
-                      </Link>
-                    </ul>
-
-                    {/* Business Assistant Section */}
-                    <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
-                      <Image
-                        src={business_assistant_logo}
-                        alt="business assistant "
-                        width={25}
-                      />
-                      {t("business_assistant")}
-                    </h4>
-                    <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
-                      <Link href="/product/business-assistant/business_assistant_standerd">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/business-assistant/business_assistant_standerd"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("business_assistant_standard")}
-                        </li>
-                      </Link>
-                      <Link href="/product/business-assistant/business_assistant_proffessional">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/business-assistant/business_assistant_proffessional"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("business_assistant_proffessional")}
-                        </li>
-                      </Link>
-                      <Link href="/product/business-assistant/business_assistant_multi_profile">
-                        <li
-                          className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                          onClick={() => {
-                            setSidebarOpen(false);
-                            setProductOpenMobile(false);
-                            handleSetActive(
-                              "product/business-assistant/business_assistant_multi_profile"
-                            );
-                            showLoading();
-                          }}
-                        >
-                          {t("business_assistant_multi_profile")}
-                        </li>
-                      </Link>
-                    </ul>
-                  </div>
-                )}
-              </li>
-            ) : (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  onClick={() => {
-                    handleSetActive(item.id);
-                    setSidebarOpen(false);
-                    setProductOpenMobile(false);
-                    showLoading();
-                  }}
-                  className={`block text-[16px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
-                    active === item.id
-                      ? "font-bold text-blue-500 bg-blue-50 shadow-inner"
-                      : "hover:bg-gray-100"
-                  }`}
-                >
-                  {item.label}
+                    {t(sub)}
+                  </li>
                 </Link>
+              ))}
+            </ul>
+
+            {/* Business Assistant Section */}
+            <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
+              <Image src={business_assistant_logo} alt="business assistant" width={25} />
+              {t("business_assistant")}
+            </h4>
+            <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+              {["business_assistant_standerd","business_assistant_proffessional","business_assistant_multi_profile"].map((sub) => (
+                <Link key={sub} href={`/product/business-assistant/${sub}`}>
+                  <li
+                    className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                    onClick={() => {
+                      setSidebarOpen(false);
+                      setProductOpenMobile(false);
+                      handleSetActive(`product/business-assistant/${sub}`);
+                      showLoading();
+                    }}
+                  >
+                    {t(sub)}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        )}
+      </li>
+    );
+  } else if (item.id === "business") {
+    return (
+      <li key="business" className="flex flex-col">
+        {/* Business Main Button */}
+        <button
+          onClick={() => setbusinessesOpenMobile(!businessesOpenMobile)}
+          className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
+            ${
+              active.startsWith("business")
+                ? "bg-gray-50 text-black"
+                : "bg-gray-100 hover:bg-gray-200"
+            }`}
+        >
+          {item.label}
+          <span
+            className={`transform transition-transform duration-300 ${
+              businessesOpenMobile ? "rotate-180" : ""
+            }`}
+          >
+            ▼
+          </span>
+        </button>
+
+        {/* Business Submenu */}
+       {businessesOpenMobile && (
+  <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
+    {categoriesData.map((category) => (
+      <div key={category.id}>
+        {/* عنوان دسته */}
+        <h4 className="flex gap-2 font-semibold text-gray-800">
+          {t(category.title)}
+        </h4>
+
+        {/* زیرمنوها */}
+        <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+          {category.items.map((sub) => (
+            <Link key={sub.id} href={sub.href}>
+              <li
+                className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                onClick={() => {
+                  setSidebarOpen(false);
+                  setbusinessesOpenMobile(false);
+                  handleSetActive(sub.href);
+                  showLoading();
+                }}
+              >
+                {t(sub.label)}
               </li>
-            )
-          )}
+            </Link>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+)}
+
+      </li>
+    );
+  } else {
+    // سایر آیتم‌ها
+    return (
+      <li key={item.id}>
+        <Link
+          href={item.href}
+          onClick={() => {
+            handleSetActive(item.id);
+            setSidebarOpen(false);
+            setProductOpenMobile(false);
+            setbusinessesOpenMobile(false);
+            showLoading();
+          }}
+          className={`block text-[16px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
+            active === item.id
+              ? "font-bold text-blue-500 bg-blue-50 shadow-inner"
+              : "hover:bg-gray-100"
+          }`}
+        >
+          {item.label}
+        </Link>
+      </li>
+    );
+  }
+})}
+
         </ul>
 
-        {/* انتخاب زبان موبایل */}
+        {/* انتخاب زبان موبایل موبایل */}
         <div className="relative">
           <Image
             src={worldIcon}
