@@ -1,8 +1,8 @@
 
-import Gallery from "./component/Gallery.jsx";
-import Section3 from "./component/section3.jsx";
+import Gallery from "./components/Gallery.jsx";
+import Section3 from "./components/section3.jsx";
 
-import Section1 from "./component/section1.jsx";
+import Section1 from "./components/section1.jsx";
 import Loaded from "@/app/components/loading.jsx";
 export default function AboutUs() {
   return (

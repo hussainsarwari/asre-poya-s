@@ -531,7 +531,6 @@ With a proven record of innovating technical solutions that meet customer busine
     home_section_product4: "Product 4",
     home_section_product5: "Product 5",
     homePagesection3Title: "Our Products",
-
     design: "Customized Design",
     design_paragraph:
       "Design and development of applications using the latest technologies at minimal cost.",

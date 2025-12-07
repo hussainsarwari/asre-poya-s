@@ -1,10 +1,10 @@
 
 
-import Section1 from "./home_components/section1.jsx";
-import Advantage_asrePoya from "./home_components/advantage_asrePoya.jsx";
-import Our_product from "./home_components/our_products.jsx";
-import Client_opinion from "./home_components/client_opinion.jsx";
-import About_us_section from "./home_components/about_us_section.jsx";
+import Section1 from "./main/section1.jsx";
+import Advantage_asrePoya from "./main/advantage_asrePoya.jsx";
+import Our_product from "./main/our_products.jsx";
+import Client_opinion from "./main/client_opinion.jsx";
+import About_us_section from "./main/about_us_section.jsx";
 import Loaded from '@/app/components/loading.jsx'
 
 export default function Home() {
