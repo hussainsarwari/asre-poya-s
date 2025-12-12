@@ -2,8 +2,8 @@
 
 import Header from "./Header";
 import Footer from "./Footer";
-import { LanguageProvider } from "../provider/languageProvider";
-import { LoadingProvider } from "../provider/LoadingProvider";
+import { LanguageProvider } from "../../provider/languageProvider";
+import { LoadingProvider } from "../../provider/LoadingProvider";
 import Image from "next/image";
 import whatsapp from "@/public/icons/home/whatsapp_green.svg";
 import { usePathname } from "next/navigation";

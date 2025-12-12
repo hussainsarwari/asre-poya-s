@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 
 import box3 from "@/public/icons/home/box3.svg";
 import box2 from "@/public/icons/home/box2.svg";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import { useLoading } from "@/app/provider/LoadingProvider";
 import Link from "next/link";
 import Image from "next/image";

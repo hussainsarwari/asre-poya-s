@@ -3,7 +3,7 @@ import Image from "next/image";
 import bg_img from "@/public/icons/home/IMG_98241.svg";
 import Headphone from "@/public/icons/home/Headphone.svg";
 import whatsappwhite from "@/public/icons/home/whatsapp.svg";
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import asrepoya from "@/public/icons/home/asrepoya.svg";
 import vector from "@/public/icons/home/vector2.svg";
 import business_assistant from "@/public/icons/home/business_log.svg";

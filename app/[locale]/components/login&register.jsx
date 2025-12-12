@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import arrow from "@/public/icons/products/arrow-left_black.svg"
 import Image from "next/image";
 export default function LoginModal({ open, onClose }) {

@@ -5,7 +5,7 @@ import Advantage_asrePoya from "./main/advantage_asrePoya.jsx";
 import Our_product from "./main/our_products.jsx";
 import Client_opinion from "./main/client_opinion.jsx";
 import About_us_section from "./main/about_us_section.jsx";
-import Loaded from '@/app/components/loading.jsx'
+import Loaded from './components/loading.jsx'
 
 export default function Home() {
 

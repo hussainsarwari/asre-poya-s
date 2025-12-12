@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 
 // تصاویر
 import img1 from "@/public/icons/home/bg_img2.svg";

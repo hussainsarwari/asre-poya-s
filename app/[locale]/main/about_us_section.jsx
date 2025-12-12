@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../provider/languageProvider";
+import { useLanguage } from "../../provider/languageProvider";
 import { useLoading } from "@/app/provider/LoadingProvider";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ import bg_img from "@/public/icons/home/bg_img3.svg";
 import calendar from "@/public/icons/calendar-tick.svg";
 import calendar_search from "@/public/icons/calendar-search.svg";
 import cal from "@/public/icons/home/calendar.svg";
-import OurClient from "@/app/products/components/our-client.jsx";
+import OurClient from "../products/components/our-client";
 
 
 export default function AboutUs() {

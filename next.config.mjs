@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin'
+
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
@@ -7,5 +9,6 @@ const nextConfig = {
     unoptimized: true, 
   },
 };
+const withNextintl=createNextIntlPlugin();
 
-export default nextConfig;
+export default withNextintl(nextConfig);
