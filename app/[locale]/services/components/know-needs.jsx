@@ -1,17 +1,21 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
 import Box1 from "@/public/icons/services/Rectangle_box.svg";
 import Gallery from "@/public/icons/services/gallery.svg";
 import Globale from "@/public/icons/services/global.svg";
 import location from "@/public/icons/services/location.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function KnowNeeds() {
-  const { t,dir } = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   return (
-    <div dir= {dir === "rtl" ? "rtl" : "ltr"}  className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto lg:my-0 my-48">
+    <div dir= {dir === "rtl" ? "rtl" : "ltr"}  className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto lg:-mt-30 my-48">
       <div className="flex flex-col items-end">
         <h2 className="text-[#1E1E2B] text-2xl font-bold relative my-4">
           {t("services_know_needs_title")}

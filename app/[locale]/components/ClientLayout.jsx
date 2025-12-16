@@ -2,15 +2,19 @@
 
 import Header from "./Header";
 import Footer from "./Footer";
-import { LanguageProvider } from "../../provider/languageProvider";
-import { LoadingProvider } from "../../provider/LoadingProvider";
+import { LanguageProvider } from "../provider/languageProvider";
+import { LoadingProvider } from "../provider/LoadingProvider";
 import Image from "next/image";
 import whatsapp from "@/public/icons/home/whatsapp_green.svg";
 import { usePathname } from "next/navigation";
-
+import { useLocale } from "next-intl";
 export default function ClientLayout({ children }) {
-  const pathname = usePathname();
-  const isDashboard = pathname.startsWith("/dashboard");
+const pathname = usePathname();
+const locale = useLocale();
+
+const isDashboard = pathname.startsWith(`/${locale}/dashboard`);
+  console.log(isDashboard);
+  
 
   return (
     <LanguageProvider>

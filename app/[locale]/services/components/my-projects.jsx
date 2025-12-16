@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,6 +11,8 @@ import Rectangle from "@/public/icons/products/Rectangle.svg";
 import client_icon1 from "@/public/icons/home/Frame3.svg";
 import client_icon2 from "@/public/icons/home/Frame4.svg";
 import client_icon3 from "@/public/icons/home/Frame5.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const projects = [
   {
@@ -38,7 +39,11 @@ const projects = [
 ];
 
 export default function MyProject() {
-  const { t,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

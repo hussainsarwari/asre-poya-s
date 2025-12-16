@@ -1,36 +1,38 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../../provider/languageProvider";
 import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
 
 import { motion, AnimatePresence } from "framer-motion";
-import our_client1 from "@/public/icons/home/Frame1.svg";
-import our_client2 from "@/public/icons/home/Frame2.svg";
-import our_client3 from "@/public/icons/home/Frame3.svg";
-import our_client4 from "@/public/icons/home/Frame4.svg";
-import our_client5 from "@/public/icons/home/Frame5.svg";
-import our_client6 from "@/public/icons/home/Frame6.svg";
-import our_client7 from "@/public/icons/home/Frame7.svg";
-import our_client8 from "@/public/icons/home/Frame8.svg";
-import our_client9 from "@/public/icons/home/Frame9.svg";
+import our_client_image1 from "@/public/icons/home/Frame1.svg";
+import our_client_image2 from "@/public/icons/home/Frame2.svg";
+import our_client_image3 from "@/public/icons/home/Frame3.svg";
+import our_client_image4 from "@/public/icons/home/Frame4.svg";
+import our_client_image5 from "@/public/icons/home/Frame5.svg";
+import our_client_image6 from "@/public/icons/home/Frame6.svg";
+import our_client_image7 from "@/public/icons/home/Frame7.svg";
+import our_client_image8 from "@/public/icons/home/Frame8.svg";
+import our_client_image9 from "@/public/icons/home/Frame9.svg";
 import { useState } from "react";
-
-export default function ourClient({
-  SectionName,
-})  {
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+export default function ourClient({ SectionName }) {
   const [index, setIndex] = useState(0);
-  const { t,dir } = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const clients = [
-    our_client1,
-    our_client2,
-    our_client3,
-    our_client4,
-    our_client5,
-    our_client6,
-    our_client7,
-    our_client8,
-    our_client9,
+    our_client_image1,
+    our_client_image2,
+    our_client_image3,
+    our_client_image4,
+    our_client_image5,
+    our_client_image6,
+    our_client_image7,
+    our_client_image8,
+    our_client_image9,
   ];
   const visibleClients = [
     clients[index],
@@ -52,10 +54,12 @@ export default function ourClient({
   return (
     <>
       {/* clients section */}
-      <div dir = {dir==="ltr" ? "ltr" : "rtl"} className={`relative right-0 top-20 lg:top-10 lg:w-[1056px] md:w-[616px] w-[350px]`}>
+      <div
+        className={`relative right-0 top-20 lg:top-10 lg:w-[1056px] md:w-[616px] w-[350px]`}
+      >
         <div className="flex items-center justify-between mb-5">
           <div className="flex gap-3 items-center md:w-[116px]">
-            <div dir = {dir==="rtl" ? "ltr" : "ltr"} className="flex lg:hidden">
+            <div className="flex lg:hidden">
               <Image
                 className="transition-transform cursor-pointer hover:scale-110"
                 onClick={prev}
@@ -71,7 +75,7 @@ export default function ourClient({
             </div>
           </div>
 
-          <div  dir = {dir==="rtl" ? "ltr" : "rtl"}>
+          <div dir={dir === "rtl" ? "ltr" : "rtl"}>
             <h1 className="text-[24px] font-bold text-[#1E1E2B] ">
               {t("our_client")}
             </h1>
@@ -97,7 +101,7 @@ export default function ourClient({
                   key={i}
                   src={client}
                   alt="our client"
-                  className="lg:w-[96px] w-[64px]"
+                  className="w-16 lg:w-24"
                 />
               ))}
             </motion.div>

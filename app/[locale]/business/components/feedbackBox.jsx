@@ -5,9 +5,14 @@ import feedbackbox from "@/public/icons/box_desktop.svg"
 import feedbackbox2 from "@/public/icons/box_tab.svg"
 import feedbackbox3 from "@/public/icons/box_mobile.svg"
 import img from "@/public/images/img5.svg"
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function Section2() {
-    const { t,dir } = useLanguage();
+      const t = useTranslations();
+     const locale = useLocale();
+   
+     const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
     return (
         <>
             <div className='z-0 -mt-14'>

@@ -1,25 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLoading } from "@/app/provider/LoadingProvider";
+import { useLoading } from "@/app/[locale]/provider/LoadingProvider";
 import { useLanguage } from "../../provider/languageProvider";
 import Image from "next/image";
 import sms from "@/public/icons/footer/sms.svg";
 import call from "@/public/icons/footer/call.svg";
 import location from "@/public/icons/footer/location.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function main() {
-  const { t ,dir } = useLanguage();
+ const t = useTranslations();
+  const locale = useLocale();
 
-
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+    
    const { isLoading, showLoading, hideLoading } = useLoading();
     const [loaded, setLoaded] = useState(false);
   
   useEffect(() => {
-    // ابتدا لودینگ رو فعال کن
     showLoading();
 
-    // بعد با timeout جدا از render اصلی، لودینگ رو hide کن و state تغییر بده
     const timer = setTimeout(() => {
       hideLoading();
       setLoaded(true);

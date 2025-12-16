@@ -3,9 +3,14 @@ import Image from 'next/image'
 import { useLanguage } from "../../provider/languageProvider";
 import activeuserman from "@/public/icons/user_man.svg"
 import activeusergirl from "@/public/icons/user_girl.svg"
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function Section4() {
-    const { t,dir } = useLanguage()
+       const t = useTranslations();
+     const locale = useLocale();
+   
+     const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
     return (
 
         <div dir= {dir === "ltr" ? "rtl" : "ltr"} className='mt-10 md:mt-24'>

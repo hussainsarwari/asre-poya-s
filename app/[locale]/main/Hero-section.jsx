@@ -3,14 +3,20 @@ import Image from "next/image";
 import bg_img from "@/public/icons/home/IMG_98241.svg";
 import Headphone from "@/public/icons/home/Headphone.svg";
 import whatsappwhite from "@/public/icons/home/whatsapp.svg";
-import { useLanguage } from "../../provider/languageProvider";
 import asrepoya from "@/public/icons/home/asrepoya.svg";
 import vector from "@/public/icons/home/vector2.svg";
 import business_assistant from "@/public/icons/home/business_log.svg";
 import doctor_assistant from "@/public/icons/home/doctor_assistant.svg";
-import asrepoya_text_englsih from "@/public/icons/AsrePoya_english_title.svg"
-export default function section1() {
-  const { t ,dir} = useLanguage();
+import asrepoya_text_englsih from "@/public/icons/AsrePoya_english_title.svg";
+import { useTranslations } from 'next-intl';
+import { useLocale } from "next-intl";
+export default function HeroSection() {
+  
+   const t = useTranslations();
+      const locale = useLocale();
+     
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
  const sidebardir=dir;
   return (
     <div dir={sidebardir} className="flex flex-col-reverse items-center mx-auto lg:flex-row lg:h-[550px] ">
@@ -85,24 +91,24 @@ export default function section1() {
           <Image
             src={vector}
             alt="vector"
-            className="lg:mr-[190.9px]  mx-40 mt-5 w-[183px]  lg:w-[208px]"
+            className="lg:mr-[190.9px]  mx-40 mt-5 w-[183px]  lg:w-52"
           />
           <p className="lg:text-[14px] text-[12px] text-[#1E1E2B] my-4">
             {t("home_paragraph")}
           </p>
           {/*  btn */}
           <div className="flex items-center justify-center gap-4 mt-8">
-            <button className="hover:bg-[#009cdf]  hover:scale-105 duration-150 w-[160px] lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
+            <button className="hover:bg-[#009cdf]  hover:scale-105 duration-150 w-40 lg:w-[181px] h-[43px] lg:h-[46px] cursor-pointer rounded-xl py-3  bg-[#06B1FD] shadow-md shadow-[#06B1FD33] text-white flex justify-center items-center  gap-2 ">
               <Image src={business_assistant} alt="business assistant" />
               {t("business_assistant")}
             </button>
-            <button className="hover:scale-105 w-[160px]  lg:w-[181px] duration-150 h-[43px] lg:h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
+            <button className="hover:scale-105 w-40  lg:w-[181px] duration-150 h-[43px] lg:h-[46px] cursor-pointer rounded-xl border border-[#06B1FD] text-[#06B1FD] flex justify-center items-center">
               <Image src={doctor_assistant} alt="doctor assistant" />
               {t("doctor_assistant")}
             </button>
           </div>
         </div>
-        <div className={`h-[70px] flex mt-[166px] absolute md:top-[660px] top-[500px]  ${dir=="rtl"?"lg:top-[240px]  left-0":"lg:top-[260px] right-0"} `}>
+        <div className={`h-[70px] flex mt-[166px] absolute md:top-[660px] top-[500px]  ${dir=="rtl"?"lg:top-60  left-0":"lg:top-[260px] right-0"} `}>
           <div dir={sidebardir} className={` flex items-center justify-center px-3.5 border-[#1E1E2B33] ${dir=="rtl"?"border-l flex-col-reverse w-40 md:w-50":"border-r flex-row"}`}>
             <span className="mx-1 text-2xl font-bold">+1000</span>
             <h1 className="text-[#1E1E2B99] w-fit">{t("active_clients")}</h1>

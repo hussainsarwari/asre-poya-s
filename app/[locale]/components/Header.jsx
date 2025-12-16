@@ -1,7 +1,6 @@
 "use client";
 
-import { useLanguage } from "../../provider/languageProvider";
-import { useLoading } from "@/app/provider/LoadingProvider";
+import { useLoading } from "@/app/[locale]/provider/LoadingProvider";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -14,13 +13,24 @@ import user2 from "@/public/icons/user2.svg";
 import doctor_assistant_icon from "@/public/icons/home/doctor_assistant.svg";
 import business_assistant_logo from "@/public/icons/BUSINESS_ASSISTANT_LOGO.png";
 import asrepoya_english from "@/public/icons/asrepoya_english.svg";
-export default function Header() {
+import { useTranslations } from 'next-intl';
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+import {
+Home,
+Store,
+ClipboardCheck,
+Hospital,
+GraduationCap
+} from "lucide-react";
+export default  function Header({params}) {
+  
   const { showLoading } = useLoading();
-  const { t, lang, setLang, dir } = useLanguage();
+    const t = useTranslations();
   const [openLogin, setOpenLogin] = useState(false);
 
   const [langBox, setLangBox] = useState(false);
-  const [active, setActive] = useState("product"); // پیش‌فرض Product فعال
+  const [active, setActive] = useState("products"); // پیش‌فرض Product فعال
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -28,6 +38,22 @@ export default function Header() {
   const [productOpenDesktop, setProductOpenDesktop] = useState(false);
   const [businessesOpenMobile, setbusinessesOpenMobile] = useState(false);
   const [businessesOpen, setbusinessesOpen] = useState(false);
+
+  const locale = useLocale();
+
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
+  const router = useRouter();
+
+  const switchLocale = (newLocale) => {
+  const segments = window.location.pathname.split("/");
+  segments[1] = newLocale;  // جایگزینی locale فعلی با جدید
+  const newPath = segments.join("/");
+
+  
+  router.push(newPath);
+};
+
 
   useEffect(() => {
     const saved = localStorage.getItem("activeMenu");
@@ -46,61 +72,61 @@ export default function Header() {
 
   const sidebarDir = dir;
 
-// business submenu
-const categoriesData = [
-  {
-    id: 1,
-    title: "mobile_electronics",
-    items: [
-      { id: 1, label: "mobile_shops", href: "/business/mobile_shops" },
-      { id: 2, label: "computer_shops", href: "/business/computer_shops" },
-      { id: 3, label: "electrical_supplies", href: "/business/electrical_supplies" },
-    ],
-  },
-  {
-    id: 2,
-    title: "food_grocery",
-    items: [
-      { id: 1, label: "rice_flour_shops", href: "/business/rice_flour_shop" },
-      { id: 2, label: "supermarkets", href: "/business/supermarkets" },
-    ],
-  },
-  {
-    id: 3,
-    title: "home_services",
-    items: [
-      { id: 1, label: "furniture_stores", href: "/business/furniture_stores" },
-      { id: 2, label: "education_company", href: "/business/cleaning_services" },
-    ],
-  },
-  {
-    id: 4,
-    title: "بخش صحت", // سلامت و بیمارستان
-    items: [
-      { id: 1, label: "clinic", href: "/business/clinics" },
-      { id: 2, label: "hospital", href: "/business/hospitals" },
-      { id: 3, label: "pharmacy", href: "/business/pharmacies" },
-      { id: 4, label: "operation", href: "/business/pharmacies" },
-      { id: 5, label: "laborator", href: "/business/pharmacies" },
-    ],
-  },
+
+  const categoriesData = [
+{
+id: 1,
+title: "mobile_electronics",
+items: [
+{ id: 1, label: "mobile_shops", href: `/${locale}/business/mobile_shops`, icon: <Home size={15} /> },
+{ id: 2, label: "computer_shops", href: `/${locale}/business/computer_shops`, icon: <Store size={15} /> },
+{ id: 3, label: "electrical_supplies", href: `/${locale}/business/electrical_supplies`, icon: <ClipboardCheck size={15} /> }
+]
+},
+{
+id: 2,
+title: "food_grocery",
+items: [
+{ id: 1, label: "rice_flour_shops", href: `/${locale}/business/rice_flour_shop`, icon: <Home size={15} /> },
+{ id: 2, label: "supermarkets", href: `/${locale}/business/supermarkets`, icon: <Store size={15} /> }
+]
+},
+{
+id: 3,
+title: "home_services",
+items: [
+{ id: 1, label: "furniture_stores", href: `/${locale}/business/furniture_stores`, icon: <Home size={15} /> },
+{ id: 2, label: "cleaning_services", href: `/${locale}/business/cleaning_services`, icon: <ClipboardCheck size={15} /> }
+]
+},
+{
+id: 4,
+title: t("health_section"),
+items: [
+{ id: 1, label: "clinic", href: `/${locale}/business/clinics`, icon: <Store size={15} /> },
+{ id: 2, label: "hospital", href: `/${locale}/business/hospitals`, icon: <Hospital size={15} /> },
+{ id: 3, label: "pharmacy", href: `/${locale}/business/pharmacies`, icon: <ClipboardCheck size={15} /> },
+{ id: 4, label: "operation", href: `/${locale}/business/operations`, icon: <GraduationCap size={15} /> },
+{ id: 5, label: "laborator", href: `/${locale}/business/laboratories`, icon: <ClipboardCheck size={15} /> }
+]
+}
 ];
 
-
   const menuItems = [
-    { id: "home", href: "/", label: t("home") },
-    { id: "product", href: "/product", label: t("Product") },
-    { id: "services", href: "/services", label: t("services") },
-    { id: "business", href: "/business", label: t("business") },
-    { id: "about-us", href: "/about-us", label: t("aboutus") },
-    { id: "contactus", href: "/contact-us", label: t("contactus") },
+    { id: "home", href: `/${locale}`, label: t("home") },
+    { id: "products", href: `/${locale}/products`, label: t("Product") },
+    { id: "services", href: `/${locale}/services`, label: t("services") },
+    { id: "business", href: `/${locale}/business`, label: t("business") },
+    { id: "about-us", href: `/${locale}/about-us`, label: t("aboutus") },
+    { id: "contactus", href: `/${locale}/contact-us`, label: t("contactus") },
   ];
 
   return (
     <>
+    
       {/* موبایل */}
       <header
-        dir={sidebarDir}
+      
         className={`lg:hidden transition-all w-full duration-200 z-50 flex flex-col justify-center ${
           isScrolled
             ? "fixed top-0 left-1/2 -translate-x-1/2 bg-white/90 py-3"
@@ -113,7 +139,7 @@ const categoriesData = [
             alt="user icon"
             className="w-6 md:w-[37px] h-6 md:h-[37px]"
           />
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <Image
               src={asrepoya}
               alt="Asre Poya Logo"
@@ -140,15 +166,14 @@ const categoriesData = [
 
       {/* سایدبار موبایل */}
       <div
-        dir={sidebarDir === "rtl" ? "ltr" : "rtl"}
-        className={`fixed top-0 z-500 h-full transform transition-transform duration-300  block lg:hidden
+        className={`fixed top-0 z-500  h-full transform transition-transform duration-300  block lg:hidden
            
           ${
             sidebarOpen
               ? "translate-x-0"
               : sidebarDir === "rtl"
-              ? "translate-x-[3000px]"
-              : "-translate-x-[900px]"
+              ? "translate-x-[3000px] "
+              : "-translate-x-[900px] "
           }
           w-full sm:w-[375px] bg-white shadow-lg
         `}
@@ -161,190 +186,221 @@ const categoriesData = [
         </button>
         <ul className="flex flex-col gap-4 p-4 max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-300 scrollbar-track-gray-100">
           {menuItems.map((item) => {
-  if (item.id === "product") {
-    return (
-      <li key="product" className="flex flex-col">
-        {/* Product Main Button */}
-        <button
-          onClick={() => setProductOpenMobile(!productOpenMobile)}
-          className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
+            if (item.id === "products") {
+              return (
+                <li key="products" className="flex flex-col">
+                  {/* Product Main Button */}
+                  <button
+                    onClick={() => setProductOpenMobile(!productOpenMobile)}
+                    className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
             ${
-              active.startsWith("product")
+              active.startsWith("products")
                 ? "bg-gray-50 text-black"
-                : "bg-gray-100 hover:bg-gray-200"
+                : "bg-gray-50 "
             }`}
-        >
-          {item.label}
-          <span
-            className={`transform transition-transform duration-300 ${
-              productOpenMobile ? "rotate-180" : ""
-            }`}
-          >
-            ▼
-          </span>
-        </button>
-
-        {/* Product Submenu */}
-        {productOpenMobile && (
-          <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
-            {/* Doctor Assistant Section */}
-            <h4 className="flex gap-2 font-semibold text-gray-800">
-              <Image src={doctor_assistant_icon} alt="doctor assistant" />
-              {t("doctor_assistant")}
-            </h4>
-            <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
-              {["hospital","clinic","pharmacy","laborator","operation"].map((sub) => (
-                <Link key={sub} href={`/product/doctor-assistant/${sub}`}>
-                  <li
-                    className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                    onClick={() => {
-                      setSidebarOpen(false);
-                      setProductOpenMobile(false);
-                      handleSetActive(`product/doctor-assistant/${sub}`);
-                      showLoading();
-                    }}
                   >
-                    {t(sub)}
-                  </li>
-                </Link>
-              ))}
-            </ul>
+                    {item.label}
+                    <span
+                      className={`transform transition-transform duration-300 ${
+                        productOpenMobile ? "rotate-180" : ""
+                      }`}
+                    >
+                      ▼
+                    </span>
+                  </button>
 
-            {/* Business Assistant Section */}
-            <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
-              <Image src={business_assistant_logo} alt="business assistant" width={25} />
-              {t("business_assistant")}
-            </h4>
-            <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
-              {["business_assistant_standerd","business_assistant_proffessional","business_assistant_multi_profile"].map((sub) => (
-                <Link key={sub} href={`/product/business-assistant/${sub}`}>
-                  <li
-                    className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                    onClick={() => {
-                      setSidebarOpen(false);
-                      setProductOpenMobile(false);
-                      handleSetActive(`product/business-assistant/${sub}`);
-                      showLoading();
-                    }}
-                  >
-                    {t(sub)}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div>
-        )}
-      </li>
-    );
-  } else if (item.id === "business") {
-    return (
-      <li key="business" className="flex flex-col">
-        {/* Business Main Button */}
-        <button
-          onClick={() => setbusinessesOpenMobile(!businessesOpenMobile)}
-          className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
+                  {/* Product Submenu */}
+                  {productOpenMobile && (
+                    <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
+                      {/* Doctor Assistant Section */}
+                      <h4 className="flex gap-2 font-semibold text-gray-800">
+                        <Image
+                          src={doctor_assistant_icon}
+                          alt="doctor assistant"
+                        />
+                        {t("doctor_assistant")}
+                      </h4>
+                      <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+                        {[
+                          "hospital",
+                          "clinic",
+                          "pharmacy",
+                          "laborator",
+                          "operation",
+                        ].map((sub) => (
+                          <Link
+                            key={sub}
+                            href={`/${locale}/products/doctor-assistant/${sub}`}
+                          >
+                            <li
+                              className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                              onClick={() => {
+                                setSidebarOpen(false);
+                                setProductOpenMobile(false);
+                                handleSetActive(
+                                  `products/doctor-assistant/${sub}`
+                                );
+                                showLoading();
+                              }}
+                            >
+                              {t(sub)}
+                            </li>
+                          </Link>
+                        ))}
+                      </ul>
+
+                      {/* Business Assistant Section */}
+                      <h4 className="flex gap-2 mt-4 font-semibold text-gray-800">
+                        <Image
+                          src={business_assistant_logo}
+                          alt="business assistant"
+                          width={25}
+                        />
+                        {t("business_assistant")}
+                      </h4>
+                      <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
+                        {[
+                          "business-assistant-standerd",
+                          "business-assistant-proffessional",
+                          "business-assistant-multi-profile",
+                        ].map((sub) => (
+                          <Link
+                            key={sub}
+                            href={`/${locale}/products/business-assistant/${sub}`}
+                          >
+                            <li
+                              className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                              onClick={() => {
+                                setSidebarOpen(false);
+                                setProductOpenMobile(false);
+                                handleSetActive(
+                                  `products/business-assistant/${sub}`
+                                );
+                                showLoading();
+                              }}
+                            >
+                              {t(sub)}
+                            </li>
+                          </Link>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            } else if (item.id === "business") {
+              return (
+                <li key="business" className="flex flex-col">
+                  {/* Business Main Button */}
+                  <button
+                    onClick={() =>
+                      setbusinessesOpenMobile(!businessesOpenMobile)
+                    }
+                    className={`flex justify-between items-center w-full font-semibold text-[16px] px-4 py-3 rounded-lg transition-all duration-300 shadow-sm
             ${
               active.startsWith("business")
                 ? "bg-gray-50 text-black"
-                : "bg-gray-100 hover:bg-gray-200"
+                : "bg-gray-50 "
             }`}
-        >
-          {item.label}
-          <span
-            className={`transform transition-transform duration-300 ${
-              businessesOpenMobile ? "rotate-180" : ""
-            }`}
-          >
-            ▼
-          </span>
-        </button>
+                  >
+                    {item.label}
+                    <span
+                      className={`transform transition-transform duration-300 ${
+                        businessesOpenMobile ? "rotate-180" : ""
+                      }`}
+                    >
+                      ▼
+                    </span>
+                  </button>
 
-        {/* Business Submenu */}
-       {businessesOpenMobile && (
-  <div className="flex flex-col gap-4 px-6 mt-3 text-sm animate-fadeIn">
-    {categoriesData.map((category) => (
-      <div key={category.id}>
-        {/* عنوان دسته */}
-        <h4 className="flex gap-2 font-semibold text-gray-800">
-          {t(category.title)}
-        </h4>
+                  {/* Business Submenu */}
+                  {businessesOpenMobile && (
+                    <div className="flex flex-col gap-4 px-2 mt-3 text-sm animate-fadeIn">
+                      {categoriesData.map((category) => (
+                        <div key={category.id}>
+                          {/* عنوان دسته */}
+                          <h4 className="flex gap-2 font-semibold text-gray-800">
+                            {t(category.title)}
+                          </h4>
 
-        {/* زیرمنوها */}
-        <ul className="flex flex-col gap-2 list-disc pr-5 text-[#706f6f] marker:text-[#06B1FD]">
-          {category.items.map((sub) => (
-            <Link key={sub.id} href={sub.href}>
-              <li
-                className="cursor-pointer px-3 py-1 rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
-                onClick={() => {
-                  setSidebarOpen(false);
-                  setbusinessesOpenMobile(false);
-                  handleSetActive(sub.href);
-                  showLoading();
-                }}
-              >
-                {t(sub.label)}
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </div>
-)}
-
-      </li>
-    );
-  } else {
-    // سایر آیتم‌ها
-    return (
-      <li key={item.id}>
-        <Link
-          href={item.href}
-          onClick={() => {
-            handleSetActive(item.id);
-            setSidebarOpen(false);
-            setProductOpenMobile(false);
-            setbusinessesOpenMobile(false);
-            showLoading();
-          }}
-          className={`block text-[16px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
-            active === item.id
-              ? "font-bold text-blue-500 bg-blue-50 shadow-inner"
-              : "hover:bg-gray-100"
-          }`}
-        >
-          {item.label}
-        </Link>
-      </li>
-    );
-  }
-})}
-
+                          {/* زیرمنوها */}
+                          <ul className="flex flex-col gap-2  pr-5 text-[#706f6f]  ">
+                            {category.items.map((sub) => (
+                              <Link key={sub.id} href={sub.href}>
+                                <li
+                                  className="cursor-pointer px-3 py-1  rounded-lg hover:text-[#06B1FD] hover:bg-blue-50 transition-all"
+                                  onClick={() => {
+                                    setSidebarOpen(false);
+                                    setbusinessesOpenMobile(false);
+                                    handleSetActive(sub.href);
+                                    showLoading();
+                                  }}
+                                >
+                                  <span>{sub.icon}
+                                    
+                                  {t(sub.label)}
+                                  </span>
+                                </li>
+                              </Link>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            } else {
+              // سایر آیتم‌ها
+              return (
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    onClick={() => {
+                      handleSetActive(item.id);
+                      setSidebarOpen(false);
+                      setProductOpenMobile(false);
+                      setbusinessesOpenMobile(false);
+                      showLoading();
+                    }}
+                    className={`block text-[16px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
+                      active === item.id
+                        ? "font-bold text-blue-500 bg-blue-50 shadow-inner"
+                        : "hover:bg-gray-100"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            }
+          })}
         </ul>
 
         {/* انتخاب زبان موبایل موبایل */}
-        <div className="relative">
+        <div  className="relative">
           <Image
             src={worldIcon}
             alt="world icon"
             width={48}
             height={48}
             className={`absolute cursor-pointer ${
-              dir === "rtl" ? "left-6" : "right-[1.5em]"
+              dir === "ltr" ? "left-6" : "right-[1.5em]"
             }`}
             onClick={() => setLangBox(!langBox)}
           />
           <div
             className={`absolute top-12 ${
               dir === "ltr" ? "right-[1.5em]" : "left-[1.5em]"
-            } mt-2 flex flex-col gap-3 bg-white shadow-2xl w-34 h-28 rounded-md transition-all ${
+            } mt-2 flex flex-col gap-3 bg-white shadow-2xl w-34 h-28 z-4000 rounded-md transition-all ${
               langBox ? "flex" : "hidden"
             }`}
           >
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
               onClick={() => {
-                setLang("fa");
+                  switchLocale("fa")
+          
                 setLangBox(!langBox);
               }}
             >
@@ -359,7 +415,8 @@ const categoriesData = [
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
               onClick={() => {
-                setLang("ps");
+                  switchLocale("ps")
+      
                 setLangBox(!langBox);
               }}
             >
@@ -374,7 +431,8 @@ const categoriesData = [
             <button
               className="flex items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
               onClick={() => {
-                setLang("en");
+                  switchLocale("en")
+       
                 setLangBox(!langBox);
               }}
             >
@@ -408,17 +466,40 @@ const categoriesData = [
 
       {/* دسکتاپ */}
       <header
-        dir={sidebarDir}
-        onMouseLeave={() =>{ setProductOpenDesktop(false),  setbusinessesOpen(false);}}
-        className={`hidden lg:flex flex-col w-full m-auto z-90   ${
-          isScrolled
-            ? productOpenDesktop || businessesOpen
-              ? "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90  backdrop-blur-sm shadow-sm"
-              : "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90  backdrop-blur-sm"
-            : productOpenDesktop || businessesOpen
-            ? "absolute h-82 top-12 z-900 bg-white shadow-sm"
-            : "absolute h-16 top-12 z-90 bg-white "
-        }`}
+      
+        onMouseLeave={() => {
+          setProductOpenDesktop(false), setbusinessesOpen(false);
+        }}
+     className={`hidden lg:flex flex-col w-full m-auto z-90 ${
+  (() => {
+    if (isScrolled) {
+      if (productOpenDesktop ) {
+        return "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-82 z-90 backdrop-blur-sm shadow-sm";
+      }
+      else if(businessesOpen){
+        return "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-122 z-90 backdrop-blur-sm shadow-sm";
+        
+      }else if(businessesOpen && productOpenDesktop){
+        
+        return "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-0 z-90 backdrop-blur-sm";
+      }else{
+        
+      return "fixed top-0 left-1/2 -translate-x-1/2 opacity-100 h-17 z-90 backdrop-blur-sm";
+      }
+    }
+
+    if (productOpenDesktop ) {
+      return "absolute h-82 top-12 z-900 bg-white shadow-sm";
+    }
+    if(businessesOpen){
+      return "absolute h-122 top-12 z-900 bg-white shadow-sm";
+      
+    }
+
+    return "absolute h-16 top-12 z-90 bg-white";
+  })()
+}`}
+
       >
         <div className="flex items-center justify-between lg:w-[1056px] md:w-[616px] m-auto absolute top-2 left-1/2 -translate-x-1/2">
           <div className="relative flex items-center gap-4">
@@ -438,20 +519,24 @@ const categoriesData = [
                 src={worldIcon}
                 alt="world icon"
                 width={48}
+                onMouseLeave={() => setLangBox(false)}
                 height={48}
                 className="cursor-pointer"
                 onClick={() => setLangBox(!langBox)}
               />
               {/* language box */}
               <div
-                className={`absolute top-12 left-[-2.5em] mt-2 flex flex-col gap-2 bg-white shadow-2xl w-34 h-28 rounded-md transition-all z-[100000] ${
+              onMouseEnter={()=>setLangBox(true)}
+              onMouseLeave={()=>setLangBox(false)}
+                className={`absolute top-10 left-[-2.5em] mt-2 flex flex-col gap-2 bg-white shadow-2xl w-34 h-28 rounded-md transition-all z-100000 ${
                   langBox ? "flex items-center justify-center" : "hidden"
                 }`}
               >
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => {
-                    setLang("fa");
+                    switchLocale("fa")
+               
                     setLangBox(!langBox);
                   }}
                 >
@@ -466,7 +551,8 @@ const categoriesData = [
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => {
-                    setLang("ps");
+                    switchLocale("ps")
+          
                     setLangBox(!langBox);
                   }}
                 >
@@ -481,7 +567,8 @@ const categoriesData = [
                 <button
                   className="flex flex-row-reverse items-center gap-2 mx-2 text-right rounded cursor-pointer w-28 hover:text-sky-300"
                   onClick={() => {
-                    setLang("en");
+                      switchLocale("en")
+             
                     setLangBox(!langBox);
                   }}
                 >
@@ -498,18 +585,19 @@ const categoriesData = [
 
           {/* منو دسکتاپ */}
           <div
-            dir={sidebarDir}
+         
             className="bg-[#faf9f9] w-[410px] h-[43.5px] flex items-center justify-center rounded-lg opacity-100"
           >
             <ul className="flex flex-row-reverse justify-around gap-4">
               {menuItems.map((item) =>
-              // business
+                // business
                 item.id === "business" ? (
                   <li
                     key="business"
                     className="relative cursor-pointer group"
-                       onMouseEnter={() =>{setbusinessesOpen(true), setProductOpenDesktop(false)}}
-             
+                    onMouseEnter={() => {
+                      setbusinessesOpen(true), setProductOpenDesktop(false);
+                    }}
                   >
                     <button
                       className={`relative text-[12px] transition-colors duration-200 cursor-pointer
@@ -527,21 +615,22 @@ const categoriesData = [
                       />
                     </button>
                   </li>
-                ) :
-                // product section
-                item.id === "product" ? (
+                ) : // product section
+                item.id === "products" ? (
                   <li
-                    key="product"
+                    key="products"
                     className="relative group"
-                    onMouseEnter={() =>{setbusinessesOpen(false), setProductOpenDesktop(true)}}
+                    onMouseEnter={() => {
+                      setbusinessesOpen(false), setProductOpenDesktop(true);
+                    }}
                   >
                     <button
                       className={`relative text-[12px] transition-colors duration-200 cursor-pointer text-[#1E1E2B66] hover:text-gray-600`}
                     >
                       {item.label}
-                      <span
-                          className={`absolute left-1/2 -translate-x-1/2 -bottom-3 h-1 bg-sky-500 rounded-full origin-center transition-transform duration-300 ${
-                           active.startsWith("item")
+                    <span
+                        className={`absolute left-1/2 top-6 -translate-x-1/2 h-1 bg-sky-500 rounded-full transition-transform duration-300 ${
+                          active.startsWith("broducts")
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
                         }`}
@@ -549,9 +638,8 @@ const categoriesData = [
                       />
                     </button>
                   </li>
-                ) : 
-                // other items
-                (
+                ) : (
+                  // other items
                   <li
                     key={item.id}
                     className="relative group"
@@ -589,7 +677,7 @@ const categoriesData = [
           </div>
 
           <div>
-            <Link href="/">
+            <Link href={`/${locale}`}>
               {dir === "ltr" ? (
                 <Image
                   src={asrepoya}
@@ -614,7 +702,7 @@ const categoriesData = [
 
         {productOpenDesktop && (
           <div
-            dir={dir === "rtl" ? "ltr" : "rtl"}
+          dir={dir === "rtl" ? "ltr" : "rtl"}
             className="z-1000 flex items-start justify-start gap-80 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
           >
             {/* doctor assistant */}
@@ -625,40 +713,40 @@ const categoriesData = [
               </h1>
               <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
                 <Link
-                  onClick={handleSetActive("product")}
-                  href={"/product/doctor-assistant/hospital"}
+                  onClick={handleSetActive("products")}
+                  href={`/${locale}/products/doctor-assistant/hospital`}
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("hospital")}
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
-                  href={"/product/doctor-assistant/clinic"}
+                  onClick={handleSetActive("products")}
+                  href={`/${locale}/products/doctor-assistant/clinic`}
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("clinic")}
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
-                  href={"/product/doctor-assistant/pharmacy"}
+                  onClick={handleSetActive("products")}
+                  href={`/${locale}/products/doctor-assistant/pharmacy`}
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("pharmacy")}
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
-                  href={"/product/doctor-assistant/laborator"}
+                  onClick={handleSetActive("products")}
+                  href={`/${locale}/products/doctor-assistant/laborator`}
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("laborator")}
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
-                  href={"/product/doctor-assistant/operation"}
+                  onClick={handleSetActive("products")}
+                  href={`/${locale}/products/doctor-assistant/operation`}
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
                     {t("operation")}
@@ -679,9 +767,9 @@ const categoriesData = [
               </h1>
               <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
                 <Link
-                  onClick={handleSetActive("product")}
+                  onClick={handleSetActive("products")}
                   href={
-                    "/product/business-assistant/business_assistant_standerd"
+                    `/${locale}/products/business-assistant/business-assistant-standard`
                   }
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
@@ -689,9 +777,9 @@ const categoriesData = [
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
+                  onClick={handleSetActive("products")}
                   href={
-                    "/product/business-assistant/business_assistant_proffessional"
+                    `/${locale}/products/business-assistant/business-assistant-profesional`
                   }
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
@@ -699,9 +787,9 @@ const categoriesData = [
                   </li>
                 </Link>
                 <Link
-                  onClick={handleSetActive("product")}
+                  onClick={handleSetActive("products")}
                   href={
-                    "/product/business-assistant/business_assistant_multi_profile"
+                    `/${locale}/products/business-assistant/business-assistant-multiProfile`
                   }
                 >
                   <li className="cursor-pointer hover:text-[#06B1FD]">
@@ -713,30 +801,37 @@ const categoriesData = [
           </div>
         )}
 
-
-    {/* businesses submenu  */}
-{businessesOpen && (
-  <div
-    dir={dir === "rtl" ? "ltr" : "rtl"}
-    className="z-1000 flex items-start justify-start gap-20 w-[1056px] m-auto absolute top-22 left-1/2 -translate-x-1/2"
-  >
-    {categoriesData.map((category) => (
-      <div key={category.id}>
-        <h1 className="flex gap-2 pb-2 text-sm font-bold">{t(category.title)}</h1>
-        <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] list-disc px-5 marker:text-[#06B1FD]">
-          {category.items.map((item) => (
-            <Link key={item.id} onClick={() => setActive("business")} href={item.href}>
-              <li className="cursor-pointer hover:text-[#06B1FD]">{t(item.label)}</li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </div>
-)}
-
-
-
+        {/* businesses submenu  */}
+        {businessesOpen && (
+          <div
+            dir={dir === "rtl" ? "ltr" : "rtl"}
+            className="z-1000 grid grid-cols-2  w-[1000px] gap-2 m-auto absolute top-22 left-1/2 -translate-x-1/2"
+          >
+            {categoriesData.map((category) => (
+              <div key={category.id} className="">
+                <h1 className="flex gap-2 pb-2 text-sm font-bold border-b border-gray-300 w-[250px]">
+                  {t(category.title)}
+                </h1>
+                <ul className="flex flex-col gap-3 mt-3 mx-4 text-[#706f6f] px-5  ">
+                  {category.items.map((item) => (
+                    <Link
+                      key={item.id}
+                      onClick={() => setActive("business")}
+                      href={item.href}
+                    >
+                      <li className="cursor-pointer hover:text-[#06B1FD]  w-[200px]">
+                        <span className="flex items-center gap-2">
+                          {item.icon}
+                        {t(item.label)}
+                        </span>
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </header>
 
       <LoginModal open={openLogin} onClose={() => setOpenLogin(false)} />

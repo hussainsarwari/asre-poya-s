@@ -4,8 +4,14 @@ import { useLanguage } from "../../provider/languageProvider";
 import barcodeImg from "@/public/icons/barcode.svg"
 import clipboard from "@/public/icons/clipboard-white.svg"
 import programmingImg from "@/public/icons/img_programming.svg"
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+
 export default function Section3() {
-    const { t,dir } = useLanguage();
+        const t = useTranslations();
+     const locale = useLocale();
+   
+     const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
     return (
         <>
             <div dir= {dir === "ltr" ? "rtl" : "ltr"} className='lg:-mt-[118px] md:-my-18 mx-auto lg:w-[1056px] w-[302px] md:w-[616px]'>

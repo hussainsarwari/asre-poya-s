@@ -1,12 +1,15 @@
 "use client";
 import Image from 'next/image'
-import { useLanguage } from "../../provider/languageProvider";
 import playerIcon from "@/public/icons/player_icon.svg"
 import Clipboardblack from "@/public/icons/clipboard-black.svg"
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function Section1() {
-    const { t ,dir} = useLanguage();
-
+      const t = useTranslations();
+     const locale = useLocale();
+   
+     const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
     return (
         <>
             <div dir= {dir === "rtl" ? "rtl" : "ltr"}  className='flex flex-col-reverse md:flex-row w-[340px] mx-auto lg:justify-between  md:w-[616px] lg:w-[1056px]'>

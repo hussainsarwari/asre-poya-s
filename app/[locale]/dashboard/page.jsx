@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Loading from "@/app/components/loading.jsx";
+import Loading from "../components/loading.jsx";
 import { Download, Eye, Users, Edit } from "lucide-react";
 
 export default function DashboardMainPage() {

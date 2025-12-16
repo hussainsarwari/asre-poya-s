@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../provider/languageProvider";
 import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
 import box1 from "@/public/icons/home/box5.svg";
@@ -13,9 +13,15 @@ import userGirl from "@/public/icons/user_girl.svg";
 import start from "@/public/icons/home/Star.svg";
 import start2 from "@/public/icons/home/Star_2.svg";
 import start_fill from "@/public/icons/home/Star_fill.svg";
+import { useTranslations } from 'next-intl';
+import { useLocale } from "next-intl";
+export default function clientOpinio() {
 
-export default function client_opinio() {
-  const { t,dir } = useLanguage();
+     const t = useTranslations();
+        const locale = useLocale();
+       
+     const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+  
   const [index, setIndex] = useState(0);
 
   const feedbacks = [

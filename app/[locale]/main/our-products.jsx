@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../../provider/languageProvider";
-
-// تصاویر
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+// product images
 import img1 from "@/public/icons/home/bg_img2.svg";
 import img2 from "@/public/icons/home/bg_img2.svg";
 import img3 from "@/public/icons/home/bg_img3.svg";
@@ -14,8 +14,11 @@ import img5 from "@/public/icons/home/bg_img2.svg";
 import arrow from "@/public/icons/home/arrow.svg";
 import left_arrow from "@/public/icons/home/arrow-left2.svg";
 
-export default function Section3() {
-  const { t ,dir} = useLanguage();
+export default function OurProduct() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   const products = [
     {
@@ -51,55 +54,63 @@ export default function Section3() {
   ];
 
   const [active, setActive] = useState(products[0]);
-  const sidebardir=dir
+  const sidebardir = dir;
 
   return (
-    <div dir = {dir==="rtl" ? "ltr" : "rtl"} className="lg:w-full md:w-[616px]  m-auto relative  mt-10 ">
+    <div className="lg:w-full md:w-[616px]  m-auto relative  lg:mt-0 mt-10 ">
+      <div
+        dir={locale === "fa" || locale === "ps" ? "rtl" : "ltr"}
+        className="block mb-10 lg:hidden"
+      >
+        {/* عنوان بالا */}
+        <h1 className="text-[32px]  text-[#1E1E2B] font-semibold">
+          {t("homePagesection3Title")}
+        </h1>
 
-
-
-      <div dir = {dir==="rtl" ? "ltr" : "rtl"} className="block mb-10 lg:hidden">
-          {/* عنوان بالا */}
-          <h1 dir = {dir==="rtl" ? "ltr" : "rtl"} className="text-[32px]  text-[#1E1E2B] font-semibold">
-            {t("homePagesection3Title" )}
-          </h1>
-           
-          <p className="text-[14px]  text-[#1E1E2B99] mt-1">
-            {t("homePageSection3paragraph")}
-          </p>
-        </div>
-      {/* mobile and tablet btns*/}
-      <div dir = {dir==="rtl" ? "ltr" : "rtl"} className="absolute right-0 grid w-full grid-cols-2 gap-3 sm:grid-cols-3 md:flex lg:hidden ">
-        {products.map((item, index) => (
+        <p className="text-[14px]  text-[#1E1E2B99] mt-1">
+          {t("homePageSection3paragraph")}
+        </p>
+      </div>
+      {/* mobile and tablet btns */}
+      <div
+        dir={dir}
+        className="absolute right-0 flex flex-nowrap gap-3 w-[350px] md:w-[616px] overflow-x-auto overflow-y-hidden lg:hidden pb-5 z-20"
+      >
+        {products.map((item) => (
           <button
-          dir = {dir==="ltr" ? "ltr" : "rtl"}
             key={item.id}
             onClick={() => setActive(item)}
-            className={`flex z-20 items-center justify-center gap-2 h-10 md:w-[116px] lg:w-[205px] lg:h-12 cursor-pointer rounded-2xl transition-all duration-200 
-        ${index === products.length - 1 ? "col-span-2" : "w-full"}
+            className={`
+        inline-flex items-center justify-center gap-2
+        h-10 min-w-[150px] md:min-w-[110px]
+        cursor-pointer rounded-2xl transition-all duration-200
         ${
           active.id === item.id
             ? "bg-[#06B1FD] text-white shadow-md shadow-[#06B1FD33]"
             : "bg-[#1E1E2B0D] text-[#1E1E2BCC] hover:bg-[#1E1E2B1A]"
-        }`}
+        }
+      `}
           >
             {active.id === item.id && (
               <Image
-              src={left_arrow}
-              alt="arrow"
-              className={`w-4 h-4 rotate-180 lg:rotate-0 ${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""}`}
+                src={left_arrow}
+                alt="arrow"
+                className={`w-4 h-4 rotate-180 lg:rotate-0 ${
+                  dir === "rtl" ? "[transform:rotateY(180deg)]" : ""
+                }`}
               />
             )}
             {item.title}
           </button>
         ))}
       </div>
-{/* desktop */}
-      <div
-        dir = {dir==="rtl" ? "ltr" : "rtl"}
-        className="lg:w-[1056px] md:w-[716px] w-[350px]  mx-auto lg:h-[621px] mt-20 overflow-visible"
-      >
-        <div className="right-0 hidden bottom-150 lg:inline ">
+
+      {/* desktop */}
+      <div className="lg:w-[1056px] md:w-[716px] w-[350px]  mx-auto lg:h-[621px] mt-20 overflow-visible">
+        <div
+          dir={locale === "fa" || locale === "ps" ? "rtl" : "ltr"}
+          className="hidden bottom-150 lg:inline"
+        >
           {/* desktop عنوان بالا */}
           <h1 className="text-[32px]  font-bold text-[#1E1E2B]">
             {t("homePagesection3Title")}
@@ -109,15 +120,13 @@ export default function Section3() {
           </p>
         </div>
         {/* بخش اصلی */}
-        <div   dir = {sidebardir}
-       className="flex flex-col items-center justify-between lg:mt-2 md:mt-5 -mt-10 lg:h-[621px] relative md:w-full   ">
+        <div className="flex flex-col items-center justify-between lg:mt-2 md:mt-5 -mt-10 lg:h-[621px] relative md:w-full   ">
           <div className="absolute w-full border top-45 border-[#1E1E2B1A] md:hidden"></div>
           <div className="flex flex-col items-end justify-between lg:items-center lg:w-[1056px] lg:flex-row ">
             {/* tesktop btn */}
             <div className="items-center hidden gap-3 mb-0 lg:flex-col lg:flex">
               {products.map((item) => (
                 <button
-                 dir = {dir==="ltr" ? "ltr" : "rtl"}
                   key={item.id}
                   onClick={() => setActive(item)}
                   className={`lg:w-[205px] md:flex-row-reverse w-[116px] h-10 flex items-center justify-center gap-2 lg:h-12 cursor-pointer rounded-2xl transition-all duration-200 ${
@@ -128,9 +137,11 @@ export default function Section3() {
                 >
                   {active.id === item.id && (
                     <Image
-                    src={left_arrow}
-                    alt="arrow"
-                    className={`w-4 h-4 rotate-180 lg:rotate-0  ${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""}`}
+                      src={left_arrow}
+                      alt="arrow"
+                      className={`w-4 h-4 rotate-180 lg:rotate-0  ${
+                        dir === "rtl" ? "[transform:rotateY(180deg)]" : ""
+                      }`}
                     />
                   )}
                   {item.title}
@@ -161,7 +172,7 @@ export default function Section3() {
               {/* متن سمت راست با انیمیشن */}
               <div
                 className="lg:w-[320px] w-[320px] lg:h-[395px] flex flex-col justify-between py-3"
-              dir = {dir==="rtl" ? "ltr" : "rtl"}
+                dir={dir === "rtl" ? "ltr" : "rtl"}
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -187,7 +198,13 @@ export default function Section3() {
                   className="lg:w-[113px] lg:h-[46px] w-[116px] h-[43px] cursor-pointer rounded-xl bg-[#06B1FD] shadow-sm  mt-10 lg:mt-20 shadow-[#06B1FD33] flex justify-center items-center text-white text-[14px] gap-2"
                 >
                   {t("home_section3_product_btn")}
-                  <Image src={arrow} alt="arrow" className={`${dir === "rtl" ? "[transform:rotateY(180deg)]" : ""}`} />
+                  <Image
+                    src={arrow}
+                    alt="arrow"
+                    className={`${
+                      dir === "rtl" ? "[transform:rotateY(180deg)]" : ""
+                    }`}
+                  />
                 </motion.button>
               </div>
             </div>

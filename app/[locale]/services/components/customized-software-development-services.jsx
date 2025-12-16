@@ -1,12 +1,18 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
 import programming_img from "@/public/icons/img_programming.svg";
 import clock from "@/public/icons/services/clock.svg";
 import calendar from "@//public/icons/services/calendar_ser.svg";
 import people_search from "@//public/icons/services/people_search.svg";
-export default function client_opinion() {
-  const { t ,dir} = useLanguage();
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+
+export default function CustomizedSoftwareDevelopmentServices() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
 
   return (
     <div dir= {dir === "rtl" ? "rtl" : "ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto my-30">

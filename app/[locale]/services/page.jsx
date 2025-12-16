@@ -1,14 +1,14 @@
 
 
-import Faq from "@/app/products/components/FAQ.jsx"
-import Client_opinion from "../products/components/client-opinion.jsx";
-import Customized_software_development_services from "./components/customized_software_development_services.jsx"
-import Loading from '@/app/components/loading.jsx'
-import Know_needs from "./components/know_needs.jsx";
-import Specializing_in_custom_software from "./components//Specializing_in_custom_software.jsx" 
-import Software_development_lifecycle from "./components/software_development_lifecycle.jsx";
-import Ask_project_price from "./components/ask_project_price.jsx";
-import My_project from './components/my_projects';
+import Faq from "../products/components/FAQ.jsx"
+import ClientOpinion from "../products/components/client-opinion.jsx";
+import CustomizedSoftwareDevelopmentServices from "./components/customized-software-development-services.jsx"
+import Loading from '../components/loading.jsx'
+import KnowNeeds from "./components/know-needs.jsx";
+import SpecializingInCustomSoftware from "./components/Specializing-in-custom-software.jsx" 
+import SoftwareDevelopmentLifecycle from "./components/software-development-lifecycle.jsx";
+import AskProjectPrice from "./components/ask-project-price.jsx";
+import MyProject from './components/my-projects.jsx';
 import Counseling from "./components/counseling.jsx"
 export default function Product(){
 
@@ -19,13 +19,13 @@ export default function Product(){
 
 
 
-<Customized_software_development_services />
-<Know_needs />
- <Specializing_in_custom_software />
- <Software_development_lifecycle />
-<Ask_project_price />
-<My_project />
-<Client_opinion />
+<CustomizedSoftwareDevelopmentServices />
+<KnowNeeds />
+ <SpecializingInCustomSoftware />
+ <SoftwareDevelopmentLifecycle />
+<AskProjectPrice />
+<MyProject />
+<ClientOpinion />
  <Faq /> 
 <Counseling /> 
 

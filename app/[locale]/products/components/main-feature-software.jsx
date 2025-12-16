@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import code_icon1 from "@/public/icons/products/code1.svg";
 import code_icon2 from "@/public/icons/products/code2.svg";
 import code_icon3 from "@/public/icons/products/code3.svg";
@@ -11,12 +12,15 @@ import Rectangle from "@/public/icons/products/Rectangle.svg";
 export default function main_feature_software({
   SectionName,
 })  {
-  const { t,dir } = useLanguage();
-
+   const t = useTranslations();
+   const locale = useLocale();
+ 
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+ 
   return (
     <div dir={dir=="rtl"?"rtl":"ltr"} className="lg:w-[1056px] md:w-[616px] w-[350px]  m-auto  md:mt-50 mt-30 ">
       <div className="flex flex-col items-end ">
-        <h1 dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B] lg:text-[32px] text-[16px]  relative font-bold">
+        <h1 dir={dir=="ltr"?"rtl":"ltr"} className="text-[#1E1E2B] lg:text-[32px] text-[24px]  relative font-bold">
             {SectionName}  {t("product_section3_title")} 
           <Image
             src={Rectangle}

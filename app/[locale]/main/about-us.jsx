@@ -1,9 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../../provider/languageProvider";
-import { useLoading } from "@/app/provider/LoadingProvider";
+import { useLoading } from "@/app/[locale]/provider/LoadingProvider";
 import Link from "next/link";
 
 import bg_img from "@/public/icons/home/bg_img3.svg";
@@ -11,24 +8,43 @@ import calendar from "@/public/icons/calendar-tick.svg";
 import calendar_search from "@/public/icons/calendar-search.svg";
 import cal from "@/public/icons/home/calendar.svg";
 import OurClient from "../products/components/our-client";
-
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function AboutUs() {
-  const { t ,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const { showLoading } = useLoading();
 
   return (
-    <div  dir = {dir==="ltr" ? "ltr" : "rtl"}  className="overflow-hidden mt-15 h-[1200px] lg:h-[870px] relative ">
+    <div
+   
+      className="overflow-hidden mt-15 h-[1200px] lg:h-[870px] relative "
+    >
       {/* blue background section */}
-      <div className={`lg:w-[50%] h-[285px] absolute hidden lg:block lg:top-[120px] md:w-[1700px] top-[500px] md:right-[10%] z-0 rounded-tr-[32px] rounded-br-[32px] bg-[#06B1FD]  ${dir === "rtl" ? "[transform:rotateY(180deg)] lg:right-0 " : "lg:left-0 "}`}></div>
+      <div
+        className={`lg:w-[50%] h-[285px] absolute hidden lg:block lg:top-[120px] md:w-[1700px] top-[500px] md:right-[10%] z-0 rounded-tr-[32px] rounded-br-[32px] bg-[#06B1FD]  ${
+          dir === "rtl"
+            ? "[transform:rotateY(180deg)] lg:right-0 "
+            : "lg:left-0 "
+        }`}
+      ></div>
 
       {/* content */}
-      <div  className="m-auto lg:w-[1056px] relative z-10 md:w-[616px] w-[346px] overflow-visible">
+      <div className="m-auto lg:w-[1056px] relative z-10 md:w-[616px] w-[346px] overflow-visible">
         {/* blue box mobile */}
         <div className="lg:w-[50%] h-[285px] lg:hidden lg:top-[120px] top-[500px] w-[900px] absolute rounded-tr-[32px] rounded-br-[32px] bg-[#06B1FD] -right-5"></div>
 
         {/* three white boxes */}
-        <div  dir = {dir==="ltr" ? "ltr" : "rtl"} className= {`flex flex-col gap-[16px] z-40  lg:top-25 md:top-120 top-115 absolute ${dir==="ltr" ? "left-[0px]" : ""}`}>
+        <div
+         
+          className={`flex flex-col gap-[16px] z-40  lg:top-25 md:top-120 top-115 absolute ${
+            dir === "ltr" ? "left-[0px]" : ""
+          }`}
+        >
           <div className="lg:w-[516px] lg:h-[95px] rounded-xl bg-white border border-[#1E1E2B1A] p-3 shadow-lg shadow-[#00000026]">
             <h1 className="flex flex-row text-[12px] lg:text-[16px] text-[#1E1E2B]  gap-1 justify-end font-bold">
               {t("home_page_section5_about_us_exprience_title1")}
@@ -36,7 +52,11 @@ export default function AboutUs() {
                 <Image src={calendar} alt="calculator tick" />
               </span>
             </h1>
-            <p  className={`text-[#1E1E2B99] text-[10px] lg:text-[12px] text-end mt-2 ${dir==="ltr" ? "text-right" : "text-end"} `}>
+            <p
+              className={`text-[#1E1E2B99] text-[10px] lg:text-[12px] text-end mt-2 ${
+                dir === "ltr" ? "text-right" : "text-end"
+              } `}
+            >
               {t("home_page_section5_about_us_exprience_paragraph1")}
             </p>
           </div>
@@ -48,7 +68,11 @@ export default function AboutUs() {
                 <Image src={calendar_search} alt="calculator tick" />
               </span>
             </h1>
-            <p className={`${dir==="ltr" ? "text-right" : "text-end"} text-[#1E1E2B99] text-[10px] lg:text-[12px] mt-2`}>
+            <p
+              className={`${
+                dir === "ltr" ? "text-right" : "text-end"
+              } text-[#1E1E2B99] text-[10px] lg:text-[12px] mt-2`}
+            >
               {t("home_page_section5_about_us_exprience_paragraph2")}
             </p>
           </div>
@@ -60,16 +84,22 @@ export default function AboutUs() {
                 <Image src={cal} alt="calculator tick" />
               </span>
             </h1>
-            <p className={`${dir==="ltr" ? "text-right" : "text-end"} text-[#1E1E2B99] text-[10px] lg:text-[12px] mt-2`}>
+            <p
+              className={`${
+                dir === "ltr" ? "text-right" : "text-end"
+              } text-[#1E1E2B99] text-[10px] lg:text-[12px] mt-2`}
+            >
               {t("home_page_section5_about_us_exprience_paragraph3")}
             </p>
           </div>
         </div>
 
         {/* top title */}
-        <div dir = {dir==="ltr" ? "ltr" : "rtl"} className="flex items-center justify-between ">
+        <div
+       
+          className="flex items-center justify-between "
+        >
           <Link
-          
             className="text-[#06B1FD] text-[14px] font-semibold"
             href="/about-us"
             onClick={() => {
@@ -80,7 +110,10 @@ export default function AboutUs() {
             {t("see_all")}
           </Link>
 
-          <div dir = {dir==="rtl" ? "ltr" : "rtl"} className="flex flex-col justify-end">
+          <div
+           
+            className="flex flex-col justify-end"
+          >
             <h1 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B] ">
               {t("aboutus")}
             </h1>
@@ -91,7 +124,11 @@ export default function AboutUs() {
         </div>
 
         {/* background image */}
-        <div className= {`lg:relative  mt-10 ${dir==="rtl" ? "right-[560px]" : ""}`}>
+        <div
+          className={`lg:relative  mt-10 ${
+            dir === "rtl" ? "right-[560px]" : ""
+          }`}
+        >
           <Image
             src={bg_img}
             alt="background image"
@@ -99,7 +136,10 @@ export default function AboutUs() {
           />
         </div>
 
-        <div dir = {dir==="ltr" ? "ltr" : "rtl"} className="relative lg:top-80 md:top-190 top-190">
+        <div
+          dir={dir === "ltr" ? "ltr" : "rtl"}
+          className="relative lg:top-80 md:top-190 top-190"
+        >
           <OurClient />
         </div>
       </div>

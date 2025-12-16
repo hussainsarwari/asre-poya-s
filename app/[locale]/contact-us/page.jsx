@@ -1,5 +1,5 @@
 import Main from "./components/main.jsx"
-import Loaded from "@/app/components/loading.jsx"
+import Loaded from "../components/loading.jsx"
 export default function ContactUs() {
   
 

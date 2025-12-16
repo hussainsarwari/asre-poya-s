@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
@@ -10,7 +11,10 @@ import arrow_black from "@/public/icons/products/arrow-left_black.svg";
 export default function FAQSection({
   SectionName,
 })  {
-  const { t, dir } = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   const faqs = [
     { question: t("faq_q1"), answer: t("faq_a1") },
@@ -26,7 +30,7 @@ export default function FAQSection({
         dir === "ltr" ? "text-right" : "text-left"
       }`}
     >
-      <h2 className="relative mb-6 text-2xl font-bold text-[#1E1E2B] text-[24px]">
+      <h2 className="relative mb-6 text-2xl font-bold text-[#1E1E2B]">
         {t("faq_title")}
         <Image
           src={Rectangle}

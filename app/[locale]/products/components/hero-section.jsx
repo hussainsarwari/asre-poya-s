@@ -1,56 +1,69 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import bg_image from "@/public/icons/img_programming.svg";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
+import { Link } from "@/i18n/navigation";
 
 export default function Section1({ SectionName }) {
-  const { t, dir } = useLanguage();
-  const [activeTab, setActiveTab] = useState("home");
+  const t = useTranslations();
+  const locale = useLocale();
 
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
+  const [activeTab, setActiveTab] = useState("");
+    const pathname = usePathname();
+
+  const segments = pathname.split('/').filter(Boolean);
+
+  const id = segments[segments.length - 1];
+useEffect(() => {
+    setActiveTab(id);
+  }, [id]);
+  
+  
   const tabs = [
-    { key: "home", label: t("home") },
-    { key: "home_inspection", label: t("pharmacyHomeـexamination") },
     { key: "pharmacy", label: t("pharmacy") },
     { key: "clinic", label: t("clinic") },
     { key: "laborator", label: t("laborator") },
-    { key: "Operation", label: t("operation") },
+    { key: "operation", label: t("operation") },
     { key: "hospital", label: t("hospital") },
   ];
-
+  
   const business_assistant_tabs = [
-     { key: "home", label: t("home") },
-    { key: "business_assistant_standard", label: t("business_assistant_standard") },
-    { key: "business_assistant_profesional", label: t("business_assistant_proffessional") },
-    { key: "business_assistant_multiProfile", label: t("business_assistant_multi_profile") },
+    { key: "business-assistant-standard", label: t("business_assistant_standard") },
+    { key: "business-assistant-profesional", label: t("business_assistant_proffessional") },
+    { key: "business-assistant-multiProfile", label: t("business_assistant_multi_profile") },
   ];
 
   return (
     <div dir={dir === "ltr" ? "ltr" : "rtl"} className="lg:w-[1056px] md:w-[616px] w-[360px] mt-14">
       <div className="hidden lg:flex flex-row-reverse w-full h-[51px] border-y border-y-[#00000014] items-center gap-6 justify-start mx-auto mt-15">
-        {SectionName === "bussiness_assistant"
+        {SectionName === "business-assistant-standard"|| SectionName === "business-assistant-profesional" || SectionName === "business-assistant-multiProfile"
           ? business_assistant_tabs.map((item) => (
-              <button
+              <Link
                 key={item.key}
-                onClick={() => setActiveTab(item.key)}
+                href={`/products/business-assistant/${item.key}`}
                 className={`text-[12px] transition-all cursor-pointer ${
-                  activeTab === item.key ? "text-[#06B1FD] font-semibold" : "text-[#1E1E2B99]"
+                  activeTab == item.key ? "text-[#06B1FD] font-semibold" : "text-[#1E1E2B99]"
                 }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))
           : tabs.map((item) => (
-              <button
+              <Link
                 key={item.key}
-                onClick={() => setActiveTab(item.key)}
+                href={`/products/doctor-assistant/${item.key}`}
                 className={`text-[12px] transition-all cursor-pointer ${
-                  activeTab === item.key ? "text-[#06B1FD] font-semibold" : "text-[#1E1E2B99]"
+                  activeTab == item.key ? "text-[#06B1FD] font-semibold" : "text-[#1E1E2B99]"
                 }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
       </div>
 
@@ -58,7 +71,7 @@ export default function Section1({ SectionName }) {
       <h1 className="font-bold mt-15 text-[24px] text-center">
         <span className="bg-linear-to-r from-[#06B1FD] to-[#046A97] bg-clip-text text-transparent">
           {t("product_section1_title_section2")}
-        </span>{" "}
+        </span>
         {t("production_section1_title")}
       </h1>
 

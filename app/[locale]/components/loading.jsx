@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import { useLoading } from "@/app/provider/LoadingProvider";
+import { useLoading } from "@/app/[locale]/provider/LoadingProvider";
 export default function Product(){
     const [loaded, setLoaded] = useState(false);  
       const { isLoading, showLoading, hideLoading } = useLoading();  

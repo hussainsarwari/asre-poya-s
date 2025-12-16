@@ -4,20 +4,24 @@ import Software_versions from "../../components/software_versions.jsx";
 import Price_plane from "../../components/Price-plane.jsx";
 import Client_opinion from "../../components/client-opinion.jsx";
 import FAQ from "../../components/FAQ.jsx";
-import Section1 from "../../components/section1";
-import Loading from "@/app/components/loading.jsx";
-export default function clinic() {
+import HeroSection from "../../components/hero-section";
+import Loading from "../../../components/loading";
+export default async function doctor_assistant({params}) {
+    const {id}=await params;
+ 
+
+    
   return (
     <>
     <div className="lg:w-[1056px] md:w-[616px] w-[360px] m-auto flex flex-col">
         <Loading />
-      <Section1 SectionName='doctor_assistant'/>
-      <Main_feature_software SectionName='clinic'/>
-      <Why_choose_us SectionName='clinic'/>     
-      <Software_versions SectionName='clinic'/>
-      <Price_plane SectionName='clinic'/>
-      <Client_opinion SectionName='clinic'/>
-      <FAQ SectionName='clinic'/>
+      <HeroSection SectionName={id}/>
+      <Main_feature_software SectionName={id}/>
+      <Why_choose_us SectionName={id}/>     
+      <Software_versions SectionName={id}/>
+      <Price_plane SectionName={id}/>
+      <Client_opinion SectionName={id}/>
+      <FAQ SectionName={id}/>
     </div>
     </>
   );

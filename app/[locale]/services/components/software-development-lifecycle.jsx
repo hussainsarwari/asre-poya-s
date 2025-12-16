@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
 import image_backBox from "@/public/icons/services/box_tablet.svg";
 import image_backBox_tablet from "@/public/icons/services/tablet_box.svg";
 import image_backBox_mobile from "@/public/icons/services/mobile_box.svg";
-export default function Software_development_lifecycle() {
-  const { t,dir } = useLanguage();
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+
+export default function SoftwareDevelopmentLifecycle() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   return (
     <div dir={dir=="ltr"?"rtl":"ltr"} className="relative my-20 m-autlo w-ful">

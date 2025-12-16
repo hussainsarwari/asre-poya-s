@@ -1,5 +1,5 @@
 
-import Loading from '@/app/components/loading.jsx'
+import Loading from '../components/loading.jsx'
 import Content from './components/Content'
 export default function Product(){
     

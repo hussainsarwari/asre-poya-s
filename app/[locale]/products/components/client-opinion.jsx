@@ -1,22 +1,25 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
-
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import programming_img from "@/public/icons/img_programming.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 import star from "@/public/icons/home/Star.svg";
 import user_img from "@/public/icons/user_man.svg";
 import star_fill from "@/public/icons/home/Star_fill.svg";
 import arr from "@/public/icons/products/arrow-circle-right.svg";
-export default function client_opinion({
+export default function ClientOpinion({
   SectionName,
 }) {
-  const { t ,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   return (
-    <div dir={dir=="rtl"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto my-20">
+    <div dir={dir=="rtl"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto my-0">
       <div className="flex flex-col items-end">
-        <h1 className="relative text-[20px] font-bold lg:text-[32px] text-[#1E1E2B]">
+        <h1 className="relative text-[24px] font-bold lg:text-[32px] text-[#1E1E2B]">
           {t("client_opinion_title")}
           <Image
             src={Rectangle}

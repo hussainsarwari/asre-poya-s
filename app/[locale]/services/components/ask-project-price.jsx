@@ -1,14 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 import arrow from "@/public/icons/home/arrow.svg";
 import bg_image2 from "@/public/icons/services/desktop_box2.svg";
 import bg_image_mobile from "@/public/icons/services/mobile_box2.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
-export default function Software_development_lifecycle() {
-  const { t,dir } = useLanguage();
+export default function AskProjectPrice() {
+   const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   const boxes = [
     {

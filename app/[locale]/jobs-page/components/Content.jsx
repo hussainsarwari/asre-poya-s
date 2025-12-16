@@ -12,9 +12,14 @@ import location from "@/public/icons/job_page/location-tick.svg";
 import usersearch from "@/public/icons/job_page/user-search.svg";
 import share from "@/public/icons/job_page/directbox-send.svg";
 import thick from "@/public/icons/job_page/archive-tick.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function Content() {
-  const { t, dir } = useLanguage();
+   const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   useEffect(() => {
     import("@dotlottie/player-component");
@@ -23,12 +28,7 @@ export default function Content() {
 
 
 
-      //  [selectedJob.date, selectedJob.job_website, selectedJob.role, selectedJob.location],
-      //         ["۱۰ سرطان","asrepoya","graphic designer",selectedJob.address],
-      //         [selectedJob.code, selectedJob.percent, selectedJob.remote_or_phisical, selectedJob.time],
-      //         ["۸۴۹۴۳۹۴۸۳۹۹۲","50%","remote/phisical","فول تایم"]
 
-  
   const jobs = [
     {
       id: 1,

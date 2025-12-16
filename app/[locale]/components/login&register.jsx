@@ -1,11 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { useLanguage } from "../../provider/languageProvider";
 import arrow from "@/public/icons/products/arrow-left_black.svg"
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+
 export default function LoginModal({ open, onClose }) {
-  const { t,  dir } = useLanguage();
+   const t = useTranslations();
+   const locale = useLocale();
+ 
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+ 
   const [flag, setFlag] = useState(false);
   useEffect(() => {
     // جلوگیری از اسکرول هنگام باز بودن مودال

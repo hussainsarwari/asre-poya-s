@@ -1,24 +1,26 @@
 
 
-import Section1 from "./main/section1.jsx";
-import Advantage_asrePoya from "./main/advantage_asrePoya.jsx";
-import Our_product from "./main/our_products.jsx";
-import Client_opinion from "./main/client_opinion.jsx";
-import About_us_section from "./main/about_us_section.jsx";
+import HeroSection from "./main/Hero-section.jsx";
+import AdvantageAsrePoya from "./main/advantage_asrePoya.jsx";
+import OurProduct from "./main/our-products.jsx";
+import ClientOpinion from "./main/client-opinion.jsx";
+import AboutUsSection from "./main/about-us.jsx";
 import Loaded from './components/loading.jsx'
 
-export default function Home() {
+export default async function Home({params}) {
+const {locale}=await params;
+console.log(locale);
 
 
   return (
     <div className="flex flex-col mt-[134px]">
       <Loaded />
     
-          <Section1 />
-          <Advantage_asrePoya />
-          <Our_product />
-          <Client_opinion />
-          <About_us_section />
+          <HeroSection />
+         <AdvantageAsrePoya />
+         <OurProduct />
+          <ClientOpinion />
+            <AboutUsSection />
          
        
     </div>

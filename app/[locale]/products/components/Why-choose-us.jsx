@@ -1,17 +1,21 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import arr_left from "@/public/icons/products/arrow-left.svg";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
 export default function why_choose_us({
   SectionName,
 })  {
-  const { t ,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
   return (
     <div dir={dir=="rtl"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] mt-20">
       <div className="flex flex-col items-end">
-        <h1 dir={dir=="ltr"?"rtl":"ltr"} className="relative font-bold lg:text-[32px] text-xl text-[#1E1E2B]">
+        <h1 dir={dir=="ltr"?"rtl":"ltr"} className="relative font-bold lg:text-[32px] text-2xl text-[#1E1E2B]">
           {t("why_choose_us_title")}
           <Image
             src={Rectangle}

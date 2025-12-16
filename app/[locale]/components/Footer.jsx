@@ -1,5 +1,5 @@
 "use client";
-import { useLanguage } from "../../provider/languageProvider";
+import { useLanguage } from "../provider/languageProvider";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/icons/footer/asrepoyaLogo.png";
@@ -7,13 +7,18 @@ import asrepoyatext from "@/public/icons/footer/asrepoyatext.svg";
 import sms from "@/public/icons/footer/sms.svg";
 import call from "@/public/icons/footer/call.svg";
 import location from "@/public/icons/footer/location.svg";
-
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 export default function Footer() {
-  const { t, dir } = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const sidebarDir = dir;
   return (
     
-    <footer dir={sidebarDir=='ltr'? "ltr":"rtl"} className="bg-[#1E1E2B] w-full   mt-20 py-10 h-[591px] md:h-[587px] lg:h-[430px]  relative overflow-y-hidden">
+    <footer  className="bg-[#1E1E2B] w-full   mt-20 py-10 h-[591px] md:h-[587px] lg:h-[430px]  relative overflow-y-hidden">
       {/* it should be cetner */}
       <div className="flex flex-col items-center gap-5 justify-evenly w-[360px] md:w-[616px] lg:w-[1056px] absolute left-1/2 -translate-x-1/2 ">
         
@@ -51,7 +56,7 @@ export default function Footer() {
               {t("job")}
                 <Image src={sms} alt="jobs" width={20} />
             </h3>
-              <Link href={"/jobs_page"}>
+              <Link href={`/${locale}/jobs-page`}>
             <p className="text-[#FFFFFF99] px-2" dir = {dir==="rtl" ? "ltr" : "rtl"}>{t("jobList")}</p>
               </Link>
           </div>

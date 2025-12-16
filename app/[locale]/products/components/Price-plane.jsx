@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import arr_left from "@/public/icons/home/arrow-left2.svg";
 import calendar from "@/public/icons/products/calendar.png";
 import Rectangle from "@/public/icons/products/Rectangle.svg";
@@ -10,7 +11,11 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Price_plane({
   SectionName,
 }) {
-  const { t ,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const [selectedSoft, setSelectedSoft] = useState("doctor");
 
   // دیتای داینامیک — فقط لازم برای سوییچ
@@ -23,7 +28,7 @@ export default function Price_plane({
   return (
     <div dir={dir=="ltr"?"rtl":"ltr"} className="w-[350px] md:w-[616px] lg:w-[1056px] m-auto mt-20 overflow-hidden">
       <div className="flex flex-col items-end w-full">
-        <h1 className="relative w-full  text-[#1E1E2B] lg:text-[32px] font-bold">
+        <h1 className="relative w-full  text-[#1E1E2B] lg:text-[32px] font-bold text-2xl">
           <Image
             src={Rectangle}
             alt="Rectangle"

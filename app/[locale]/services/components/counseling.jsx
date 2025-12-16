@@ -2,21 +2,26 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import { useLanguage } from "../../provider/languageProvider";
-import client1 from "@/public/icons/home/Frame1.svg";
-import client2 from "@/public/icons/home/Frame2.svg";
-import client3 from "@/public/icons/home/Frame3.svg";
-import client4 from "@/public/icons/home/Frame4.svg";
-import client5 from "@/public/icons/home/Frame5.svg";
-import client6 from "@/public/icons/home/Frame6.svg";
-import client7 from "@/public/icons/home/Frame7.svg";
-import client8 from "@/public/icons/home/Frame8.svg";
-import client9 from "@/public/icons/home/Frame9.svg";
+import client_image1 from "@/public/icons/home/Frame1.svg";
+import client_image2 from "@/public/icons/home/Frame2.svg";
+import client_image3 from "@/public/icons/home/Frame3.svg";
+import client_image4 from "@/public/icons/home/Frame4.svg";
+import client_image5 from "@/public/icons/home/Frame5.svg";
+import client_image6 from "@/public/icons/home/Frame6.svg";
+import client_image7 from "@/public/icons/home/Frame7.svg";
+import client_image8 from "@/public/icons/home/Frame8.svg";
+import client_image9 from "@/public/icons/home/Frame9.svg";
 
 import Rectangle from "@/public/icons/products/Rectangle.svg";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function FreeConsultation() {
-  const { t ,dir} = useLanguage();
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -40,7 +45,7 @@ export default function FreeConsultation() {
     t("step_receive_proposal"),
   ];
 
-  const clients = [client1, client2, client3, client4, client5, client6,client7,client8,client9];
+  const clients = [client_image1, client_image2, client_image3, client_image4, client_image5, client_image6,client_image7,client_image8,client_image9];
 
   return (
     <div dir={dir=="ltr"?"ltr":"rtl"} className="flex flex-col mx-auto w-[350px] md:w-[616px] lg:w-[1059px] md:flex md:gap-16 mt-20">

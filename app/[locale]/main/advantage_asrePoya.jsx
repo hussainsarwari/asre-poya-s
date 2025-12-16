@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../../provider/languageProvider";
-
 import box3 from "@/public/icons/home/box3.svg";
 import box2 from "@/public/icons/home/box2.svg";
 import shield_tick from "@/public/icons/home/shield-tick.svg";
@@ -12,9 +10,14 @@ import calendar from "@/public/icons/home/calendar.svg";
 import people from "@/public/icons/home/people.svg";
 import arrow_left from "@/public/icons/home/arrow-left.svg";
 import arrow_right from "@/public/icons/home/arrow-left_lighter.svg";
+import { useTranslations } from 'next-intl';
+import { useLocale } from "next-intl";
+export default function AdvantageAsrePoya() {
+  const t = useTranslations();
+      const locale = useLocale();
+     
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
 
-export default function Section2() {
-  const { t ,dir} = useLanguage();
   const [index, setIndex] = useState(0);
   const [screenSize, setScreenSize] = useState("desktop"); // mobile | tablet | desktop
   const sidebardir=dir
@@ -87,9 +90,9 @@ export default function Section2() {
         });
 
   return (
-    <div dir={sidebardir}>
+    <div >
       {/* Title and arrows */}
-      <div className="flex flex-row-reverse items-start justify-between m-auto w-[350px] md:w-[616px] lg:w-[1056px] mt-40">
+      <div className="flex flex-row-reverse items-start justify-between m-auto w-[350px] md:w-[616px] lg:w-[1056px] mt-40 lg:mt-20">
         <div className="flex flex-col items-end">
           <h2 className="text-[18px] lg:text-[32px] font-bold text-[#1E1E2B]">
             {t("advantage_asrePoya")}
@@ -120,7 +123,7 @@ export default function Section2() {
         )}
       </div>
 
-      <div dir={sidebardir} className="relative lg:w-[1056px] mx-auto pt-2">
+      <div  className="relative lg:w-[1056px] mx-auto pt-2">
         <div className="flex justify-center mt-10 relative h-[260px] overflow-hidden">
           {screenSize === "desktop" ? (
             // Desktop (4 boxes, no animation)

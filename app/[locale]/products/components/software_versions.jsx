@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useLanguage } from "../../provider/languageProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import softwareversion1 from "@/public/icons/products/box1.png";
 import softwareversion2 from "@/public/icons/products/box2.png";
 import softwareversion3 from "@/public/icons/products/box3.png";
@@ -10,12 +11,15 @@ import Rectangle from "@/public/icons/products/Rectangle.svg";
 export default function softwareversion({
   SectionName,
 })  {
-  const { t ,dir} = useLanguage();
-
+   const t = useTranslations();
+   const locale = useLocale();
+ 
+   const dir = locale === "fa" || locale === "ps" ? "ltr" : "rtl";
+ 
   return (
     <div dir={dir=="rtl"?"rtl":"ltr"} className="mt-20 w-[350px] md:w-[616px] lg:w-[1056px]">
       <div className="flex flex-col items-end"> 
-        <h3 className="relative lg:text-[32px] text-[20px] font-bold">{t("product_software_versions_title")}
+        <h3 className="relative lg:text-[32px] text-[24px] font-bold">{t("product_software_versions_title")}
              <Image
                         src={Rectangle}
                         alt="Rectangle"
