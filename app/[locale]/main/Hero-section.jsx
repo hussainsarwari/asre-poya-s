@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import bg_img from "@/public/icons/home/IMG_98241.svg";
+import bg_img from "@/public/icons/home/bg_image.png";
 import Headphone from "@/public/icons/home/Headphone.svg";
 import whatsappwhite from "@/public/icons/home/whatsapp.svg";
 import asrepoya from "@/public/icons/home/asrepoya.svg";
@@ -25,7 +25,7 @@ export default function HeroSection() {
         <Image
           src={bg_img}
           alt="background image"
-          className="md:w-[616px] w-[366px] lg:w-full"
+          className="md:w-[616px] w-[366px] lg:w-[500px]"
         />
         {/* description box */}
         <div dir={sidebardir} className="bg-[#1E1E2B] hidden lg:flex  h-[91px] py-7 w-[619px] rounded-2xl  flex-row-reverse items-center justify-around">
