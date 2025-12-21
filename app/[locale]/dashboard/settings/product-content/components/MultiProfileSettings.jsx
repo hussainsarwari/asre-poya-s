@@ -306,7 +306,7 @@ const handleFAQChange = (id, field, value) => {
 
 
   // ===== حذف پلان =====
-const  deletePlanSectionList =async (index,id) => {
+const  deletePlanSectionList =async (id) => {
    try {
     const res = await fetch(`/api/controller/${entity}/mutli-profile`, {
       method: "DELETE",
@@ -319,7 +319,7 @@ const  deletePlanSectionList =async (index,id) => {
     if (!res.ok) throw new Error("Failed to delete plan");
 
     // فقط وقتی حذف موفق بود، state را آپدیت کن
-    setPlansList(prev => prev.filter(p => p.id !== index));
+    setPlansList(prev => prev.filter(p => p.id !== id));
 
   } catch (err) {
     console.error(err);
@@ -328,7 +328,7 @@ const  deletePlanSectionList =async (index,id) => {
 };
 
 // ===== حذف تستیمونیال =====
-const deleteTestimonialSectionList = async (index,id) => {
+const deleteTestimonialSectionList = async (id) => {
 
   try {
     const res = await fetch(`/api/controller/${entity}/mutli-profile`, {
@@ -344,7 +344,7 @@ const deleteTestimonialSectionList = async (index,id) => {
     // فقط وقتی حذف موفق بود، state را آپدیت کن
     
   
-  setTestimonialsList(prev => prev.filter(t => t.id !== index));
+  setTestimonialsList(prev => prev.filter(t => t.id !== id));
 
   } catch (err) {
     console.error(err);
@@ -355,8 +355,8 @@ const deleteTestimonialSectionList = async (index,id) => {
 };
 
 // ===== حذف FAQ =====
-const deleteFAQSectionList = async (index,id) => {
-    // try {
+const deleteFAQSectionList = async (id) => {
+    try {
     const res = await fetch(`/api/controller/${entity}/mutli-profile`, {
       method: "DELETE",
       headers: {
@@ -370,11 +370,13 @@ const deleteFAQSectionList = async (index,id) => {
     // فقط وقتی حذف موفق بود، state را آپدیت کن
     
   setFaqsList(prev => prev.filter(f => f.id !== id));
+  console.log(id);
+  
 
-  // } catch (err) {
-  //   console.error(err);
-  //   alert("Error deleting plan: " + err.message);
-  // }
+  } catch (err) {
+    console.error(err);
+    alert("Error deleting plan: " + err.message);
+  }
 
 };
 
@@ -565,7 +567,7 @@ const deleteFAQSectionList = async (index,id) => {
                     <Pen size={16} /> Edit
                   </button>
                   <button
-                  onClick={(e)=>deletePlanSectionList(index,plan.id)}
+                  onClick={(e)=>deletePlanSectionList(plan.id)}
                     className="flex items-center gap-1 px-3 py-1 text-sm text-white transition-colors bg-red-500 rounded hover:bg-red-600"
                   >
                     <Trash2 size={16} /> Delete
@@ -766,7 +768,7 @@ const deleteFAQSectionList = async (index,id) => {
                     <Pen size={16} /> Edit
                   </button>
                   <button
-                  onClick={()=>deleteTestimonialSectionList(index,feedback.id)}
+                  onClick={()=>deleteTestimonialSectionList(feedback.id)}
                     className="flex items-center gap-1 px-3 py-1 text-sm text-white transition-colors bg-red-500 rounded hover:bg-red-600"
                   >
                     <Trash2 size={16} /> Delete
@@ -882,7 +884,7 @@ const deleteFAQSectionList = async (index,id) => {
                     <Pen size={16} /> Edit
                   </button>
                   <button
-                  onClick={()=>deleteFAQSectionList(index,faq.id)}
+                  onClick={()=>deleteFAQSectionList(faq.id)}
                     className="flex items-center gap-1 px-3 py-1 text-sm text-white transition-colors bg-red-500 rounded hover:bg-red-600"
                   >
                     <Trash2 size={16} /> Delete
