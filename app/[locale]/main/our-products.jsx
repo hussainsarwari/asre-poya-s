@@ -7,10 +7,10 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 // product images
 import img1 from "@/public/icons/home/bg_img1.png";
-import img2 from "@/public/icons/home/bg_img2.jpeg";
-import img3 from "@/public/icons/home/bg_img3.jpeg";
-import img4 from "@/public/icons/home/bg_img4.jpeg";
-import img5 from "@/public/icons/home/bg_img5.jpeg";
+import img2 from "@/public/icons/home/bg_img2.png";
+import img3 from "@/public/icons/home/bg_img3.png";
+import img4 from "@/public/icons/home/bg_img4.png";
+import img5 from "@/public/icons/home/bg_img5.png";
 import arrow from "@/public/icons/home/arrow.svg";
 import left_arrow from "@/public/icons/home/arrow-left2.svg";
 
