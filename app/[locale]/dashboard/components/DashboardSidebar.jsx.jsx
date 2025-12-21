@@ -44,7 +44,7 @@ export default function DashboardSidebar({ currentPath, isOpen, toggleOpen }) {
       icon: <Settings size={20} />,
       children: [
         { name: "Home Page Content", href: "/dashboard/settings/home_page_content", icon: <FileText size={18} /> },
-        { name: "Products Page Content", href: "/dashboard/settings/product-content/", icon: <Box size={18} /> },
+        { name: "Products Page Content", href: "/dashboard/settings/product-content", icon: <Box size={18} /> },
         { name: "Services Page Content", href: "/dashboard/settings/services_page_content", icon: <ToolCase size={18} /> },
         { name: "Business Page Content", href: "/dashboard/settings/business_page_content", icon: <Briefcase size={18} /> },
         { name: "About Us Page Content", href: "/dashboard/settings/about_us_page_content", icon: <Info size={18} /> },

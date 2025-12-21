@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 // product images
-import img1 from "@/public/icons/home/bg_img2.svg";
-import img2 from "@/public/icons/home/bg_img2.svg";
-import img3 from "@/public/icons/home/bg_img3.svg";
-import img4 from "@/public/icons/home/bg_img2.svg";
-import img5 from "@/public/icons/home/bg_img2.svg";
+import img1 from "@/public/icons/home/bg_img1.png";
+import img2 from "@/public/icons/home/bg_img2.jpeg";
+import img3 from "@/public/icons/home/bg_img3.jpeg";
+import img4 from "@/public/icons/home/bg_img4.jpeg";
+import img5 from "@/public/icons/home/bg_img5.jpeg";
 import arrow from "@/public/icons/home/arrow.svg";
 import left_arrow from "@/public/icons/home/arrow-left2.svg";
 

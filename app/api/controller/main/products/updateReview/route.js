@@ -4,47 +4,80 @@ import fs from "fs";
 import path from "path";
 // Get product by ID
 import db from "../../../../../api/models/db"; // مسیر اتصال به دیتابیس
+// get review for edit by id
 
 export async function GET(req) {
-  const url = new URL(req.url);
-  const productId = url.searchParams.get("id"); // گرفتن id از query string
-  // if (!productId) {
-  //   return NextResponse.json(
-  //     { error: "Product ID is required" },
-  //     { status: 400 }
-  //   );
-  // }
-  
-  
-  const connection = await db.getConnection();
-  
-  const [rows] = await connection.execute(
-    `SELECT id, customer_name, customer_lastname, customer_job, description, feedback_date, rating, photo
-    FROM home_customer_feedback
-    WHERE id = ?`,
-    [productId]
-  );
+  try {
+    const url = new URL(req.url);
+    const reviewID = url.searchParams.get("id");
 
-    connection.release();
-
-    if (!rows || rows.length === 0) {
+    if (!reviewID) {
       return NextResponse.json(
-        { error: "Product not found" },
-        { status: 404 }
+        { error: "Review ID is required" },
+        { status: 400 }
       );
     }
 
-    const productData = rows[0];
+    const connection = await db.getConnection();
 
+    try {
+      const [rows] = await connection.execute(
+        `SELECT
+          id,
+          customer_name AS firstName,
+          customer_lastname AS lastName,
+          customer_job AS jobTitle,
+          description,
+          customer_name_fa AS firstName_fa,
+          customer_lastname_fa AS lastName_fa,
+          customer_job_fa AS jobTitle_fa,
+          description_fa AS description_fa,
+          customer_name_ps AS firstName_ps,
+          customer_lastname_ps AS lastName_ps,
+          customer_job_ps AS jobTitle_ps,
+          description_ps AS description_ps,
+          feedback_date AS date,
+          rating,
+          photo
+         FROM home_customer_feedback
+         WHERE id = ?`,
+        [reviewID]
+      );
+
+
+      if (!rows || rows.length === 0) {
+        return NextResponse.json(
+          { error: "Review not found" },
+          { status: 404 }
+        );
+      }
+
+      const reviewData = rows[0];
+
+      // مسیر کامل تصویر
+      reviewData.photo = reviewData.photo
+        ? `/${reviewData.photo}`
+        : null;
+
+      return NextResponse.json(
+        {
+          message: "Review data fetched successfully",
+          data: reviewData,
+        },
+        { status: 200 }
+      );
+    } finally {
+      connection.release();
+    }
+  } catch (err) {
+    console.error("Error fetching review:", err);
     return NextResponse.json(
-      {
-        message: "Product data fetched successfully",
-        data: productData,
-      },
-      { status: 200 }
+      { error: "Failed to fetch review" },
+      { status: 500 }
     );
- 
+  }
 }
+
 export async function PUT(req) {
   try {
     const formData = await req.formData();
